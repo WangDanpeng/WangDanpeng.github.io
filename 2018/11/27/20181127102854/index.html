@@ -95,13 +95,13 @@
 <meta property="og:site_name" content="Mr.Wang_Blog">
 <meta property="og:description" content="6个海盗要分赃300金币。规则是由资格最老的海盗提出各人分到的数量，然后全体投票。如方案得到至少半数同意票，则按该方案执行，否则提出方案的海盗被杀死，再由剩下人中资格最老的继续提出方案。海盗都很聪明，在能生存的前提下会追求获利最大化。问最后分赃结果是怎样的?  这道题详细的解题步骤一搜就有, 我只说一下我自己的理解. 两个人?首先还是需要简化这道题, 假如只有两个人, 应该怎么分因为只要投票得到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20181127101935705.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20181127102021791.png">
-<meta property="og:updated_time" content="2018-11-27T02:29:53.729Z">
+<meta property="og:image" content="http://www.wangdanpeng.com/img/20181127102854-1.png">
+<meta property="og:image" content="http://www.wangdanpeng.com/img/20181127102854-2.png">
+<meta property="og:updated_time" content="2018-11-27T02:39:02.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法题-海盗分赃">
 <meta name="twitter:description" content="6个海盗要分赃300金币。规则是由资格最老的海盗提出各人分到的数量，然后全体投票。如方案得到至少半数同意票，则按该方案执行，否则提出方案的海盗被杀死，再由剩下人中资格最老的继续提出方案。海盗都很聪明，在能生存的前提下会追求获利最大化。问最后分赃结果是怎样的?  这道题详细的解题步骤一搜就有, 我只说一下我自己的理解. 两个人?首先还是需要简化这道题, 假如只有两个人, 应该怎么分因为只要投票得到">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181127101935705.png">
+<meta name="twitter:image" content="http://www.wangdanpeng.com/img/20181127102854-1.png">
 
 
 
@@ -408,8 +408,8 @@
 <p><strong>6个海盗要分赃300金币。规则是由资格最老的海盗提出各人分到的数量，然后全体投票。如方案得到至少半数同意票，则按该方案执行，否则提出方案的海盗被杀死，再由剩下人中资格最老的继续提出方案。海盗都很聪明，在能生存的前提下会追求获利最大化。问最后分赃结果是怎样的?</strong></p>
 </blockquote>
 <p>这道题详细的解题步骤一搜就有, 我只说一下我自己的理解.</p>
-<h2 id="两个人"><a href="#两个人" class="headerlink" title="两个人?"></a>两个人?</h2><p>首先还是需要简化这道题, 假如只有两个人, 应该怎么分<br><img src="https://img-blog.csdnimg.cn/20181127101935705.png" alt="two"><br>因为只要投票得到半数就可通过, 只有两个人时, 老大不管怎么分, 只要自己同意, 就可以通过, 所以他一定会分给自己300金, 一毛都不给老二.</p>
-<h2 id="三个人"><a href="#三个人" class="headerlink" title="三个人?"></a>三个人?</h2><p>那么假如有三个人呢?, 想要投票通过, 就必须有两个人同意才行, 那么现在来分析一下这三个人里有谁是利益相关的<br>老大和老二 -&gt; 只要老大死了, 老二能得到全部的300金<br>老二和老三 -&gt; 老二可以承诺给老三多少钱一起搞死老大, 但是老大如果死了, 老二做主, 自己可能一毛也拿不到<br>老大和老三 -&gt; 老大和老三联手, 老三一定能拿到钱<br><img src="https://img-blog.csdnimg.cn/20181127102021791.png" alt="three"><br>这种情况下, 老大即使给老三1金, 老三也是愿意支持老大的, 最后结果就是老大299金, 老二0, 老三1金</p>
+<h2 id="两个人"><a href="#两个人" class="headerlink" title="两个人?"></a>两个人?</h2><p>首先还是需要简化这道题, 假如只有两个人, 应该怎么分<br><img src="http://www.wangdanpeng.com/img/20181127102854-1.png" alt="two"><br>因为只要投票得到半数就可通过, 只有两个人时, 老大不管怎么分, 只要自己同意, 就可以通过, 所以他一定会分给自己300金, 一毛都不给老二.</p>
+<h2 id="三个人"><a href="#三个人" class="headerlink" title="三个人?"></a>三个人?</h2><p>那么假如有三个人呢?, 想要投票通过, 就必须有两个人同意才行, 那么现在来分析一下这三个人里有谁是利益相关的<br>老大和老二 -&gt; 只要老大死了, 老二能得到全部的300金<br>老二和老三 -&gt; 老二可以承诺给老三多少钱一起搞死老大, 但是老大如果死了, 老二做主, 自己可能一毛也拿不到<br>老大和老三 -&gt; 老大和老三联手, 老三一定能拿到钱<br><img src="http://www.wangdanpeng.com/img/20181127102854-2.png" alt="three"><br>这种情况下, 老大即使给老三1金, 老三也是愿意支持老大的, 最后结果就是老大299金, 老二0, 老三1金</p>
 <h2 id="六个人"><a href="#六个人" class="headerlink" title="六个人?"></a>六个人?</h2><p>从上面三个人可以得出结论, 相邻的两个人是死敌关系, 想要半数票通过, 一定不能收买相邻的人, 那么老大只需要收买老三和老五, 他们就一定会同意, 最后老大298, 老二0, 老三1金, 老四0, 老五1金, 老六0</p>
 <blockquote>
 <font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font>
