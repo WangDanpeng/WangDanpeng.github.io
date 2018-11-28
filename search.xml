@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>Spark-RDD简单介绍</title>
+      <link href="/2018/11/28/20181128141747/"/>
+      <url>/2018/11/28/20181128141747/</url>
+      
+        <content type="html"><![CDATA[<p>git作为代码管理工具基本上每天都在使用中, 然而有时候总有一些难记的命令让我每次用都需要去百度, 干脆把它们整理出来, 以后再遇到直接看自己博客就好啦, hah</p><p>1.忽略已经add进暂存区的文件<br>有时候一不留神会把一些并不想提交的东西一起add到暂存区, 一下两下想不起来该用什么命令, 网上搜的有的还不对, 下面给出正解:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把文件从暂存区移除</span></span><br><span class="line">git reset HEAD xxx</span><br></pre></td></tr></table></figure></p><p>2.放弃一些本地的修改<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 放弃一个文件修改</span></span><br><span class="line">git checkout xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 放弃当前文件夹所有文件的修改</span></span><br><span class="line">git checkout .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 会退到某个版本</span></span><br><span class="line">git reset --hard xxx版本号</span><br></pre></td></tr></table></figure></p><p>3.切换分支保存代码<br>有时写了一部分代码但是突然需要切换分支或者其他操作, 需要把当前修改暂存一下, 那就下面用到的命令<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂存信息</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取存入的信息</span></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure></p><p>4.commit message写错<br>如果尚未push到远端, 只需要<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure></p><p>5.删除远端分支<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --delete 分支名</span><br></pre></td></tr></table></figure></p><p>6.重命名本地分支<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m 旧分支名 新分支名</span><br></pre></td></tr></table></figure></p><p>最近收藏的就这几条命令了, 以后再有记不住的随时更新, 另附上我初学git的启蒙文档 <a href="http://git.oschina.net/progit/" target="_blank" rel="noopener">Pro Git(中文版)</a>.</p><blockquote><font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spark </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spark </tag>
+            
+            <tag> RDD </tag>
+            
+            <tag> 文档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>算法题-海盗分赃</title>
       <link href="/2018/11/27/20181127102854/"/>
       <url>/2018/11/27/20181127102854/</url>
