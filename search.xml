@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>VS Code-常用插件</title>
+      <link href="/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
+      <url>/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<p>久闻vs code比sublime text要好用, 感觉sublime text已经够好用了, 一直懒得换, 今天下载vs code试用了一下, 感觉嗯~ 真香~</p><p>初次使用先安装了一些常用插件, 以后如有进阶插件再持续更新</p><h2 id="0-插件安装方法"><a href="#0-插件安装方法" class="headerlink" title="0. 插件安装方法"></a>0. 插件安装方法</h2><p>不得不说, vs code插件安装比sublime text要更优雅, 左侧工具栏直接提供了插件安装选项(最下面的方块块), 直接搜索插件名, 可以查看各个插件的使用说明, 安装次数等等信息, 顿时好感爆棚</p><h2 id="1-vim"><a href="#1-vim" class="headerlink" title="1. vim"></a>1. vim</h2><p>平时和服务器打交道多, 习惯vim操作一切, 编辑器当然也是必须vim模式走起, 直接搜<figure class="highlight plain"><figcaption><span>目前版本1.8.0, 690w人次安装</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 2. 图标</span><br><span class="line"></span><br><span class="line">由于平时打开的文件夹和文件比较多, 习惯装一个图标插件, 能美化图标的显示, 这里选择的是```vscode-icons```, 版本8.6.0, 1500w人次安装</span><br><span class="line"></span><br><span class="line">## 3. json格式化工具</span><br><span class="line"></span><br><span class="line">平时处理json格式数据也比较多, 经常需要格式化, 每次打开格式化网站也很麻烦, 不如插件来的实在, 这里选择的```JSON Tools```, 版本1.0.2, 26w人次安装, 后续有更好用的再换</span><br><span class="line"></span><br><span class="line">## 4. Markdown工具</span><br><span class="line"></span><br><span class="line">vs code原本就支持写markdown的实时预览, 只要把文件保存成```.md```后缀, 在右上角就会有一个分屏带放大镜的图标, 点击就可以, 不过黑色主题下预览也是黑色, 有些格式看起来不舒服, 所以我选择```Markdown Preview Enhanced```, 版本0.3.13, 110w人次安装</span><br><span class="line"></span><br><span class="line">同时, 想要规范自己写的md格式, 可以一起安装一个```markdownlint```, 根据他的数条规则发起检查, 格式不规范的地方就会划绿色波浪线, 助你写出完美md, 版本0.26.0, 437w人次安装</span><br><span class="line"></span><br><span class="line">## 5. 颜色主题</span><br><span class="line"></span><br><span class="line">直接```cmd + shift + p```在输入框输入```color theme```, 就有多种自带主题供你选择, 不过我又另外多安装了一个```One Dark Pro```主题, 可以搜索看一下适不适合你, 版本2.22.1, 1000w人次安装</span><br><span class="line"></span><br><span class="line">## 6. 编程语言插件</span><br><span class="line"></span><br><span class="line">这个就不过多介绍, 对应安装自己常用的语言, 比如我的```Scala```和```Python</span><br></pre></td></tr></table></figure></p><h2 id="7-最后的骚操作"><a href="#7-最后的骚操作" class="headerlink" title="7. 最后的骚操作"></a>7. 最后的骚操作</h2><p>最骚的来了, vs code居然有简体中文包…<br>直接搜索<code>Chinese</code>就可以, 版本1.33.2, 560w人次安装</p><blockquote><font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> VS Code </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VS Code </tag>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Spark-RDD简单介绍</title>
       <link href="/2018/11/28/20181128141747/"/>
       <url>/2018/11/28/20181128141747/</url>
