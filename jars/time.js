@@ -15,7 +15,7 @@ function LoadBlogParts(){
 	sHtml += '<param name="quality" value="high">';
 	sHtml += '<param name="bgcolor" value="#ffffff">';
 	sHtml += '<param name="wmode" value="transparent">';
-	sHtml += '<embed wmode="transparent" src="' + sUrl + '" quality="high" bgcolor="#ffffff" width="160" height="70" name="' + swfTitle + '" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
+	sHtml += '<embed wmode="transparent" src="' + sUrl + '" quality="high" bgcolor="#ffffff" width="360" height="140" name="' + swfTitle + '" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
 	sHtml += '</object>';
 	
 	document.write(sHtml);
