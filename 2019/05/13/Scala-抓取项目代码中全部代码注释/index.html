@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">271字</span>
+            <span class="post-count">248字</span>
         </span>
     </span>
 
@@ -100,8 +100,6 @@
       <p>日前某站代码泄露, 大佬们贴出很多代码中有趣的注释, 于是突发奇想, 写了一个没有用的小程序…</p>
 <p>(ps: 某站代码我没看, 你们可, 别瞎说…)</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.io.<span class="type">Source</span></span><br><span class="line"><span class="keyword">import</span> java.util.regex.<span class="type">Pattern</span></span><br><span class="line"><span class="keyword">import</span> java.io.&#123;<span class="type">File</span>, <span class="type">PrintWriter</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Bi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">getFile</span></span>(file:<span class="type">File</span>): <span class="type">Array</span>[<span class="type">File</span>] =&#123;</span><br><span class="line">    <span class="keyword">val</span> files = file.listFiles()</span><br><span class="line">                    .filter(! _.isDirectory)</span><br><span class="line">                    <span class="comment">// 指定要读取什么文件</span></span><br><span class="line">                    .filter(t =&gt; t.toString.endsWith(<span class="string">".go"</span>))</span><br><span class="line">    files ++ file.listFiles()</span><br><span class="line">                  .filter(f =&gt; f.isDirectory</span><br><span class="line">                    <span class="comment">// 指定排除掉什么文件夹</span></span><br><span class="line">                    &amp;&amp; f.getName != <span class="string">"vendor"</span>)</span><br><span class="line">                  .flatMap(getFile)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">check</span></span>(s: <span class="type">String</span>): <span class="type">Boolean</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> pattern = <span class="string">"[\u4e00-\u9fa5]+"</span></span><br><span class="line">    <span class="keyword">val</span> p = <span class="type">Pattern</span>.compile(pattern)</span><br><span class="line">    <span class="keyword">val</span> result = p.matcher(s)</span><br><span class="line">    <span class="keyword">if</span> (result.find()) <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> path = <span class="keyword">new</span> <span class="type">File</span>(<span class="string">"目标文件夹路径"</span>)</span><br><span class="line">    <span class="keyword">val</span> writer = <span class="keyword">new</span> <span class="type">PrintWriter</span>(<span class="keyword">new</span> <span class="type">File</span>(<span class="string">"输出文件路径"</span>))</span><br><span class="line"></span><br><span class="line">    getFile(path).foreach&#123; file =&gt;</span><br><span class="line">      <span class="keyword">var</span> flag = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> text=<span class="type">Source</span>.fromFile(file)</span><br><span class="line">      <span class="keyword">for</span>(line &lt;- text.getLines)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (line.trim.startsWith(<span class="string">"//"</span>) &amp;&amp; check(line)) &#123;</span><br><span class="line">          flag = <span class="literal">true</span></span><br><span class="line">          writer.println(<span class="string">s"-----<span class="subst">$line</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="comment">// 打印以上注释出自哪个文件</span></span><br><span class="line">        writer.println(file.getPath)</span><br><span class="line">      &#125;</span><br><span class="line">      text.close</span><br><span class="line">    &#125;</span><br><span class="line">    writer.close()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font></blockquote>
 
       
       <!-- reward -->
@@ -126,55 +124,6 @@
         </div>
         
     <footer class="article-footer">
-      
-          
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.wangdanpeng.com/2019/05/13/Scala-抓取项目代码中全部代码注释/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li></ul>
@@ -226,10 +175,21 @@
       </li>
       <li>
         
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
         
       </li>
       
@@ -343,7 +303,7 @@
 <script>
   try {
     var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      strings: ['', '', '努力, 奋斗'],
       startDelay: 0,
       typeSpeed: 200,
       loop: false,
@@ -489,6 +449,8 @@
 </script>
 
 
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

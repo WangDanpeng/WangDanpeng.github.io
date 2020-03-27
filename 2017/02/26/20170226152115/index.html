@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">476字</span>
+            <span class="post-count">453字</span>
         </span>
     </span>
 
@@ -109,9 +109,6 @@
 <p>再发表情测试通过!到此一切搞定收工.</p>
 <p>(ps:如果以上方法下来并没有成功的话, 一定是你的mysql配置没放好, 那么请参考下面这篇文章, 绝对妥妥的 -&gt; <a href="http://www.cnblogs.com/HondaHsu/p/3640180.html" target="_blank" rel="noopener">如何修改MySQL字符集</a>)</p>
 <p>下面是一些相关命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--修改数据库字符集</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> <span class="string">`数据库名`</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">`字符集名`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--把表默认的字符集和所有字符列改为新的字符集</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`表名`</span> <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">`字符集名`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--只修改表的默认字符集</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`表名`</span> <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">`字符集名`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--修改字段的字符集</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`表名`</span> <span class="keyword">CHANGE</span> <span class="string">`字段名`</span> <span class="string">`字段名`</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">`字符集名`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查看数据库编码</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">`数据库名`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查看表编码</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`表名`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查看字段编码</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">FULL</span> <span class="keyword">COLUMNS</span> <span class="keyword">FROM</span> <span class="string">`表名`</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font>
-</blockquote>
 
       
       <!-- reward -->
@@ -136,55 +133,6 @@
         </div>
         
     <footer class="article-footer">
-      
-          
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.wangdanpeng.com/2017/02/26/20170226152115/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Emoji/">Emoji</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
@@ -236,10 +184,21 @@
       </li>
       <li>
         
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
         
       </li>
       
@@ -353,7 +312,7 @@
 <script>
   try {
     var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      strings: ['', '', '努力, 奋斗'],
       startDelay: 0,
       typeSpeed: 200,
       loop: false,
@@ -499,6 +458,8 @@
 </script>
 
 
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

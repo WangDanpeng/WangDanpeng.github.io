@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">954字</span>
+            <span class="post-count">931字</span>
         </span>
     </span>
 
@@ -108,9 +108,6 @@
 <p>默认的配置文件就在sbt文件夹下的sbt.boot.properties文件, 对此文件内的内容进行替换, 如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[scala]</span><br><span class="line">  version: $&#123;sbt.scala.version-auto&#125;</span><br><span class="line"></span><br><span class="line">[app]</span><br><span class="line">  org: $&#123;sbt.organization-org.scala-sbt&#125;</span><br><span class="line">  name: sbt</span><br><span class="line">  version: $&#123;sbt.version-read(sbt.version)[1.0.0-M4]&#125;</span><br><span class="line">  class: $&#123;sbt.main.class-sbt.xMain&#125;</span><br><span class="line">  components: xsbti,extra</span><br><span class="line">  cross-versioned: $&#123;sbt.cross.versioned-false&#125;</span><br><span class="line">  resources: $&#123;sbt.extraClasspath-&#125;</span><br><span class="line"></span><br><span class="line">[repositories]</span><br><span class="line">  local</span><br><span class="line">  aliyun: http://maven.aliyun.com/nexus/content/groups/public</span><br><span class="line">  maven-central: http://repo1.maven.org/maven2/</span><br><span class="line">  sbt-maven-releases: http://repo.scala-sbt.org/scalasbt/maven-releases/, bootOnly</span><br><span class="line">  sbt-maven-snapshots: http://repo.scala-sbt.org/scalasbt/maven-snapshots/, bootOnly</span><br><span class="line">  typesafe-ivy-releases: http://repo.typesafe.com/typesafe/ivy-releases/, [organization]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly</span><br><span class="line">  sbt-ivy-snapshots: http://repo.scala-sbt.org/scalasbt/ivy-snapshots/, [organization]/[module]/[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly</span><br><span class="line"></span><br><span class="line">[boot]</span><br><span class="line">  directory: $&#123;sbt.boot.directory-$&#123;sbt.global.base-$&#123;user.home&#125;/.sbt&#125;/boot/&#125;</span><br><span class="line"></span><br><span class="line">[ivy]</span><br><span class="line">  ivy-home: $&#123;sbt.ivy.home-$&#123;user.home&#125;/.ivy2/&#125;</span><br><span class="line">  checksums: $&#123;sbt.checksums-sha1,md5&#125;</span><br><span class="line">  override-build-repos: $&#123;sbt.override.build.repos-false&#125;</span><br><span class="line">  repository-config: $&#123;sbt.repository.config-$&#123;sbt.global.base-$&#123;user.home&#125;/.sbt&#125;/repositories&#125;</span><br></pre></td></tr></table></figure></p>
 <p>修改完成, 再执行<code>jar -cfM ./sbt-launch.jar .</code>打成jar包, 把bin目录下的原始jar包替换掉即可, 这次保证妥妥的.</p>
 <p>附上我改好的jar包下载地址, 送给懒得自己动手的人们, 传送门 -&gt; <a href="http://www.wangdanpeng.com/jars/sbt-launch.jar">sbt-launch.jar</a></p>
-<blockquote>
-<font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font>
-</blockquote>
 
       
       <!-- reward -->
@@ -135,55 +132,6 @@
         </div>
         
     <footer class="article-footer">
-      
-          
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.wangdanpeng.com/2017/04/06/20170406210224/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SBT/">SBT</a></li></ul>
@@ -235,10 +183,21 @@
       </li>
       <li>
         
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
         
       </li>
       
@@ -352,7 +311,7 @@
 <script>
   try {
     var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      strings: ['', '', '努力, 奋斗'],
       startDelay: 0,
       typeSpeed: 200,
       loop: false,
@@ -498,6 +457,8 @@
 </script>
 
 
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

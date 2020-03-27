@@ -38,7 +38,7 @@
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame">
+      <img src="/images/cover2.jpg" alt="image frame">
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Mr.Wang_Blog</a></h1>
@@ -101,25 +101,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>使用Mybatis时不时会遇到一下这种报错:</p>
-<pre><code>Mapped Statements collection does not contain value for XXX
-</code></pre><p>错误原因有以下几种:</p>
-<ul>
-<li>mapper.xml中没有加入namespace</li>
-<li>mapper.xml中的方法和接口mapper的方法不对应</li>
-<li>mapper.xml没有加入到mybatis-config.xml中(即总的配置文件)，例外：配置了mapper文件的包路径的除外</li>
-<li>mapper.xml文件名和所写的mapper名称不相同</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -175,27 +156,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <blockquote>
-<p>之前搞微信二次开发遇见过一个超级大坑, 根据微信提供的接口, 获取到的经纬度, 不知道是什么坐标系的(ps: 各个地图使用的坐标系不一, 自行百度), 我把得到的经纬度放到百度.腾讯.高德地图里, 得到的位置都有很大的偏差, 后来绞尽脑汁, 发帖加群各种求助, 无意间发现一篇文章, 特此分享一下, 以防以后有人遇到同样的问题不用像我一样彷徨.</p>
-</blockquote>
-<p>这是原文 <a href="http://www.weixin66.net/newsshow.php?cid=4&amp;id=7" target="_blank" rel="noopener">微信如何根据经纬度坐标查询具体地理位置</a> </p>
-<p>微信获取到的经纬度是GPS坐标, 知道这个一切就好办了, 下一步只要要一个GPS坐标转换的接口就可以了.</p>
-<p> 我一开始用的上面链接里的接口, 然而用的好好的有一天突然服务挂了, 最后发现他的接口403了. </p>
-<p> 然后我就找到了下面这个不错的网站, 看他们的合作伙伴还有CSDN, 应该还算靠谱, 从我发现这个网站距今已经快三年了, 它还在, 所以…</p>
-<p>废话不多说, 上链接 <a href="http://www.zdoz.net/index.html" target="_blank" rel="noopener">各种地图接口</a></p>
-<blockquote>
-<font color="#FF0000">版权声明：本文为博主原创文章，未经博主允许不得转载。</font>
-</blockquote>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -251,22 +211,6 @@
     
 
     
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>好久没有维护我的网站, 也懒得买服务器, 直接在github上用hexo搭了这么一个博客, 还是很方便的, 教程如下:</p>
-<p><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/" target="_blank" rel="noopener">Hexo+NexT主题搭建个人博客</a></p>
-<p>  顺便贴上比较常用的命令, 和关键文件位置, 省的我这个记性扭头就忘了.</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hexo g                        # 生成public静态资源</span><br><span class="line"></span><br><span class="line">hexo s                        # 启动服务</span><br><span class="line"></span><br><span class="line">hexo d                        # 提交到GitHub</span><br><span class="line"></span><br><span class="line">hexo clean                    # 清除静态资源</span><br><span class="line"></span><br><span class="line">hexo n page &quot;xxx&quot;             # 生成xxx页面</span><br><span class="line"></span><br><span class="line">hexo n &quot;xxx&quot;                  # 生成文章</span><br></pre></td></tr></table></figure>
-<h2 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blog/_config.yml              # 站点配置文件</span><br><span class="line"></span><br><span class="line">blog/themes/next/_config.yml  # 主题配置文件</span><br></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果想给项目加README文件, 把后缀名改成”MDOWN”并放到source文件夹下即可.</p>
-
-      
-      <!-- reward -->
-      
-    </div>
     
     
       <!-- copyright -->
@@ -311,10 +255,21 @@
       </li>
       <li>
         
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
       </li>
     </ul>
     <ul class="list-inline">
       <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
         
       </li>
       
@@ -428,7 +383,7 @@
 <script>
   try {
     var typed = new Typed("#subtitle", {
-      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      strings: ['', '', '努力, 奋斗'],
       startDelay: 0,
       typeSpeed: 200,
       loop: false,
@@ -558,6 +513,8 @@
 </script>
 
 
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
