@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mr.Wang_Blog</title>
+  
+  <subtitle>不定期更新...</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.wangdanpeng.com/"/>
+  <updated>2019-05-14T12:06:40.419Z</updated>
+  <id>http://www.wangdanpeng.com/</id>
+  
+  <author>
+    <name>王丹鹏</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工具-破解pdf密码</title>
+    <link href="http://www.wangdanpeng.com/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/"/>
+    <id>http://www.wangdanpeng.com/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/</id>
+    <published>2019-05-14T11:36:11.000Z</published>
+    <updated>2019-05-14T12:06:40.419Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天偶得一份久仰的学习资料.pdf, 一打开却发现要输入密码, 试来试去密码都不对, 寻遍google找到了一个神器~&lt;/p&gt;
+&lt;h2 id=&quot;pdfcrack&quot;&gt;&lt;a href=&quot;#pdfcrack&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://www.wangdanpeng.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="pdf" scheme="http://www.wangdanpeng.com/tags/pdf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala-抓取项目代码中全部代码注释</title>
+    <link href="http://www.wangdanpeng.com/2019/05/13/Scala-%E6%8A%93%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/"/>
+    <id>http://www.wangdanpeng.com/2019/05/13/Scala-%E6%8A%93%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/</id>
+    <published>2019-05-13T06:55:26.000Z</published>
+    <updated>2019-05-13T07:18:03.870Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;日前某站代码泄露, 大佬们贴出很多代码中有趣的注释, 于是突发奇想, 写了一个没有用的小程序…&lt;/p&gt;
+&lt;p&gt;(ps: 某站代码我没看, 你们可, 别瞎说…)&lt;/p&gt;
+&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Scala" scheme="http://www.wangdanpeng.com/categories/Scala/"/>
+    
+    
+      <category term="Scala" scheme="http://www.wangdanpeng.com/tags/Scala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VS Code-常用插件</title>
+    <link href="http://www.wangdanpeng.com/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
+    <id>http://www.wangdanpeng.com/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</id>
+    <published>2019-05-11T14:37:34.000Z</published>
+    <updated>2019-05-11T14:50:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;久闻vs code比sublime text要好用, 感觉sublime text已经够好用了, 一直懒得换, 今天下载vs code试用了一下, 感觉嗯~ 真香~&lt;/p&gt;
+&lt;p&gt;初次使用先安装了一些常用插件, 以后如有进阶插件再持续更新&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="VS Code" scheme="http://www.wangdanpeng.com/categories/VS-Code/"/>
+    
+    
+      <category term="VS Code" scheme="http://www.wangdanpeng.com/tags/VS-Code/"/>
+    
+      <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark-RDD简单介绍</title>
+    <link href="http://www.wangdanpeng.com/2018/11/28/20181128141747/"/>
+    <id>http://www.wangdanpeng.com/2018/11/28/20181128141747/</id>
+    <published>2018-11-28T06:17:31.000Z</published>
+    <updated>2018-11-28T06:47:24.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;结合Spark官网, 对Spark RDD的一些简单介绍和总结.&lt;/p&gt;
+&lt;p&gt;RDD是Spark提供的主要抽象, 全称弹性分布式数据集, 它是跨集群节点来分区的元素集合, 可以并行操作, 可以保留在内存, 还可以自动从节点故障中恢复.&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/categories/Spark/"/>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/tags/Spark/"/>
+    
+      <category term="RDD" scheme="http://www.wangdanpeng.com/tags/RDD/"/>
+    
+      <category term="文档" scheme="http://www.wangdanpeng.com/tags/%E6%96%87%E6%A1%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法题-海盗分赃</title>
+    <link href="http://www.wangdanpeng.com/2018/11/27/20181127102854/"/>
+    <id>http://www.wangdanpeng.com/2018/11/27/20181127102854/</id>
+    <published>2018-11-27T02:28:30.000Z</published>
+    <updated>2018-11-27T02:39:02.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;6个海盗要分赃300金币。规则是由资格最老的海盗提出各人分到的数量，然后全体投票。如方案得到至少半数同意票，则按该方案执行，否则提出方案的海盗被杀死，再由剩下人中资格最老的继续提出方案。海盗都很聪明，在能生存的前提下会追求获利最大化
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法题" scheme="http://www.wangdanpeng.com/categories/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+      <category term="算法题" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sublime Text3 更换主题及插件安装</title>
+    <link href="http://www.wangdanpeng.com/2018/11/09/20181109210424/"/>
+    <id>http://www.wangdanpeng.com/2018/11/09/20181109210424/</id>
+    <published>2018-11-09T13:04:24.000Z</published>
+    <updated>2018-11-10T00:58:56.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;毫无疑问, Sublime Text是Mac电脑上为数不多十分好用的文本编辑器之一, 日常使用的频率也是非常的高, 所以配置一个好看又好用的Sublime Text就十分的有必要.&lt;/p&gt;
+&lt;h2 id=&quot;更换主题&quot;&gt;&lt;a href=&quot;#更换主题&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://www.wangdanpeng.com/categories/Mac/"/>
+    
+    
+      <category term="Mac" scheme="http://www.wangdanpeng.com/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SBT-修改资源库地址</title>
+    <link href="http://www.wangdanpeng.com/2017/04/06/20170406210224/"/>
+    <id>http://www.wangdanpeng.com/2017/04/06/20170406210224/</id>
+    <published>2017-04-06T13:02:24.000Z</published>
+    <updated>2017-04-06T13:03:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;做大数据开发, 用scala的都会用到sbt来打包依赖, 但是sbt默认配置里连接的国外地址, 根本就下不下来依赖包, 而且还有的地址是https的, 连接都被拒绝了, 所以我们就来修改sbt默认的配置.&lt;/p&gt;
+&lt;p&gt;首先, 我的系统是mac,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="SBT" scheme="http://www.wangdanpeng.com/categories/SBT/"/>
+    
+    
+      <category term="SBT" scheme="http://www.wangdanpeng.com/tags/SBT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-接入畅言评论</title>
+    <link href="http://www.wangdanpeng.com/2017/03/29/20170329230400/"/>
+    <id>http://www.wangdanpeng.com/2017/03/29/20170329230400/</id>
+    <published>2017-03-29T15:04:00.000Z</published>
+    <updated>2017-03-29T15:05:12.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;众所周知, 多说评论要关闭了, 不管它处于什么原因和什么考虑, 总之我们要考虑换下家了, 看来看去感觉搜狐畅言的评论模块看着还算舒服, 决定接入畅言的评论系统. 可以见下方, 我正在使用的就是.&lt;/p&gt;
+&lt;h3 id=&quot;注册&quot;&gt;&lt;a href=&quot;#注册&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://www.wangdanpeng.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://www.wangdanpeng.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git-记不住的命令整理</title>
+    <link href="http://www.wangdanpeng.com/2017/03/18/20170318053142/"/>
+    <id>http://www.wangdanpeng.com/2017/03/18/20170318053142/</id>
+    <published>2017-03-17T21:31:42.000Z</published>
+    <updated>2017-03-29T13:06:26.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;git作为代码管理工具基本上每天都在使用中, 然而有时候总有一些难记的命令让我每次用都需要去百度, 干脆把它们整理出来, 以后再遇到直接看自己博客就好啦,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://www.wangdanpeng.com/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://www.wangdanpeng.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-抓取音乐网站下载链接</title>
+    <link href="http://www.wangdanpeng.com/2017/03/18/20170318014719/"/>
+    <id>http://www.wangdanpeng.com/2017/03/18/20170318014719/</id>
+    <published>2017-03-17T20:47:19.000Z</published>
+    <updated>2017-03-29T13:13:20.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;当年SongTaste网站还没关闭, 在上面找到过很多我喜欢的音乐, 当时已经被多米收购, 下载音乐超级麻烦, 后来看到网上有说扒下载链接的, 我也自己试了一下用Java开发了一个Windows小窗口, 输入音乐网址就会返回下载链接.&lt;/p&gt;
+&lt;p&gt;参考链接&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
+    
+      <category term="爬虫" scheme="http://www.wangdanpeng.com/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark-断点调试</title>
+    <link href="http://www.wangdanpeng.com/2017/03/12/20170312193459/"/>
+    <id>http://www.wangdanpeng.com/2017/03/12/20170312193459/</id>
+    <published>2017-03-12T11:34:59.000Z</published>
+    <updated>2017-03-29T13:15:12.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我是用idea + spark-shell断点调试spark源码的, 可以一行代码一行代码的追执行过程, 很是方便, 学习Spark源码必备.&lt;/p&gt;
+&lt;h4 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/categories/Spark/"/>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/tags/Spark/"/>
+    
+      <category term="Debug" scheme="http://www.wangdanpeng.com/tags/Debug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark-从wordCount到job调度过程</title>
+    <link href="http://www.wangdanpeng.com/2017/03/05/20170305231525/"/>
+    <id>http://www.wangdanpeng.com/2017/03/05/20170305231525/</id>
+    <published>2017-03-05T15:15:25.000Z</published>
+    <updated>2017-03-29T13:14:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;以wordCount为例, 研究学习spark(版本2.1.0)的整个job调度过程,整理总结如下:&lt;/p&gt;
+&lt;h3 id=&quot;WordCount&quot;&gt;&lt;a href=&quot;#WordCount&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/categories/Spark/"/>
+    
+    
+      <category term="Spark" scheme="http://www.wangdanpeng.com/tags/Spark/"/>
+    
+      <category term="WordCount" scheme="http://www.wangdanpeng.com/tags/WordCount/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis-逻辑连接未关闭</title>
+    <link href="http://www.wangdanpeng.com/2017/02/26/20170226153828/"/>
+    <id>http://www.wangdanpeng.com/2017/02/26/20170226153828/</id>
+    <published>2017-02-26T07:38:28.000Z</published>
+    <updated>2017-03-29T13:18:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先环境我用的Struts2 + Sprig + Mybatis&lt;/p&gt;
+&lt;p&gt;最近重构了Mqsql连接池, 改用了阿里的druid. 因为druid带有WebUi, 我发现我的项目只打开数据库连接却不关闭,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Mybatis" scheme="http://www.wangdanpeng.com/categories/Mybatis/"/>
+    
+    
+      <category term="Mybatis" scheme="http://www.wangdanpeng.com/tags/Mybatis/"/>
+    
+      <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql-输入Emoji表情</title>
+    <link href="http://www.wangdanpeng.com/2017/02/26/20170226152115/"/>
+    <id>http://www.wangdanpeng.com/2017/02/26/20170226152115/</id>
+    <published>2017-02-26T07:21:15.000Z</published>
+    <updated>2017-03-29T13:14:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前开发app遇到过一个问题, 用户发表评论里如果带有Emoji表情就会失败,查看日志数据库会报如下错误:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;java.sql.SQLException: Incorrect string value:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Mysql" scheme="http://www.wangdanpeng.com/categories/Mysql/"/>
+    
+    
+      <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
+    
+      <category term="Emoji" scheme="http://www.wangdanpeng.com/tags/Emoji/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试题-url结尾带不带斜杠的访问速度</title>
+    <link href="http://www.wangdanpeng.com/2017/02/26/20170226142341/"/>
+    <id>http://www.wangdanpeng.com/2017/02/26/20170226142341/</id>
+    <published>2017-02-26T06:23:41.000Z</published>
+    <updated>2017-03-29T13:16:36.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前有一次面试遇到一个问题(拿我的博客举例):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="面试题" scheme="http://www.wangdanpeng.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="面试题" scheme="http://www.wangdanpeng.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="Web" scheme="http://www.wangdanpeng.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyEclipse-新装MyEclipse后的一系列设置汇总</title>
+    <link href="http://www.wangdanpeng.com/2017/02/19/20170319224848/"/>
+    <id>http://www.wangdanpeng.com/2017/02/19/20170319224848/</id>
+    <published>2017-02-19T14:48:48.000Z</published>
+    <updated>2017-03-29T13:13:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;首先第一步肯定是破解无疑，我没钱去买正版的。。。&lt;/p&gt;
+&lt;p&gt;按我习惯的顺序来，导入一项目，方便参考着设置。&lt;/p&gt;
+&lt;h3 id=&quot;1-收起包名&quot;&gt;&lt;a href=&quot;#1-收起包名&quot; class=&quot;headerlink&quot; title=&quot;1. 收起包名&quot;&gt;&lt;/a&gt;1.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/categories/MyEclipse/"/>
+    
+    
+      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/tags/MyEclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring-通过配置向 Quartz定时任务 注入service</title>
+    <link href="http://www.wangdanpeng.com/2017/02/19/20170219215026/"/>
+    <id>http://www.wangdanpeng.com/2017/02/19/20170219215026/</id>
+    <published>2017-02-19T13:50:26.000Z</published>
+    <updated>2017-03-29T13:16:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;写了一个定时任务, 但是调用service会报空, 原因是service注入不进去, 解决办法如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spring" scheme="http://www.wangdanpeng.com/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://www.wangdanpeng.com/tags/Spring/"/>
+    
+      <category term="Quartz" scheme="http://www.wangdanpeng.com/tags/Quartz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyEclipse-设置JAVA选中高亮显示</title>
+    <link href="http://www.wangdanpeng.com/2017/02/18/20170218201209/"/>
+    <id>http://www.wangdanpeng.com/2017/02/18/20170218201209/</id>
+    <published>2017-02-18T12:12:09.000Z</published>
+    <updated>2017-03-29T13:14:08.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;打开高亮显示功能&lt;br&gt;选择Windows-&amp;gt;Preferences-&amp;gt;Java-&amp;gt; Editor-&amp;gt; Mark Occurrences ，勾选选项。这时，当你单击一个元素的时候，代码中所有该元素存在的地方都会被高亮显示。
+        
+      
+    
+    </summary>
+    
+    
+      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/categories/MyEclipse/"/>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
+    
+      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/tags/MyEclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-基于HttpClient的java后台访问URL</title>
+    <link href="http://www.wangdanpeng.com/2017/02/18/20170218200349/"/>
+    <id>http://www.wangdanpeng.com/2017/02/18/20170218200349/</id>
+    <published>2017-02-18T12:03:49.000Z</published>
+    <updated>2017-03-29T13:12:16.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;写支付相关东西遇到需要在后台访问url，搜了搜找到一篇不错的代码，收藏下来以留后用。&lt;/p&gt;
+&lt;p&gt;httpUtils.java中有两个公共的静态方法，一个是URLPost，另一个是URLGet，一目了然，前者是提供POST方式提交数据的，后者是提供GET方式提交数据的。其
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
+    
+      <category term="Http" scheme="http://www.wangdanpeng.com/tags/Http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-json对象转java对象</title>
+    <link href="http://www.wangdanpeng.com/2017/02/18/20170218195321/"/>
+    <id>http://www.wangdanpeng.com/2017/02/18/20170218195321/</id>
+    <published>2017-02-18T11:53:21.000Z</published>
+    <updated>2017-03-29T13:13:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;项目里需要把json对象转换成java对象，还挺费劲的搜了搜，于是自己记下来，以后方便使用。&lt;/p&gt;
+&lt;p&gt;第一种方法，使用 JSON-lib 。&lt;/p&gt;
+&lt;p&gt;第二种方法，使用 JACKSON。&lt;/p&gt;
+&lt;p&gt;前两种方法，对相对简单的Pojo
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/categories/Java/"/>
+    
+    
+      <category term="Json" scheme="http://www.wangdanpeng.com/tags/Json/"/>
+    
+      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
+    
+  </entry>
+  
+</feed>
