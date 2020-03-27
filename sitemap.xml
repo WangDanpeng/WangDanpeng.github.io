@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wangdanpeng.com/tags/index.html</loc>
+    
+    <lastmod>2020-03-27T10:47:12.814Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wangdanpeng.com/categories/index.html</loc>
+    
+    <lastmod>2020-03-27T10:46:28.213Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wangdanpeng.com/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/</loc>
     
     <lastmod>2019-05-14T12:06:40.419Z</lastmod>
@@ -177,23 +191,9 @@
   </url>
   
   <url>
-    <loc>http://www.wangdanpeng.com/tags/index.html</loc>
-    
-    <lastmod>2017-03-29T05:52:16.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wangdanpeng.com/about/index.html</loc>
     
     <lastmod>2017-03-29T05:52:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wangdanpeng.com/categories/index.html</loc>
-    
-    <lastmod>2017-02-27T12:49:34.000Z</lastmod>
     
   </url>
   
