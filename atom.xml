@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-09-01T08:12:06.961Z</updated>
+  <updated>2020-09-03T07:38:07.442Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>数据结构学习笔记-数组</title>
-    <link href="http://www.wangdanpeng.com/2020/09/01/20200901160919/"/>
-    <id>http://www.wangdanpeng.com/2020/09/01/20200901160919/</id>
-    <published>2020-09-01T08:09:19.000Z</published>
-    <updated>2020-09-01T08:12:06.961Z</updated>
+    <title>数据结构学习笔记-链表</title>
+    <link href="http://www.wangdanpeng.com/2020/09/03/20200903153417/"/>
+    <id>http://www.wangdanpeng.com/2020/09/03/20200903153417/</id>
+    <published>2020-09-03T07:34:17.000Z</published>
+    <updated>2020-09-03T07:38:07.442Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,8 @@
       
         
         
-          &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;p&gt;基础数据结构&lt;/p&gt;
-&lt;h5 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;链表&quot;&gt;&lt;a href=&quot;#链表&quot; class=&quot;headerlink&quot; title=&quot;链表&quot;&gt;&lt;/a&gt;链表&lt;/h2&gt;&lt;p&gt;比数组稍微复杂一点的数据结构&lt;/p&gt;
+&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -41,6 +41,42 @@
     
     
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="链表" scheme="http://www.wangdanpeng.com/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构学习笔记-数组</title>
+    <link href="http://www.wangdanpeng.com/2020/09/01/20200901160919/"/>
+    <id>http://www.wangdanpeng.com/2020/09/01/20200901160919/</id>
+    <published>2020-09-01T08:09:19.000Z</published>
+    <updated>2020-09-03T07:36:11.133Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;p&gt;基础数据结构&lt;/p&gt;
+&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数组" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
@@ -573,36 +609,6 @@
       <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
     
       <category term="MyEclipse" scheme="http://www.wangdanpeng.com/tags/MyEclipse/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java-基于HttpClient的java后台访问URL</title>
-    <link href="http://www.wangdanpeng.com/2017/02/18/20170218200349/"/>
-    <id>http://www.wangdanpeng.com/2017/02/18/20170218200349/</id>
-    <published>2017-02-18T12:03:49.000Z</published>
-    <updated>2017-03-29T13:12:16.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;写支付相关东西遇到需要在后台访问url，搜了搜找到一篇不错的代码，收藏下来以留后用。&lt;/p&gt;
-&lt;p&gt;httpUtils.java中有两个公共的静态方法，一个是URLPost，另一个是URLGet，一目了然，前者是提供POST方式提交数据的，后者是提供GET方式提交数据的。其
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://www.wangdanpeng.com/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
-    
-      <category term="Http" scheme="http://www.wangdanpeng.com/tags/Http/"/>
     
   </entry>
   
