@@ -3,7 +3,7 @@
   <entry>
     <title>Hexo-live2d插件给你的博客加一只可爱的看板娘</title>
     <url>/2020/09/12/20200912164541/</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>放一只简简单单的看板娘, 没有什么互动, 安安静静的陪着你读博客.<br>插件github地址 -&gt; <a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">hexo-helper-live2d</a><br>我的博客效果图 -&gt; aaa</p>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>放一只简简单单的看板娘, 没有什么互动, 安安静静的陪着你读博客.<br>插件github地址 -&gt; <a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">hexo-helper-live2d</a><br>我的博客效果图 -&gt; <a href="http://www.wangdanpeng.com/2020/09/12/20200912164541/">Mr.Wang_Blog</a></p>
 <h2 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>以<code>live2d-widget-model-miku</code>模型为例</p>
 <ol>
@@ -51,8 +51,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>链表</tag>
       </tags>
   </entry>
@@ -70,8 +70,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>数组</tag>
       </tags>
   </entry>
@@ -509,8 +509,8 @@
         <category>Mybatis</category>
       </categories>
       <tags>
-        <tag>Mybatis</tag>
         <tag>Mysql</tag>
+        <tag>Mybatis</tag>
       </tags>
   </entry>
   <entry>
