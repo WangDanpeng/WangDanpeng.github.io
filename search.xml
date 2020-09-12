@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo-live2d插件给你的博客加一只可爱的看板娘</title>
+    <url>/2020/09/12/20200912164541/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>放一只简简单单的看板娘, 没有什么互动, 安安静静的陪着你读博客.<br>插件github地址 -&gt; <a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">hexo-helper-live2d</a><br>我的博客效果图 -&gt; aaa</p>
+<h2 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>以<code>live2d-widget-model-miku</code>模型为例</p>
+<ol>
+<li>在博客根目录下创建一个<code>live2d_models</code>文件夹.</li>
+<li>使用<code>npm install live2d-widget-model-miku</code>下载模型, 并将模型目录<code>live2d-widget-model-miku</code>从<code>node_modules</code>里复制到<code>live2d_models</code>下.</li>
+<li>进入<code>live2d-widget-model-miku</code>, 把<code>assets</code>里的内容复制到外一层.</li>
+<li>添加如下配置文件, 并修改use的模型名称为<code>live2d-widget-model-miku</code>, 部署即可看到效果.</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>向博客根目录的<code>_config.yml</code>配置文件添加配置, 可以自己微调<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: false</span><br><span class="line">  debug: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko # 使用的模型名称</span><br><span class="line">  display:</span><br><span class="line">    position: right # 在页面里的位置</span><br><span class="line">    hOffset: 0 # 水平偏移量, 自己微调</span><br><span class="line">    vOffset: -20 # 垂直偏移量, 自己微调</span><br><span class="line">    width: 150 </span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br><span class="line">  react:</span><br><span class="line">    opacity: 0.7 # 透明度</span><br></pre></td></tr></table></figure></p>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>现有的模型包及预览<br><code>live2d-widget-model-chitose</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-chitose.png" alt="chitose"><br><code>live2d-widget-model-haru/01 (use npm install --save live2d-widget-model-haru)</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-haur01.png" alt="haru01"><br><code>live2d-widget-model-haru/02 (use npm install --save live2d-widget-model-haru)</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-haru02.png" alt="haru02"><br><code>live2d-widget-model-haruto</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-haruto.png" alt="haruto"><br><code>live2d-widget-model-hibiki</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-hibiki.png" alt="hibiki"><br><code>live2d-widget-model-hijiki</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-hijiki.png" alt="hijiki"><br><code>live2d-widget-model-izumi</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-izumi.png" alt="izumi"><br><code>live2d-widget-model-koharu</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-koharu.png" alt="koharu"><br><code>live2d-widget-model-miku</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-miku.png" alt="miku"><br><code>live2d-widget-model-ni-j</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-ni-j.png" alt="nij"><br><code>live2d-widget-model-nico</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-nico.png" alt="nico"><br><code>live2d-widget-model-nietzsche</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-nietzsche.png" alt="nietzsche"><br><code>live2d-widget-model-nipsilon</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-nipsilon.png" alt="nipsilon"><br><code>live2d-widget-model-nito</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-nito.png" alt="nito"><br><code>live2d-widget-model-shizuku</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-shizuku.png" alt="shizuku"><br><code>live2d-widget-model-tororo</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-tororo.png" alt="tororo"><br><code>live2d-widget-model-tsumiki</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-tsumiki.png" alt="tsumiki"><br><code>live2d-widget-model-unitychan</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-unitychan.png" alt="unitychan"><br><code>live2d-widget-model-wanko</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-wanko.png" alt="wanko"><br><code>live2d-widget-model-z16</code><br><img src="http://www.wangdanpeng.com/img/live2d/live2d-z16.png" alt="z16"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构学习笔记-链表</title>
     <url>/2020/09/03/20200903153417/</url>
     <content><![CDATA[<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>比数组稍微复杂一点的数据结构</p>
@@ -29,8 +51,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>链表</tag>
       </tags>
   </entry>
@@ -48,8 +70,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>数组</tag>
       </tags>
   </entry>
