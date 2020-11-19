@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-11-19T06:57:49.850Z</updated>
+  <updated>2020-11-19T11:08:40.331Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitHub-整个活, 好看的GitHub自我介绍</title>
+    <link href="http://www.wangdanpeng.com/2020/11/19/20201119190543/"/>
+    <id>http://www.wangdanpeng.com/2020/11/19/20201119190543/</id>
+    <published>2020-11-19T11:05:43.000Z</published>
+    <updated>2020-11-19T11:08:40.331Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="GitHub" scheme="http://www.wangdanpeng.com/categories/GitHub/"/>
+    
+    
+      <category term="GitHub" scheme="http://www.wangdanpeng.com/tags/GitHub/"/>
+    
+  </entry>
   
   <entry>
     <title>Git-在本地使用多个git账号</title>
@@ -95,9 +114,9 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="链表" scheme="http://www.wangdanpeng.com/tags/%E9%93%BE%E8%A1%A8/"/>
     
@@ -127,9 +146,9 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="数组" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E7%BB%84/"/>
     
@@ -219,9 +238,9 @@
       <category term="VS Code" scheme="http://www.wangdanpeng.com/categories/VS-Code/"/>
     
     
-      <category term="VS Code" scheme="http://www.wangdanpeng.com/tags/VS-Code/"/>
-    
       <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="VS Code" scheme="http://www.wangdanpeng.com/tags/VS-Code/"/>
     
   </entry>
   
@@ -575,35 +594,6 @@
       <category term="面试题" scheme="http://www.wangdanpeng.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
       <category term="Web" scheme="http://www.wangdanpeng.com/tags/Web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyEclipse-新装MyEclipse后的一系列设置汇总</title>
-    <link href="http://www.wangdanpeng.com/2017/02/19/20170319224848/"/>
-    <id>http://www.wangdanpeng.com/2017/02/19/20170319224848/</id>
-    <published>2017-02-19T14:48:48.000Z</published>
-    <updated>2020-03-27T11:04:42.371Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;首先第一步肯定是破解无疑，我没钱去买正版的。。。&lt;/p&gt;
-&lt;p&gt;按我习惯的顺序来，导入一项目，方便参考着设置。&lt;/p&gt;
-&lt;h3 id=&quot;1-收起包名&quot;&gt;&lt;a href=&quot;#1-收起包名&quot; class=&quot;headerlink&quot; title=&quot;1. 收起包名&quot;&gt;&lt;/a&gt;1.
-        
-      
-    
-    </summary>
-    
-    
-      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/categories/MyEclipse/"/>
-    
-    
-      <category term="MyEclipse" scheme="http://www.wangdanpeng.com/tags/MyEclipse/"/>
     
   </entry>
   
