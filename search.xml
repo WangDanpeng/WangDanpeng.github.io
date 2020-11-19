@@ -4,21 +4,12 @@
     <title>Git-在本地使用多个git账号</title>
     <url>/2020/11/18/20201118183648/</url>
     <content><![CDATA[<p>如何设置在本地使用多个Git账号, 比如一个公司的gitlab账号和一个本人的github账号</p>
-<ol>
-<li><p>分别给每个账号生成ssh密钥<br>默认的生成路径在~/.ssh/id_rea, 记得指定文件名改地址防止覆盖当前的, 例如~/.ssh/id_rsa_gh</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx@gmail.com&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>把生成好的key, 对应创建到github和公司的gitlab里</p>
-</li>
-<li><p>让ssh识别新密钥, 添加到ssh agent</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_gh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置config</p>
-<figure class="highlight plain"><figcaption><span>没有就创建一个, 添加以下内容</span></figcaption><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">#公司的</span><br><span class="line">Host gitlab.com</span><br><span class="line">HostName gitlab.com</span><br><span class="line">User xxx@公司邮箱.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_work</span><br><span class="line"></span><br><span class="line">#个人的</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User xxx@gmail.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gh</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>-T git@github.com(github.com是你的host)```测试以下</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">5. 删掉曾经设置过的全局变量 ~/.gitconfig</span><br><span class="line">对单个项目设置用户名和邮箱</span><br></pre></td></tr></table></figure>
-<p>git config user.name<br>git config user.email<br><code>`</code></p>
+<p>1 分别给每个账号生成ssh密钥<br>默认的生成路径在~/.ssh/id_rea, 记得指定文件名改地址防止覆盖当前的, 例如~/.ssh/id_rsa_gh<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>2 把生成好的key, 对应创建到github和公司的gitlab里</p>
+<p>3 让ssh识别新密钥, 添加到ssh agent<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_gh</span><br></pre></td></tr></table></figure></p>
+<p>4 配置config<br><code>~/.ssh/config</code>文件, 没有就创建一个, 添加以下内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#公司的</span><br><span class="line">Host gitlab.com</span><br><span class="line">HostName gitlab.com</span><br><span class="line">User xxx@公司邮箱.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_work</span><br><span class="line"></span><br><span class="line">#个人的</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">User xxx@gmail.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gh</span><br></pre></td></tr></table></figure></p>
+<p>测试一下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com(github.com是你的host)</span><br></pre></td></tr></table></figure></p>
+<p>5 删掉曾经设置过的全局变量 ~/.gitconfig<br>对单个项目设置用户名和邮箱<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config user.name &quot;xxx&quot;</span><br><span class="line">git config user.email &quot;xxx@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Git</category>
@@ -78,8 +69,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>链表</tag>
       </tags>
   </entry>
@@ -97,8 +88,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>算法</tag>
         <tag>数组</tag>
       </tags>
   </entry>
@@ -675,8 +666,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Json</tag>
         <tag>Java</tag>
+        <tag>Json</tag>
       </tags>
   </entry>
   <entry>
