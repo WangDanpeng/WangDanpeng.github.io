@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-09-12T09:15:05.447Z</updated>
+  <updated>2020-11-19T06:41:33.592Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git-在本地使用多个git账号</title>
+    <link href="http://www.wangdanpeng.com/2020/11/18/20201118183648/"/>
+    <id>http://www.wangdanpeng.com/2020/11/18/20201118183648/</id>
+    <published>2020-11-18T10:36:48.000Z</published>
+    <updated>2020-11-19T06:41:33.592Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;如何设置在本地使用多个Git账号, 比如一个公司的gitlab账号和一个本人的github账号&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;分别给每个账号生成ssh密钥&lt;br&gt;默认的生成路径在~/.ssh/id_rea, 记得指定文件名改地址防止覆盖当前的,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://www.wangdanpeng.com/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://www.wangdanpeng.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo-live2d插件给你的博客加一只可爱的看板娘</title>
@@ -67,9 +96,9 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="链表" scheme="http://www.wangdanpeng.com/tags/%E9%93%BE%E8%A1%A8/"/>
     
@@ -99,9 +128,9 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="数组" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E7%BB%84/"/>
     
@@ -483,9 +512,9 @@
       <category term="Mybatis" scheme="http://www.wangdanpeng.com/categories/Mybatis/"/>
     
     
-      <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
-    
       <category term="Mybatis" scheme="http://www.wangdanpeng.com/tags/Mybatis/"/>
+    
+      <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
     
   </entry>
   
@@ -576,36 +605,6 @@
     
     
       <category term="MyEclipse" scheme="http://www.wangdanpeng.com/tags/MyEclipse/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring-通过配置向 Quartz定时任务 注入service</title>
-    <link href="http://www.wangdanpeng.com/2017/02/19/20170219215026/"/>
-    <id>http://www.wangdanpeng.com/2017/02/19/20170219215026/</id>
-    <published>2017-02-19T13:50:26.000Z</published>
-    <updated>2017-03-29T13:16:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;写了一个定时任务, 但是调用service会报空, 原因是service注入不进去, 解决办法如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Spring" scheme="http://www.wangdanpeng.com/categories/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://www.wangdanpeng.com/tags/Spring/"/>
-    
-      <category term="Quartz" scheme="http://www.wangdanpeng.com/tags/Quartz/"/>
     
   </entry>
   
