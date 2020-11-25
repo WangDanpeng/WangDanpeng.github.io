@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    数据结构 |  Mr.Wang_Blog
+    数据结构学习笔记-栈 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,108 +34,155 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article id="post-20201125150101" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">数据结构</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/25/20201125150101/" class="archive-article-date">
-  <time datetime="2020-11-25T07:01:01.000Z" itemprop="datePublished">11/25</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/11/25/20201125150101/">数据结构学习笔记-栈</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据结构学习笔记-栈
+</h1>
  
 
     </header>
     
+
+    
+    <div class="article-meta">
+      <a href="/2020/11/25/20201125150101/" class="article-date">
+  <time datetime="2020-11-25T07:01:01.000Z" itemprop="datePublished">2020-11-25</time>
+</a>
       
   <div class="article-category">
     <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
   </div>
 
-    
-    
-  </div>
-</article>
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/09/03/20200903153417/" class="archive-article-date">
-  <time datetime="2020-09-03T07:34:17.000Z" itemprop="datePublished">09/03</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/09/03/20200903153417/">数据结构学习笔记-链表</a> 
-</h2>
- 
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">517字</span>
+        </span>
+    </span>
 
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
-  </div>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1分钟</span>
+        </span>
+    </span>
+</div>
 
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/09/01/20200901160919/" class="archive-article-date">
-  <time datetime="2020-09-01T08:09:19.000Z" itemprop="datePublished">09/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/09/01/20200901160919/">数据结构学习笔记-数组</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
       
     </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="基本特性"><a href="#基本特性" class="headerlink" title="基本特性"></a>基本特性</h3><p>后进者先出, 先进者后出, 这就是典型的栈结构<br>栈是一种操作受限的线性表, 只允许在一端插入和删除数据<br>栈是一种特定的数据结构,是对特定场景的抽象<br>当某个数据集合只涉及在一端插入和删除数据, 并且满足后进先出, 先进后出的特性, 我们就应该首选栈这种数据结构</p>
+<h3 id="实现一个栈"><a href="#实现一个栈" class="headerlink" title="实现一个栈"></a>实现一个栈</h3><p>栈主要包含两个操作, 入栈和出栈<br>用数组实现的栈叫顺序栈 (todo)<br>用链表实现的栈叫链式栈 (todo)<br>两种实现的空间复杂度和时间复杂度都为O(1)</p>
+<h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><ol>
+<li>函数调用栈<br>操作系统给每个线程分配了一块独立的内存空间，这块内存被组织成“栈”这种结构, 用来存储函数调用时的临时变量。每进入一个函数，就会将临时变量作为一个栈帧入栈，当被调用函数执行完成，返回之后，将这个函数对应的栈帧出栈</li>
+<li>表达式求值<br>一个保存操作数的栈，一个保存运算符的栈。从左向右遍历表达式，当遇到数字，就直接压入操作数栈；当遇到运算符，就与运算符栈的栈顶元素进行比较<br>如果比运算符栈顶元素的优先级高，就将当前运算符压入栈；如果比运算符栈顶元素的优先级低或者相同，从运算符栈中取栈顶运算符，从操作数栈的栈顶取两个操作数，然后进行计算，再把计算完的结果压入操作数栈</li>
+<li>检测括号匹配<br>扫描到左括号入栈, 扫描到右括号从栈顶取一个元素匹配</li>
+<li>浏览器前进后退功能<br>两个栈实现, 首次浏览页面压入后退栈, 点击后退按钮将后退栈元素出栈压入前进栈</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/11/19/20201119190543/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">GitHub-整个活, 好看的GitHub自我介绍</div>
+      </a>
+    
+  </nav>
+
+
   
 
   
-</article></section>
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'dfbc3f53c63f462a7a6f',
+    clientSecret: '1742a3ca93250a019ae2594eb2d2aa7465799dc1',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -287,6 +334,22 @@
 </script>
 
 
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 
 

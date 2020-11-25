@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-11-19T11:25:50.932Z</updated>
+  <updated>2020-11-25T07:02:13.397Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-栈</title>
+    <link href="http://www.wangdanpeng.com/2020/11/25/20201125150101/"/>
+    <id>http://www.wangdanpeng.com/2020/11/25/20201125150101/</id>
+    <published>2020-11-25T07:01:01.000Z</published>
+    <updated>2020-11-25T07:02:13.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot; title=&quot;栈&quot;&gt;&lt;/a&gt;栈&lt;/h2&gt;&lt;h3 id=&quot;基本特性&quot;&gt;&lt;a href=&quot;#基本特性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="栈" scheme="http://www.wangdanpeng.com/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>GitHub-整个活, 好看的GitHub自我介绍</title>
@@ -571,37 +602,6 @@
       <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
     
       <category term="Emoji" scheme="http://www.wangdanpeng.com/tags/Emoji/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试题-url结尾带不带斜杠的访问速度</title>
-    <link href="http://www.wangdanpeng.com/2017/02/26/20170226142341/"/>
-    <id>http://www.wangdanpeng.com/2017/02/26/20170226142341/</id>
-    <published>2017-02-26T06:23:41.000Z</published>
-    <updated>2020-03-27T11:06:55.370Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;之前有一次面试遇到一个问题(拿我的博客举例):&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="面试题" scheme="http://www.wangdanpeng.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    
-      <category term="面试题" scheme="http://www.wangdanpeng.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-      <category term="Web" scheme="http://www.wangdanpeng.com/tags/Web/"/>
     
   </entry>
   
