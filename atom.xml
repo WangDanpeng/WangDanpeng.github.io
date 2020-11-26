@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-11-25T09:02:07.243Z</updated>
+  <updated>2020-11-26T11:16:34.378Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-递归</title>
+    <link href="http://www.wangdanpeng.com/2020/11/26/20201126191531/"/>
+    <id>http://www.wangdanpeng.com/2020/11/26/20201126191531/</id>
+    <published>2020-11-26T11:15:31.000Z</published>
+    <updated>2020-11-26T11:16:34.378Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;h3 id=&quot;基本介绍&quot;&gt;&lt;a href=&quot;#基本介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="递归" scheme="http://www.wangdanpeng.com/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-队列</title>
@@ -573,36 +604,6 @@
       <category term="Spark" scheme="http://www.wangdanpeng.com/tags/Spark/"/>
     
       <category term="WordCount" scheme="http://www.wangdanpeng.com/tags/WordCount/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis-逻辑连接未关闭</title>
-    <link href="http://www.wangdanpeng.com/2017/02/26/20170226153828/"/>
-    <id>http://www.wangdanpeng.com/2017/02/26/20170226153828/</id>
-    <published>2017-02-26T07:38:28.000Z</published>
-    <updated>2020-03-27T11:05:06.931Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;首先环境我用的Struts2 + Sprig + Mybatis&lt;/p&gt;
-&lt;p&gt;最近重构了Mqsql连接池, 改用了阿里的druid. 因为druid带有WebUi, 我发现我的项目只打开数据库连接却不关闭,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Mybatis" scheme="http://www.wangdanpeng.com/categories/Mybatis/"/>
-    
-    
-      <category term="Mybatis" scheme="http://www.wangdanpeng.com/tags/Mybatis/"/>
-    
-      <category term="Mysql" scheme="http://www.wangdanpeng.com/tags/Mysql/"/>
     
   </entry>
   
