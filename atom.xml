@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-12-02T07:27:39.670Z</updated>
+  <updated>2020-12-02T09:08:18.275Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-跳表</title>
+    <link href="http://www.wangdanpeng.com/2020/12/02/20201202170715/"/>
+    <id>http://www.wangdanpeng.com/2020/12/02/20201202170715/</id>
+    <published>2020-12-02T09:07:15.000Z</published>
+    <updated>2020-12-02T09:08:18.275Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;跳表-Skip-List&quot;&gt;&lt;a href=&quot;#跳表-Skip-List&quot; class=&quot;headerlink&quot; title=&quot;跳表(Skip List)&quot;&gt;&lt;/a&gt;跳表(Skip List)&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="跳表" scheme="http://www.wangdanpeng.com/tags/%E8%B7%B3%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-二分查找</title>
@@ -576,36 +607,6 @@
     
     
       <category term="Git" scheme="http://www.wangdanpeng.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java-抓取音乐网站下载链接</title>
-    <link href="http://www.wangdanpeng.com/2017/03/18/20170318014719/"/>
-    <id>http://www.wangdanpeng.com/2017/03/18/20170318014719/</id>
-    <published>2017-03-17T20:47:19.000Z</published>
-    <updated>2020-03-27T11:04:19.010Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;当年SongTaste网站还没关闭, 在上面找到过很多我喜欢的音乐, 当时已经被多米收购, 下载音乐超级麻烦, 后来看到网上有说扒下载链接的, 我也自己试了一下用Java开发了一个Windows小窗口, 输入音乐网址就会返回下载链接.&lt;/p&gt;
-&lt;p&gt;参考链接&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://www.wangdanpeng.com/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://www.wangdanpeng.com/tags/Java/"/>
-    
-      <category term="爬虫" scheme="http://www.wangdanpeng.com/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
