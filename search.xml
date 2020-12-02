@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构学习笔记-二分查找</title>
+    <url>/2020/12/02/20201202152632/</url>
+    <content><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>二分查找, 也叫折半查找, 是一种简单的快速查找算法<br>二分查找针对的是一个有序的数据集合, 查找思想类似分治, 每次都通过跟区间的中间元素对比, 将待查找的区间缩小为之前的一半, 直到找到要查找的元素, 或者区间被缩小为0<br>时间复杂度O(logn), 对数时间复杂度</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>二分查找的递归与非递归实现<br>最简单的情况是有序数组中不存在重复元素<br>循环实现 (todo)<br>递归实现 (todo)<br>容易出错的三个地方</p>
+<ol>
+<li>循环退出条件, low&lt;=high</li>
+<li>min的取值, low和high比较大的话, 相加可能会溢出</li>
+<li>low和high的更新, low=mid或high=mid可能会死循环</li>
+</ol>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><ol>
+<li>依赖顺序表结构, 既数组, 因为依赖按下标随机访问元素</li>
+<li>针对有序数据, 如果无序需要先排序, 如果插入删除操作频繁, 则需频繁排序, 所以不适用二分查找</li>
+<li>数据量适中, 数据量太小直接用遍历更为方便, 数据量太大时, 因为需要存储在数组, 需要连续内存空间, 内存可能放不下</li>
+</ol>
+<h3 id="进阶版"><a href="#进阶版" class="headerlink" title="进阶版"></a>进阶版</h3><ul>
+<li>查找第一个值等于给定值的元素 (todo)</li>
+<li>查找最后一个值等于给定值的元素 (todo)</li>
+<li>查找第一个大于等于个定制的元素 (todo)</li>
+<li>查找最后一个小于等于给定值的元素 (todo)</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>等值查找使用散列表或者二叉查找树更多, 二分查找更适合用在近似查找问题</p>
+<h3 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h3><p>求一个数的平方根, 精确到小数点后6位 (todo)<br>一个循环有序数组[4,5,6,1,2,3]中查找某个值 (todo)</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构学习笔记-排序</title>
     <url>/2020/12/01/20201201164903/</url>
     <content><![CDATA[<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>排序算法有很多, 最经典最常用的有<br>冒泡排序, 插入排序, 选择排序, 时间复杂度 O(n平方)<br>快速排序, 归并排序, 时间复杂度O(nlogn)<br>桶排序, 计数排序, 基数排序, 时间复杂度O(n)</p>
@@ -100,7 +133,7 @@
     <title>数据结构学习笔记-栈</title>
     <url>/2020/11/25/20201125150101/</url>
     <content><![CDATA[<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="基本特性"><a href="#基本特性" class="headerlink" title="基本特性"></a>基本特性</h3><p>后进者先出, 先进者后出, 这就是典型的栈结构<br>栈是一种操作受限的线性表, 只允许在一端插入和删除数据<br>栈是一种特定的数据结构,是对特定场景的抽象<br>当某个数据集合只涉及在一端插入和删除数据, 并且满足后进先出, 先进后出的特性, 我们就应该首选栈这种数据结构</p>
-<h3 id="实现一个栈"><a href="#实现一个栈" class="headerlink" title="实现一个栈"></a>实现一个栈</h3><p>栈主要包含两个操作, 入栈和出栈<br>用数组实现的栈叫顺序栈 (todo)<br>用链表实现的栈叫链式栈 (todo)<br>两种实现的空间复杂度和时间复杂度都为O(1)</p>
+<h3 id="实现一个栈"><a href="#实现一个栈" class="headerlink" title="实现一个栈"></a>实现一个栈</h3><p>栈主要包含两个操作, 入栈和出栈<br><a href="https://github.com/WangDanpeng/Vamos/blob/main/src/main/scala/wdp/struct/stack/ArrayStack.scala" target="_blank" rel="noopener">用数组实现的栈叫顺序栈</a><br>用链表实现的栈叫链式栈 (todo)<br>两种实现的空间复杂度和时间复杂度都为O(1)</p>
 <h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><ol>
 <li>函数调用栈<br>操作系统给每个线程分配了一块独立的内存空间，这块内存被组织成“栈”这种结构, 用来存储函数调用时的临时变量。每进入一个函数，就会将临时变量作为一个栈帧入栈，当被调用函数执行完成，返回之后，将这个函数对应的栈帧出栈</li>
 <li>表达式求值<br>一个保存操作数的栈，一个保存运算符的栈。从左向右遍历表达式，当遇到数字，就直接压入操作数栈；当遇到运算符，就与运算符栈的栈顶元素进行比较<br>如果比运算符栈顶元素的优先级高，就将当前运算符压入栈；如果比运算符栈顶元素的优先级低或者相同，从运算符栈中取栈顶运算符，从操作数栈的栈顶取两个操作数，然后进行计算，再把计算完的结果压入操作数栈</li>
@@ -193,7 +226,7 @@
 <li>利用哨兵简化实现难度<br> 针对链表的插入删除操作, 需要对插入头结点和删除尾结点特殊处理, 所以可插入一个不带数据的哨兵结点, 这种链表被称为带头链表.</li>
 <li>重点留意边界条件处理<br> 比如链表为空, 只有一个结点, 有两个结点, 处理头结点和尾结点时.</li>
 <li>举例画图, 辅助思考<br> 画图法和举例法, 帮助理清思路</li>
-<li>多写多练<br> 单链表反转 (todo)<br> 链表中环的检测 (todo)<br> 两个有序的链表合并 (todo)<br> 删除链表倒数第n个结点 (todo)<br> 求链表的中间结点 (todo)<br> 基于链表实现LRU缓存淘汰算法 (todo)<br> 单链表字符串, 判断是一个回文串 (todo)</li>
+<li>多写多练<br> <a href="https://github.com/WangDanpeng/Vamos/blob/main/src/main/scala/wdp/struct/link/ReverseSingleLink.scala" target="_blank" rel="noopener">单链表反转</a><br> 链表中环的检测 (todo)<br> 两个有序的链表合并 (todo)<br> 删除链表倒数第n个结点 (todo)<br> 求链表的中间结点 (todo)<br> <a href="https://github.com/WangDanpeng/Vamos/blob/main/src/main/scala/wdp/struct/link/LRU.scala" target="_blank" rel="noopener">基于链表实现LRU缓存淘汰算法</a><br> 单链表字符串, 判断是一个回文串 (todo)</li>
 </ol>
 ]]></content>
       <categories>
