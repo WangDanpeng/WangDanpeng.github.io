@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构学习笔记-散列表(Hash表)</title>
+    <url>/2020/12/07/20201207185658/</url>
+    <content><![CDATA[<h2 id="散列表-Hash表"><a href="#散列表-Hash表" class="headerlink" title="散列表(Hash表)"></a>散列表(Hash表)</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>散列表依赖的是数组支持按下标随机访问数据的特性<br>所以散列表是数组的一种扩展, 由数组演化而来, 如果没有数组就没有散列表<br>时间复杂度O(1), 通过散列函数把元素的key映射为下标, 将数据存储在数组中对应下标的位置<br>当按key查询元素时, 用同样的散列函数, 将key转化为下标, 从对应的数组下标位置取数据</p>
+<h3 id="设计散列表"><a href="#设计散列表" class="headerlink" title="设计散列表"></a>设计散列表</h3><p>要可以应对各种异常情况的工业级</p>
+<ol>
+<li>散列函数的设计不能太复杂<br>散列函数设计的好坏直接决定散列表的性能<br>散列函数生成的值要尽可能随机且均匀分布<br>散列函数计算结果是非负整数, 因为数组下标从0开始<br>如果key1 = key2, 那么hash(key1)=hash(key2)</li>
+<li>选择解决冲突的办法<br>再好的散列函数也无法避免散列冲突, 所以常用的解决冲突方法有两类<br>(1)开放寻址法<br>核心思想就是, 如果出现了散列冲突, 就重新探测一个空闲位置, 那么如何探测<br>线性探测, 当前位置被占用, 就依次向后查找, 直到找到为止<br>二次探测, 类似线性探测, 不过步长每次移原来的二次方<br>双重散列, 使用一组散列函数, 一个位置被占用, 再使用第二个散列函数, 直到找到空闲位置<br>但问题是, 当散列表中空闲位置越少, 冲突概率就越大, 为保证效率, 一般会保证散列表中有一定比例的空闲位置, 用装载因子(填入元素个数/散列表长度)来表示<br>当数据量小, 装载因子小的时候适合<br>(2)链表法<br>更常用的解决冲突办法, 而且简单<br>数组每个下标里对应一条链表, 插入元素时, 通过散列函数, 确定链表, 将数据插入对应的链表中<br>时间复杂度和链表的长度成正比, O(k)<br>适合存储大对象, 大数据量的散列表, 支持更多的优化策略, 比如链表过长时用红黑树代替链表</li>
+<li>定义转载因子阈值, 设计动态扩容策略<br>避免低效扩容<br>当装载因子达到阈值, 申请新的空间, 每当有新数据插入, 将新数据插入到新散列表, 并从老散列表拿一个数据插入新散列表, 就可以逐渐全部转移且感受不到特别慢的扩容过程<br>当查询时, 先查新散列表, 没找到再查旧散列表</li>
+</ol>
+<h3 id="Java中的HashMap"><a href="#Java中的HashMap" class="headerlink" title="Java中的HashMap"></a>Java中的HashMap</h3><p>初始大小16<br>装载因子0.75, 每次扩容至两倍<br>冲突解决方法为链表法, 当链表长度超威8转换为红黑树<br>散列函数<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">int</span> h = key.hashCode()； </span><br><span class="line">    <span class="keyword">return</span> (h ^ (h &gt;&gt;&gt; <span class="number">16</span>)) &amp; (capicity -<span class="number">1</span>); <span class="comment">//capicity表示散列表的大小</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="散列表碰撞攻击"><a href="#散列表碰撞攻击" class="headerlink" title="散列表碰撞攻击"></a>散列表碰撞攻击</h3><p>通过精心构造的数据使得所有数据经过hash函数以后都散列到一个槽里, 如果使用的基于链表的冲突解决方案, 散列表就会退化为链表,<br>数据里极大时会导致查询消耗大量cpu和线程资源, 造成系统无法响应其他请求</p>
+<h3 id="散列表和链表常用组合场景"><a href="#散列表和链表常用组合场景" class="headerlink" title="散列表和链表常用组合场景"></a>散列表和链表常用组合场景</h3><ul>
+<li>LRU缓存淘汰算法<br>使用双向链表存储数据, 链表中每个结点包含数据(data), 前驱指针(prev), 后继指针(next), 和hnext<br>使用链表法解决的散列表, 包含两条链, 一条双向链表, 一条散列表的拉链<br>可实现O(1)时间复杂度内完成插入删除查找操作</li>
+<li>java LinkeHashMap<br>支持按照插入顺序遍历数据, 和按照访问顺序遍历数据<br>链表结合散列表, 原理和LRU一样, Linked指的是双向链表</li>
+</ul>
+<p>两者结合, 散列表提供快速的插入删除查找, 链表提供有序</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>工业级散列表应该具有哪些特性<br>支持快速查询, 插入, 删除操作<br>内存占用合理, 不浪费过多的内存空间<br>性能稳定, 极端情况下散列表的性能也不会退化到无法接受的情况</p>
+<h3 id="课后思考"><a href="#课后思考" class="headerlink" title="课后思考"></a>课后思考</h3><p>10w条url访问日志, 按照访问次数排序 (todo)<br>两个10w条字符串的数组, 快速找出两个数组中相同的字符串 (todo)</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>散列表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构学习笔记-跳表</title>
     <url>/2020/12/02/20201202170715/</url>
     <content><![CDATA[<h2 id="跳表-Skip-List"><a href="#跳表-Skip-List" class="headerlink" title="跳表(Skip List)"></a>跳表(Skip List)</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>基于链表稍加改造的一种各方面性能都比较优秀的动态数据结构, 可支持快速插入, 删除, 查找操作, 甚至可以代替红黑树<br>基于原链表每两个结点向上一级抽索引, 构建出一级索引层, 可构建多级索引, 这种链表加多级索引的结构, 就是跳表<br>redis中的有序集合(sorted set)就是采用跳表实现</p>
