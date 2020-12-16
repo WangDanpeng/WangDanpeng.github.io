@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Archives: 2020/12 |  Mr.Wang_Blog
+    数据结构学习笔记-哈希算法 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,130 +34,164 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article id="post-20201216153146" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2020/12</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/16/20201216153146/" class="archive-article-date">
-  <time datetime="2020-12-16T07:31:46.000Z" itemprop="datePublished">12/16</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/16/20201216153146/">数据结构学习笔记-哈希算法</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据结构学习笔记-哈希算法
+</h1>
  
 
     </header>
     
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/07/20201207185658/" class="archive-article-date">
-  <time datetime="2020-12-07T10:56:58.000Z" itemprop="datePublished">12/07</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/07/20201207185658/">数据结构学习笔记-散列表(Hash表)</a> 
-</h2>
- 
 
-    </header>
     
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/02/20201202170715/" class="archive-article-date">
-  <time datetime="2020-12-02T09:07:15.000Z" itemprop="datePublished">12/02</time>
+    <div class="article-meta">
+      <a href="/2020/12/16/20201216153146/" class="article-date">
+  <time datetime="2020-12-16T07:31:46.000Z" itemprop="datePublished">2020-12-16</time>
 </a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/02/20201202170715/">数据结构学习笔记-跳表</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/02/20201202152632/" class="archive-article-date">
-  <time datetime="2020-12-02T07:26:32.000Z" itemprop="datePublished">12/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/02/20201202152632/">数据结构学习笔记-二分查找</a> 
-</h2>
- 
-
-    </header>
-    
-    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
   </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/01/20201201164903/" class="archive-article-date">
-  <time datetime="2020-12-01T08:49:03.000Z" itemprop="datePublished">12/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/01/20201201164903/">数据结构学习笔记-排序</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
       
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">761字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2分钟</span>
+        </span>
+    </span>
+</div>
+
       
     </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>将任意长度的二进制值串映射为固定长度的二进制值串的映射规则就是哈希算法<br>得到的二进制值串就是哈希值</p>
+<h3 id="优秀的哈希算法包括"><a href="#优秀的哈希算法包括" class="headerlink" title="优秀的哈希算法包括"></a>优秀的哈希算法包括</h3><ul>
+<li>从哈希值不能反推出原始数据</li>
+<li>对输入数据非常敏感, 哪怕一点小修改, 结果也大不相同</li>
+<li>散列冲突的概率要很小, 对不同原始数据, 哈希值相同的概率非常小</li>
+<li>执行效率要高效, 针对较长的文本, 也能快速计算出哈希值</li>
+</ul>
+<h3 id="鸽巢原理"><a href="#鸽巢原理" class="headerlink" title="鸽巢原理"></a>鸽巢原理</h3><p>为什么哈希算法无法做到零冲突<br>因为哈希值的长度是固定的, 那么就表示数据是有限的, 而要哈希的数据是无限的, 就必然会有数据存在哈希值相同的情况</p>
+<h3 id="哈希算法的应用"><a href="#哈希算法的应用" class="headerlink" title="哈希算法的应用"></a>哈希算法的应用</h3><ol>
+<li>安全加密<br>MD5, SHA, DES, AES等<br>虽然加密后不容易反推出原始数据, 但是存在字典攻击, 黑客通过庞大的原文对密文的字典表, 很容易猜中用户的常用密码<br>针对字典攻击, 又可以使用加盐的方式来防御, 比如对原始密码加入再加入复杂的字符串后哈希, 来增加破解难度<br>安全和攻击是一种博弈关系, 不存在绝对的安全, 所有安全措施只是增加攻击成本而已</li>
+<li>唯一标识<br>针对较大的文件或者图片, 取部分字节通过哈希算法生成唯一标识, 再存储到散列表中, 可以快速判断图片是否存在</li>
+<li>数据校验<br>使用BT下载时, 基于p2p协议会从多个电脑上并行下载, 一部电影会分为多个文件块<br>可以使用种子文件中保存的每个文件块的哈希值来判断, 每个文件块是否被人修改或者缺失</li>
+<li>散列函数<br>散列表的散列函数也是哈希算法的一种应用<br>不过相对其他, 散列函数对冲突要求低很多, 且对于能否反向解密也不关心, 而更加关心散列后的值是否分布均匀</li>
+<li>负载均衡<br>负载均衡的算法有轮询, 随机, 加权轮询等, 如果要实现同一个客户端, 在一次会话中的所有请求都路由到同一个服务器的话, 可以借助哈希算法<br>通过哈希算法, 对客户端ip地址或者会话id计算哈希值, 将取得的哈希值与服务器列表的大小取模运算, 最终得到的值就是应该被路由到的服务器编号</li>
+<li>数据分片<br>分布式计算中, 对数据根据key哈希, 再根据机器数取模, key相同的数据就可以分配到同一台机器上处理</li>
+<li>分布式存储<br>分布式存储中常用的一致性哈希算法</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hash/">Hash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/12/07/20201207185658/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数据结构学习笔记-散列表(Hash表)</div>
+      </a>
+    
+  </nav>
+
+
   
 
   
-</article></section>
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'dfbc3f53c63f462a7a6f',
+    clientSecret: '1742a3ca93250a019ae2594eb2d2aa7465799dc1',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -311,6 +345,22 @@
 </script>
 
 
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 
 
