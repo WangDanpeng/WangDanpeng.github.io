@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="热爱编程, 乐于分享, 主要还是记性不好, 把遇到的问题整理出来, 提醒自己也方便大家." />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    数据结构学习笔记-二叉树 |  Mr.Wang_Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Mr.Wang_Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-20210128151430" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据结构学习笔记-二叉树
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/01/28/20210128151430/" class="article-date">
+  <time datetime="2021-01-28T07:14:30.000Z" itemprop="datePublished">2021-01-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.2k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>树, 非线性表结构<br>树有三个概念:<br><strong>高度</strong>从下向上数, 起点是0<br><strong>深度</strong>从上向下数, 起点是0<br><strong>层数</strong>从上向下数, 起点是1</p>
+<h3 id="二叉树-1"><a href="#二叉树-1" class="headerlink" title="二叉树"></a>二叉树</h3><p>每个节点最多两个叉<br>有两种特殊二叉树:<br><strong>满二叉树</strong>, 除了叶子节点, 每个节点都有左右两个子节点<br><strong>完全二叉树</strong>, 叶子节点都在最底下两层, 最后一层叶子节点都靠左排列, 且除了最后一层, 其它层节点个数都达到最大<br>满二叉树是完全二叉树的一种特殊情况</p>
+<h3 id="存储二叉树"><a href="#存储二叉树" class="headerlink" title="存储二叉树"></a>存储二叉树</h3><ol>
+<li>基于指针的二叉链式存储法<br>每个节点三个字段, 一个存数据, 另外两个存左右子节点的指针, 这种方式比较常用, 大部分二叉树代码都是通过这种结构来实现的</li>
+<li>基于数组的顺序存储法<br>把根节点存储在i=1的位置, 左子节点存在2i的位置, 右子节点存储在2i+1的位置, 以此类推<br>此种存储方式, 是完全二叉树的话, 只浪费一个下标0的存储位置, 非完全二叉树的话, 会浪费更多的数组存储空间<blockquote>
+<p>所以一个树是完全二叉树的话, 用数组存储是最节省内存的一种方式, 也是为什么完全二叉树被单拎出来说明的原因.<br>堆其实就是一种完全二叉树, 最常用的存储方式就是数组</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>如何打印所有节点, 经典方法有三种:<br><strong>前序遍历</strong>, 对于树中的任意节点来说, 先打印这个节点, 再打印左子树, 最后打印右子树 (todo)<br><strong>中序遍历</strong>, 对于树中的任意节点来说, 先打印左子树, 再打印本身, 最后打印右子树 (todo)<br><strong>后序遍历</strong>, 对于树中的任意节点来说, 先打印左子树, 再打印右子树, 最后打印它本身 (todo)<br>实际上二叉树的三种遍历, 就是一个递归的过程<br>遍历的时间复杂度是O(n)<br>不常用的遍历, 按层遍历 (todo)</p>
+<h3 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h3><p>也叫二叉搜索树<br>特点, 支持动态数据集合的快速插入删除, 查找操作<br>二叉查找树要求, 在树的任意一个节点, 其左子树中的每个节点的值, 都要小于这个节点的值, 而右子树节点的值, 都大于这个节点的值</p>
+<ol>
+<li>查找操作<br>先取根节点, 等于就返回, 比根节点小就在左子树递归查找, 比根节点大就在右子树递归查找</li>
+<li>插入操作<br>新插入的数据一般在叶子节点上, 类似查找操作, 从根节点开始比较, 如果要插入数据比节点大, 并且节点的右子树为空, 则直接插到右子节点位置, 如果不为空, 再递归遍历右子树找位置, 如果数据比节点小, 同理遍历左子树查找位置</li>
+<li>删除操作<br>相对复杂, 分为三种情况<br>第一种, 要删除节点没有子节点, 直接将父节点指针置为null<br>第二种, 要删除节点有一个子节点, 更新父节点指针指向要删除节点的子节点<br>第三种, 要删除的节点有两个子节点, 需要找到右子树中的最小节点, 替换到要删除的节点上, 然后删除掉这个最小节点</li>
+<li>其他操作<br>二叉查找树还支持快速的查找最大节点和最小节点, 前驱节点和后继节点<br>重要特性, 中序遍历二叉查找树, 可以输出有序的数据序列, 时间复杂度O(n), 非常高效</li>
+</ol>
+<h4 id="支持重复数据的二叉查找树"><a href="#支持重复数据的二叉查找树" class="headerlink" title="支持重复数据的二叉查找树"></a>支持重复数据的二叉查找树</h4><ul>
+<li>第一种, 二叉查找树中每个节点不只存一个数据, 借助链表和支持动态扩容的数组等数据结构, 把值相同的数据存在同一个节点上</li>
+<li>第二种, 每个节点仍然只存储一个数据, 插入时, 遇到值相同的节点, 就插入到这个节点的右子树, 也就是把这个数当作大于这个节点处理<br>查找数据时, 遇到值相同的节点不停下, 继续在右子树查找, 直到遇到叶子节点, 就可以把所有值相等的节点找出来<br>删除操作同理</li>
+</ul>
+<h4 id="二叉查找树的时间复杂度"><a href="#二叉查找树的时间复杂度" class="headerlink" title="二叉查找树的时间复杂度"></a>二叉查找树的时间复杂度</h4><p>不同形态的二叉查找树时间复杂度不同, 时间复杂度和树的高度成正比, 也就是O(height)</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/12/16/20201216153146/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数据结构学习笔记-哈希算法</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'dfbc3f53c63f462a7a6f',
+    clientSecret: '1742a3ca93250a019ae2594eb2d2aa7465799dc1',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2017-2021
+        王丹鹏
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <!--<i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>-->
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279515725'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279515725%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</span>
+
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">冀ICP备15029707号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/method-draw-image.svg" alt="Mr.Wang_Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/z.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/w.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['', '', '努力, 奋斗'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: false,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":400,"hOffset":100,"vOffset":-40},"mobile":{"show":true,"scale":0.5},"react":{"opacity":1},"log":false});</script></body>
+
+</html>

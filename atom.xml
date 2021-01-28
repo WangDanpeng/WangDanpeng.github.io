@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2020-12-16T07:33:53.076Z</updated>
+  <updated>2021-01-28T07:27:32.809Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-二叉树</title>
+    <link href="http://www.wangdanpeng.com/2021/01/28/20210128151430/"/>
+    <id>http://www.wangdanpeng.com/2021/01/28/20210128151430/</id>
+    <published>2021-01-28T07:14:30.000Z</published>
+    <updated>2021-01-28T07:27:32.809Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;二叉树&quot;&gt;&lt;a href=&quot;#二叉树&quot; class=&quot;headerlink&quot; title=&quot;二叉树&quot;&gt;&lt;/a&gt;二叉树&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="二叉树" scheme="http://www.wangdanpeng.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-哈希算法</title>
@@ -586,34 +617,6 @@
     
     
       <category term="Mac" scheme="http://www.wangdanpeng.com/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SBT-修改资源库地址</title>
-    <link href="http://www.wangdanpeng.com/2017/04/06/20170406210224/"/>
-    <id>http://www.wangdanpeng.com/2017/04/06/20170406210224/</id>
-    <published>2017-04-06T13:02:24.000Z</published>
-    <updated>2020-03-27T11:05:21.730Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;做大数据开发, 用scala的都会用到sbt来打包依赖, 但是sbt默认配置里连接的国外地址, 根本就下不下来依赖包, 而且还有的地址是https的, 连接都被拒绝了, 所以我们就来修改sbt默认的配置.&lt;/p&gt;
-&lt;p&gt;首先, 我的系统是mac,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="SBT" scheme="http://www.wangdanpeng.com/categories/SBT/"/>
-    
-    
-      <category term="SBT" scheme="http://www.wangdanpeng.com/tags/SBT/"/>
     
   </entry>
   
