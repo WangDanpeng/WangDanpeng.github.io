@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-01-28T07:27:32.809Z</updated>
+  <updated>2021-02-24T07:55:09.129Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-红黑树</title>
+    <link href="http://www.wangdanpeng.com/2021/02/24/20210224155253/"/>
+    <id>http://www.wangdanpeng.com/2021/02/24/20210224155253/</id>
+    <published>2021-02-24T07:52:53.000Z</published>
+    <updated>2021-02-24T07:55:09.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;红黑树&quot;&gt;&lt;a href=&quot;#红黑树&quot; class=&quot;headerlink&quot; title=&quot;红黑树&quot;&gt;&lt;/a&gt;红黑树&lt;/h2&gt;&lt;p&gt;一般讲到平衡二叉查找树, 都会拿红黑树作为例子, 工程中, 很多用到平衡二叉查找树的地方都会用到红黑树&lt;br&gt;但凡用到动态插入,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="红黑树" scheme="http://www.wangdanpeng.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-二叉树</title>
@@ -589,34 +620,6 @@
     
     
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sublime Text3 更换主题及插件安装</title>
-    <link href="http://www.wangdanpeng.com/2018/11/09/20181109210424/"/>
-    <id>http://www.wangdanpeng.com/2018/11/09/20181109210424/</id>
-    <published>2018-11-09T13:04:24.000Z</published>
-    <updated>2020-03-27T11:04:30.773Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;毫无疑问, Sublime Text是Mac电脑上为数不多十分好用的文本编辑器之一, 日常使用的频率也是非常的高, 所以配置一个好看又好用的Sublime Text就十分的有必要.&lt;/p&gt;
-&lt;h2 id=&quot;更换主题&quot;&gt;&lt;a href=&quot;#更换主题&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Mac" scheme="http://www.wangdanpeng.com/categories/Mac/"/>
-    
-    
-      <category term="Mac" scheme="http://www.wangdanpeng.com/tags/Mac/"/>
     
   </entry>
   

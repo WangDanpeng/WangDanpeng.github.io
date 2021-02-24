@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tag: 算法 |  Mr.Wang_Blog
+    数据结构学习笔记-红黑树 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,118 +34,160 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article id="post-20210224155253" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">#&nbsp算法</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/09/03/20200903153417/" class="archive-article-date">
-  <time datetime="2020-09-03T07:34:17.000Z" itemprop="datePublished">09/03</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/09/03/20200903153417/">数据结构学习笔记-链表</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据结构学习笔记-红黑树
+</h1>
  
 
     </header>
     
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
 
     
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/09/01/20200901160919/" class="archive-article-date">
-  <time datetime="2020-09-01T08:09:19.000Z" itemprop="datePublished">09/01</time>
+    <div class="article-meta">
+      <a href="/2021/02/24/20210224155253/" class="article-date">
+  <time datetime="2021-02-24T07:52:53.000Z" itemprop="datePublished">2021-02-24</time>
 </a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/09/01/20200901160919/">数据结构学习笔记-数组</a> 
-</h2>
- 
-
-    </header>
-    
-    
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
   </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2018" class="archive-year">2018</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/27/20181127102854/" class="archive-article-date">
-  <time datetime="2018-11-27T02:28:30.000Z" itemprop="datePublished">11/27</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2018/11/27/20181127102854/">算法题-海盗分赃</a> 
-</h2>
- 
 
-    </header>
-    
-    
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">824字</span>
+        </span>
+    </span>
 
-    
-  </div>
-</article>
-      
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2分钟</span>
+        </span>
+    </span>
+</div>
+
       
     </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>一般讲到平衡二叉查找树, 都会拿红黑树作为例子, 工程中, 很多用到平衡二叉查找树的地方都会用到红黑树<br>但凡用到动态插入, 删除, 查找数据的场景, 都可以用到它, 不过自己实现起来难度有点高</p>
+<h3 id="什么是平衡二叉查找树"><a href="#什么是平衡二叉查找树" class="headerlink" title="什么是平衡二叉查找树"></a>什么是平衡二叉查找树</h3><p>平衡二叉树定义: 二叉树中任意一个节点的左右子树的高度相差不能大于1.<br>完全二叉树, 满二叉树, 都是平衡二叉树</p>
+<p>平衡二叉查找树不仅满足上面定义, 还满足二叉查找树的特点<br>最先被发明的平衡二叉查找树是AVL树</p>
+<p>但很多平衡二叉查找树并没有严格符合上面的定义, 比如红黑树<br>设计初衷是解决, 普通二叉查找树在频繁的插入, 删除等动态更新的情况下, 出现时间复杂度退化的问题<br>平衡二叉查找树就是让整棵树左右看起来比较平衡, 不要出现左子树高右子树矮的情况, 这样能让整棵树的高度相对低一些, 相应的插入删除查找操作效率高一些.</p>
+<h3 id="定义一棵红黑树"><a href="#定义一棵红黑树" class="headerlink" title="定义一棵红黑树"></a>定义一棵红黑树</h3><p>红黑树(Red-Black Tree), 简称R-B Tree, 是一种不严格的平衡二叉查找树<br>红黑树的节点, 一类被标记为黑色, 一类被标记为红色, 且要满足</p>
+<ul>
+<li>根节点是黑色的</li>
+<li>每个叶子节点都是黑色的空节点, 即叶子节点不存储数据</li>
+<li>任何相邻节点都不能同时为红色, 即红色节点是被黑色节点隔开的</li>
+<li>每个节点, 从该节点到达其可到达叶子节点的所有路径, 都包含相同数目的黑色节点</li>
+</ul>
+<h3 id="为什么用红黑树"><a href="#为什么用红黑树" class="headerlink" title="为什么用红黑树"></a>为什么用红黑树</h3><p>为什么用红黑树不用其他平衡二叉查找树<br>Treap, Splay Tree无法避免极端情况下时间复杂度的退化<br>AVL树查找效率非常高, 但为了维护这种高度平衡, 每次插入删除都要调整, 比较复杂耗时, 对于有频繁插入删除操作的数据集合, 使用AVL树代价有点高<br>红黑树只做到了近似平衡, 在维护平衡成本上比AVL树要低, 且插入删除查找操作性能都比较稳定, 对于工程应用要面对各种异常情况, 所以更倾向于这种性能稳定的</p>
+<h3 id="实现一棵红黑树-不是"><a href="#实现一棵红黑树-不是" class="headerlink" title="实现一棵红黑树 (不是"></a>实现一棵红黑树 (不是</h3><p>大可不必, 左右旋背个滚瓜烂熟过几天就忘<br>红黑树的叶子节点都是黑色的空节点, 是为了方便代码实现, 方便套用平衡公式<br>红黑树平衡过程类似魔方复原, 有几个公式, 在插入删除节点过程中, 会破坏红黑树定义的第三四条, 所以使用平衡公式来恢复<br>插入操作平衡公式有三个, 删除操作平衡公式有七个, 插入操作的平衡调整比较简单, 但删除操作就比较复杂<br>详细实现步骤, 用到以后再去搜, 对照着实现即可</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/红黑树/">红黑树</a></li></ul>
+
+
+    </footer>
+
   </div>
-  
-  
 
   
-  <nav class="page-nav">
+  
+  <nav class="article-nav">
     
-    <a class="extend prev" rel="prev" href="/tags/算法/">上一页</a><a class="page-number" href="/tags/算法/">1</a><span class="page-number current">2</span>
+    
+      <a href="/2021/01/28/20210128151430/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数据结构学习笔记-二叉树</div>
+      </a>
+    
   </nav>
+
+
   
-</article></section>
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'dfbc3f53c63f462a7a6f',
+    clientSecret: '1742a3ca93250a019ae2594eb2d2aa7465799dc1',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -299,6 +341,22 @@
 </script>
 
 
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 
 
