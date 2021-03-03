@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">921字</span>
+            <span class="post-count">1.4k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -121,6 +121,11 @@
 <ol>
 <li>堆排序数据访问方式是跳着访问, 对cpu缓存不友好, 快排数据是顺序访问</li>
 <li>对于同样数据, 堆排序的数据交换次数比快排多, 建堆会打乱数据原有相对顺序</li>
+</ol>
+<h3 id="堆的应用"><a href="#堆的应用" class="headerlink" title="堆的应用"></a>堆的应用</h3><ol>
+<li><strong>优先级队列</strong><br>在优先级队列中, 优先级最高的最先出队, 用堆来实现是最直接, 最高效的<br>往优先级队列插入元素等于往堆中插入一个元素, 从优先级队列取出优先级最高元素, 等于取出堆顶元素<br>优先级队列应用场景非常多, 比如赫夫曼编码, 图的最短路径, 最小生成树算法等</li>
+<li><strong>求Top K</strong><br>可以维护一个大小为k的小顶堆, 遍历数据, 依次和堆顶元素比较, 如果比堆顶元素大, 就把堆顶元素删除, 将新元素插入堆中<br>如果比堆顶元素小, 就不作处理继续遍历, 等数据遍历完, 堆中就是前k大的数据</li>
+<li><strong>求中位数</strong><br>对于静态数据, 中位数是固定的, 可以先排序, 第n/2个数据就是中位数, 但对于动态数据集合, 每次排序效率就很低<br>所以借助堆这种数据结构, 不用排序就可以非常高效的实现求中位数操作<br>我们维护两个堆, 前半部分数据存储一个大顶堆, 后半部分数据存储一个小顶堆, 且小顶堆中的数据都大于大顶堆中的数据<br>这样, 大顶堆的堆顶元素就是我们要的中位数<br>每当新添加数据, 如果数据小于等于大顶堆的堆顶, 就插入到大顶堆, 反之插入到小顶堆, 且从这个堆向另一个堆移动数据, 维护两个堆的数据个数的平衡<br>同理, 此方法可计算各个百分位数据, 比如80百分位数, 99百分位数等</li>
 </ol>
 
       
