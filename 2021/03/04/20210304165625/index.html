@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tag: 算法 |  Mr.Wang_Blog
+    数据结构学习笔记-图 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,286 +34,158 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article id="post-20210304165625" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">#&nbsp算法</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/04/20210304165625/" class="archive-article-date">
-  <time datetime="2021-03-04T08:56:25.000Z" itemprop="datePublished">03/04</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/04/20210304165625/">数据结构学习笔记-图</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据结构学习笔记-图
+</h1>
  
 
     </header>
     
+
     
+    <div class="article-meta">
+      <a href="/2021/03/04/20210304165625/" class="article-date">
+  <time datetime="2021-03-04T08:56:25.000Z" itemprop="datePublished">2021-03-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">852字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>图是一种非线性表数据结构, 比树更加复杂<br>涉及图的算法有很多, 比如图的搜索, 最短路径, 最小生成树, 二分图等</p>
+<h3 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h3><p>图中的元素叫做<strong>顶点</strong>, 一个顶点可以与任意其他顶点建立连接关系, 这种建立的关系, 叫做<strong>边</strong><br>跟顶点相连接的边的条数, 叫做顶点的<strong>度</strong><br>图的边可以有方向, 边有方向的叫做<strong>有向图</strong>, 边没有方向的叫做<strong>无向图</strong><br>有向图中, 把度分为<strong>入度</strong>和<strong>出度</strong>, 入度表示有多少条边指向这个顶点, 出度表示有多少条边是以这个顶点为起点指向别的顶点<br>另一种图, <strong>带权图</strong>, 每条边都有一个权重</p>
+<h3 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h3><ol>
+<li>邻接矩阵存储方法<br>图最直观的一种存储方式就是邻接矩阵<br>底层依赖一个二维数组, 对于无向图, 若顶点i到j之前有边, 则A[i][j]和A[j][i]都标为1, 对于有向图, 若顶点i到j之前有指向j的边, 则A[i][j]标为1, 带权图中数组存储相应的权重即可<br>用邻接矩阵来表示一个图, 虽然简单直观, 但是比较浪费存储空间, 如果存储的是稀疏图(顶点非常多), 而每个顶点的边并不多, 则大部分空间都被浪费了<br>优点是存储方式简单, 获取两个顶点的关系时非常高效, 其次是方便计算, 可以将很多图的运算转换成矩阵之间的计算</li>
+<li>邻接表存储法<br>邻接表有点像散列表, 每个顶点对应一条链表, 链表中存储的是与这个顶点相连接的其他顶点<br>邻接表存储起来比较节省空间, 但使用起来就比较耗时间, 要查询是否存在一条顶点a到b的边, 就要遍历顶点a的链表<br>为了提高查找效率, 这里的链表也可换成其他更高效的数据结构, 比如平衡二叉查找树, 跳表, 散列表等</li>
+</ol>
+<h3 id="深度优先和广度优先"><a href="#深度优先和广度优先" class="headerlink" title="深度优先和广度优先"></a>深度优先和广度优先</h3><p>深度优先搜索算法和广度优先搜索算法都是基于图这个数据结构的, 因为图的表达能力强, 大部分涉及搜索的场景, 都可以抽象成图<br>图上的搜索算法, 最直接的理解就是在图中找出从一个顶点出发到另一个顶点的路径<br>其中最简单最暴力的两种搜索就是, <strong>深度优先搜索</strong>和<strong>广度优先搜索</strong></p>
+<ol>
+<li>广度优先搜索(BFS)<br>其实就是一种地毯式层层推进的搜索策略, 先查找离起始顶点最近的, 然后是次近的, 依次往外搜索<br>广度优先搜索需要借助队列来实现<br>广度优先搜索找出来的是最短路径<br>代码示例(todo)</li>
+<li>深度优先搜索(DFS)<br>类似走迷宫, 在分叉口随意选择一个节点, 直到走不通再回退<br>深度优先搜索用的是一种比较著名的算法思想, 回溯思想, 借助栈来实现<br>深度优先搜索找出来的不是最短路径<br>代码示例(todo)</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图/">图</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
-    
+
+    </footer>
+
   </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/02/20210302192117/" class="archive-article-date">
-  <time datetime="2021-03-02T11:21:17.000Z" itemprop="datePublished">03/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/02/20210302192117/">数据结构学习笔记-堆和堆排序</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/24/20210224155253/" class="archive-article-date">
-  <time datetime="2021-02-24T07:52:53.000Z" itemprop="datePublished">02/24</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/24/20210224155253/">数据结构学习笔记-红黑树</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/红黑树/">红黑树</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/01/28/20210128151430/" class="archive-article-date">
-  <time datetime="2021-01-28T07:14:30.000Z" itemprop="datePublished">01/28</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/01/28/20210128151430/">数据结构学习笔记-二叉树</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-  
-  </div>
-  </div>
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/16/20201216153146/" class="archive-article-date">
-  <time datetime="2020-12-16T07:31:46.000Z" itemprop="datePublished">12/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/16/20201216153146/">数据结构学习笔记-哈希算法</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hash/">Hash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/07/20201207185658/" class="archive-article-date">
-  <time datetime="2020-12-07T10:56:58.000Z" itemprop="datePublished">12/07</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/07/20201207185658/">数据结构学习笔记-散列表(Hash表)</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/散列表/">散列表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/02/20201202170715/" class="archive-article-date">
-  <time datetime="2020-12-02T09:07:15.000Z" itemprop="datePublished">12/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/02/20201202170715/">数据结构学习笔记-跳表</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跳表/">跳表</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/02/20201202152632/" class="archive-article-date">
-  <time datetime="2020-12-02T07:26:32.000Z" itemprop="datePublished">12/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/02/20201202152632/">数据结构学习笔记-二分查找</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找/">查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/01/20201201164903/" class="archive-article-date">
-  <time datetime="2020-12-01T08:49:03.000Z" itemprop="datePublished">12/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/01/20201201164903/">数据结构学习笔记-排序</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/11/26/20201126191531/" class="archive-article-date">
-  <time datetime="2020-11-26T11:15:31.000Z" itemprop="datePublished">11/26</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/11/26/20201126191531/">数据结构学习笔记-递归</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
-
-    
-  </div>
-</article>
-      
-      
-    </div>
-  </div>
-  
-  
 
   
-  <nav class="page-nav">
+  
+  <nav class="article-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/tags/算法/page/2/">2</a><a class="extend next" rel="next" href="/tags/算法/page/2/">下一页</a>
+    
+      <a href="/2021/03/02/20210302192117/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数据结构学习笔记-堆和堆排序</div>
+      </a>
+    
   </nav>
+
+
   
-</article></section>
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'dfbc3f53c63f462a7a6f',
+    clientSecret: '1742a3ca93250a019ae2594eb2d2aa7465799dc1',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul class="list-inline">
@@ -467,6 +339,22 @@
 </script>
 
 
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 
 
