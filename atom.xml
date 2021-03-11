@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-03-04T08:57:32.725Z</updated>
+  <updated>2021-03-11T08:46:38.847Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-字符串匹配</title>
+    <link href="http://www.wangdanpeng.com/2021/03/11/20210311164500/"/>
+    <id>http://www.wangdanpeng.com/2021/03/11/20210311164500/</id>
+    <published>2021-03-11T08:45:00.000Z</published>
+    <updated>2021-03-11T08:46:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;字符串匹配&quot;&gt;&lt;a href=&quot;#字符串匹配&quot; class=&quot;headerlink&quot; title=&quot;字符串匹配&quot;&gt;&lt;/a&gt;字符串匹配&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="字符串" scheme="http://www.wangdanpeng.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-图</title>
@@ -590,37 +621,6 @@
     
     
       <category term="Scala" scheme="http://www.wangdanpeng.com/tags/Scala/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VS Code-常用插件</title>
-    <link href="http://www.wangdanpeng.com/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
-    <id>http://www.wangdanpeng.com/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</id>
-    <published>2019-05-11T14:37:34.000Z</published>
-    <updated>2020-03-27T11:05:59.650Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;久闻vs code比sublime text要好用, 感觉sublime text已经够好用了, 一直懒得换, 今天下载vs code试用了一下, 感觉嗯~ 真香~&lt;/p&gt;
-&lt;p&gt;初次使用先安装了一些常用插件, 以后如有进阶插件再持续更新&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="VS Code" scheme="http://www.wangdanpeng.com/categories/VS-Code/"/>
-    
-    
-      <category term="VS Code" scheme="http://www.wangdanpeng.com/tags/VS-Code/"/>
-    
-      <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
