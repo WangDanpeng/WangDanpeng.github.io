@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-03-11T08:46:38.847Z</updated>
+  <updated>2021-05-06T07:44:57.640Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hive-创建外部分区表</title>
+    <link href="http://www.wangdanpeng.com/2021/05/06/20210506154231/"/>
+    <id>http://www.wangdanpeng.com/2021/05/06/20210506154231/</id>
+    <published>2021-05-06T07:42:31.000Z</published>
+    <updated>2021-05-06T07:44:57.640Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Hive外部分区表&quot;&gt;&lt;a href=&quot;#Hive外部分区表&quot; class=&quot;headerlink&quot; title=&quot;Hive外部分区表&quot;&gt;&lt;/a&gt;Hive外部分区表&lt;/h2&gt;&lt;h3 id=&quot;建表语句&quot;&gt;&lt;a href=&quot;#建表语句&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
+    
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-字符串匹配</title>
@@ -592,35 +621,6 @@
       <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="pdf" scheme="http://www.wangdanpeng.com/tags/pdf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Scala-抓取项目代码中全部代码注释</title>
-    <link href="http://www.wangdanpeng.com/2019/05/13/Scala-%E6%8A%93%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/"/>
-    <id>http://www.wangdanpeng.com/2019/05/13/Scala-%E6%8A%93%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/</id>
-    <published>2019-05-13T06:55:26.000Z</published>
-    <updated>2020-03-27T11:05:28.651Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;日前某站代码泄露, 大佬们贴出很多代码中有趣的注释, 于是突发奇想, 写了一个没有用的小程序…&lt;/p&gt;
-&lt;p&gt;(ps: 某站代码我没看, 你们可, 别瞎说…)&lt;/p&gt;
-&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Scala" scheme="http://www.wangdanpeng.com/categories/Scala/"/>
-    
-    
-      <category term="Scala" scheme="http://www.wangdanpeng.com/tags/Scala/"/>
     
   </entry>
   
