@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-05-06T08:29:37.820Z</updated>
+  <updated>2021-05-10T11:19:26.611Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kylin-4.0bate版搭建报错指南</title>
+    <link href="http://www.wangdanpeng.com/2021/05/10/20210510191429/"/>
+    <id>http://www.wangdanpeng.com/2021/05/10/20210510191429/</id>
+    <published>2021-05-10T11:14:29.000Z</published>
+    <updated>2021-05-10T11:19:26.611Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;大部分问题是jar包版本冲突, 导致各种类找不到&lt;br&gt;根本问题是kylin4.0测试版,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
+    
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+  </entry>
   
   <entry>
     <title>Hive-创建外部分区表</title>
@@ -591,36 +620,6 @@
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>工具-破解pdf密码</title>
-    <link href="http://www.wangdanpeng.com/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/"/>
-    <id>http://www.wangdanpeng.com/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/</id>
-    <published>2019-05-14T11:36:11.000Z</published>
-    <updated>2020-03-27T11:06:46.411Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;今天偶得一份久仰的学习资料.pdf, 一打开却发现要输入密码, 试来试去密码都不对, 寻遍google找到了一个神器~&lt;/p&gt;
-&lt;h2 id=&quot;pdfcrack&quot;&gt;&lt;a href=&quot;#pdfcrack&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="http://www.wangdanpeng.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="pdf" scheme="http://www.wangdanpeng.com/tags/pdf/"/>
     
   </entry>
   
