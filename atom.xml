@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-05-10T11:19:26.611Z</updated>
+  <updated>2021-05-18T09:34:35.267Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Kylin-4.0bate版搭建报错指南</title>
+    <title>Kylin-4.0beta版部署</title>
+    <link href="http://www.wangdanpeng.com/2021/05/18/20210518173009/"/>
+    <id>http://www.wangdanpeng.com/2021/05/18/20210518173009/</id>
+    <published>2021-05-18T09:30:09.000Z</published>
+    <updated>2021-05-18T09:34:35.267Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;新特性&quot;&gt;&lt;a href=&quot;#新特性&quot; class=&quot;headerlink&quot; title=&quot;新特性&quot;&gt;&lt;/a&gt;新特性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Spark唯一构建引擎&lt;/li&gt;
+&lt;li&gt;引入parquet,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
+    
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kylin-4.0beta版搭建报错指南</title>
     <link href="http://www.wangdanpeng.com/2021/05/10/20210510191429/"/>
     <id>http://www.wangdanpeng.com/2021/05/10/20210510191429/</id>
     <published>2021-05-10T11:14:29.000Z</published>
-    <updated>2021-05-10T11:19:26.611Z</updated>
+    <updated>2021-05-18T09:32:20.863Z</updated>
     
     <summary type="html">
     
@@ -39,9 +70,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -68,9 +99,9 @@
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
     
   </entry>
   
@@ -588,38 +619,6 @@
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="链表" scheme="http://www.wangdanpeng.com/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-数组</title>
-    <link href="http://www.wangdanpeng.com/2020/09/01/20200901160919/"/>
-    <id>http://www.wangdanpeng.com/2020/09/01/20200901160919/</id>
-    <published>2020-09-01T08:09:19.000Z</published>
-    <updated>2020-09-03T07:36:11.133Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;p&gt;基础数据结构&lt;/p&gt;
-&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数组" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
