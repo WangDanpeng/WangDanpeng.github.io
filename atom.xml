@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-07-30T11:32:35.985Z</updated>
+  <updated>2021-07-30T11:35:34.120Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构学习笔记-常见算法思想 </title>
+    <link href="http://www.wangdanpeng.com/2021/07/30/20210730193440/"/>
+    <id>http://www.wangdanpeng.com/2021/07/30/20210730193440/</id>
+    <published>2021-07-30T11:34:40.000Z</published>
+    <updated>2021-07-30T11:35:34.120Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-动态规划</title>
@@ -72,9 +102,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -101,9 +131,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -130,9 +160,9 @@
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
     
   </entry>
   
@@ -591,33 +621,6 @@
     
     
       <category term="Git" scheme="http://www.wangdanpeng.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-live2d插件给你的博客加一只可爱的看板娘</title>
-    <link href="http://www.wangdanpeng.com/2020/09/12/20200912164541/"/>
-    <id>http://www.wangdanpeng.com/2020/09/12/20200912164541/</id>
-    <published>2020-09-12T08:45:41.000Z</published>
-    <updated>2020-09-12T09:15:05.447Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;放一只简简单单的看板娘, 没有什么互动, 安安静静的陪着你读博客.&lt;br&gt;插件github地址 -&amp;gt; &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://www.wangdanpeng.com/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://www.wangdanpeng.com/tags/Hexo/"/>
     
   </entry>
   
