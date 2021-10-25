@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-07-30T11:35:34.120Z</updated>
+  <updated>2021-10-25T09:22:40.148Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统系列笔记(一) - 启动,中断,异常,系统调用</title>
+    <link href="http://www.wangdanpeng.com/2021/10/25/20211025172037/"/>
+    <id>http://www.wangdanpeng.com/2021/10/25/20211025172037/</id>
+    <published>2021-10-25T09:20:37.000Z</published>
+    <updated>2021-10-25T09:22:40.148Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;操作系统概述&quot;&gt;&lt;a href=&quot;#操作系统概述&quot; class=&quot;headerlink&quot; title=&quot;操作系统概述&quot;&gt;&lt;/a&gt;操作系统概述&lt;/h2&gt;&lt;h3 id=&quot;什么是操作系统&quot;&gt;&lt;a href=&quot;#什么是操作系统&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构学习笔记-常见算法思想 </title>
@@ -102,9 +129,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
     
   </entry>
   
@@ -131,9 +158,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
     
   </entry>
   
@@ -160,9 +187,9 @@
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -593,34 +620,6 @@
     
     
       <category term="GitHub" scheme="http://www.wangdanpeng.com/tags/GitHub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git-在本地使用多个git账号</title>
-    <link href="http://www.wangdanpeng.com/2020/11/18/20201118183648/"/>
-    <id>http://www.wangdanpeng.com/2020/11/18/20201118183648/</id>
-    <published>2020-11-18T10:36:48.000Z</published>
-    <updated>2020-11-19T06:57:49.850Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;如何设置在本地使用多个Git账号, 比如一个公司的gitlab账号和一个本人的github账号&lt;/p&gt;
-&lt;p&gt;1 分别给每个账号生成ssh密钥&lt;br&gt;默认的生成路径在~/.ssh/id_rea, 记得指定文件名改地址防止覆盖当前的,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Git" scheme="http://www.wangdanpeng.com/categories/Git/"/>
-    
-    
-      <category term="Git" scheme="http://www.wangdanpeng.com/tags/Git/"/>
     
   </entry>
   

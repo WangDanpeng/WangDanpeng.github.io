@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>操作系统系列笔记(一) - 启动,中断,异常,系统调用</title>
+    <url>/2021/10/25/20211025172037/</url>
+    <content><![CDATA[<h2 id="操作系统概述"><a href="#操作系统概述" class="headerlink" title="操作系统概述"></a>操作系统概述</h2><h3 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统"></a>什么是操作系统</h3><p>操作系统是一个控制程序, 一个系统软件, 控制程序执行过程, 给用户提供各种服务, 方便用户使用计算机系统<br>操作系统是一个资源管理器, 应用程序与硬件之间的中间层, 管理软硬件资源, 提供访问软硬件手段, 解决资源访问冲突<br>操作系统软件的组成, Shell, GUI, Kernel</p>
+<h3 id="操作系统内核的特征"><a href="#操作系统内核的特征" class="headerlink" title="操作系统内核的特征"></a>操作系统内核的特征</h3><p>并发: 系统中同时存在多个运行的程序, 需要管理和调度<br>共享: 宏观上”同时”访问, 微观上互斥共享<br>虚拟: 利用多道程序设计技术, 让用户感觉不到其他用户<br>异步: 程序是走走停停的; 只要运行环境相同, 运行结果也要相同</p>
+<h2 id="启动-中断-异常和系统调用"><a href="#启动-中断-异常和系统调用" class="headerlink" title="启动, 中断, 异常和系统调用"></a>启动, 中断, 异常和系统调用</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>CPU通过总线连接I/O设备和内存<br>内存分为RAM(随机访问存储)和ROM(只读存储), 系统加电后会从ROM读取系统初始化代码<br>CPU完成初始化后处于实模式下, 地址总线只有20位可用, 所以内存地址640KB到1M之间为BIOS启动固件<br>BIOS具备的功能有: 基本输入输出, 系统设置信息, 开机自检, 系统自启动程序<br>BIOS初始化完成以后, 从磁盘读引导扇区, 长度只有512字节, 放到指定地址, 并跳转过去<br>然后开始执行加载程序, 将操作系统代码和数据从硬盘加载到内存, 并跳转到操作系统的起始地址, 交出控制权给内核程序</p>
+<h3 id="系统启动流程"><a href="#系统启动流程" class="headerlink" title="系统启动流程"></a>系统启动流程</h3><p>加电后读BIOS, BIOS读主引导记录, 主引导记录读取活动分区, 活动分区读加载程序, 加载程序读内核映像<br><strong>BIOS初始化过程</strong><br>硬件自检(Power On Self Test, POST), 执行系统BIOS进行系统检测, 更新CMOS芯片中的扩展系统配置数据ESCD(Extended System Configuration Data), 按指定启动顺序从软/硬盘或光驱启动, 读进第一个扇区<br>主引导记录MBR(Master Boot Record)格式, 包括: 启动代码(检查分区表正确性, 加载并跳转到磁盘上的引导程序), 硬盘分区表, 结束标志字, 然后跳到活动分区的引导扇区上<br>分区引导扇区格式包括, 跳转指令, 文件卷头, 启动代码, 结束标志<br>加载程序(bootloader), 从文件系统读一个启动配置文件, 依据配置去加载内核</p>
+<h3 id="中断-异常和系统调用"><a href="#中断-异常和系统调用" class="headerlink" title="中断, 异常和系统调用"></a>中断, 异常和系统调用</h3><p>计算机运行中, 内核是被信任的, 只有内核可以执行特权指令, 为了方便应用程序<br>中断(Hardware Interrupt), 来自硬件设备的处理请求, 异步<br>异常(Exception), 非法指令或者其他原因导致当前指令执行失败后的处理请求, 同步<br>系统调用(System Call), 应用程序主动向操作系统发出的服务请求, 异步或同步<br>当连接外设时, 需要<strong>中断</strong>做响应, 当应用程序遇到意外时, 交给<strong>异常</strong>做处理, <strong>系统调用</strong>为了应用程序方便的使用内核提供的服务, 又不会对内核安全产生影响</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构学习笔记-常见算法思想 </title>
     <url>/2021/07/30/20210730193440/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有<br>贪心算法, 分治算法, 回溯算法, 动态规划</p>
@@ -138,8 +154,8 @@
         <category>Kylin</category>
       </categories>
       <tags>
-        <tag>Kylin</tag>
         <tag>大数据</tag>
+        <tag>Kylin</tag>
       </tags>
   </entry>
   <entry>
@@ -161,8 +177,8 @@
         <category>Kylin</category>
       </categories>
       <tags>
-        <tag>Kylin</tag>
         <tag>大数据</tag>
+        <tag>Kylin</tag>
       </tags>
   </entry>
   <entry>
@@ -177,8 +193,8 @@
         <category>Hive</category>
       </categories>
       <tags>
-        <tag>大数据</tag>
         <tag>Hive</tag>
+        <tag>大数据</tag>
       </tags>
   </entry>
   <entry>
@@ -1253,8 +1269,8 @@
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Json</tag>
         <tag>Java</tag>
+        <tag>Json</tag>
       </tags>
   </entry>
   <entry>
