@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-10-25T09:22:40.148Z</updated>
+  <updated>2021-10-25T11:23:30.719Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统系列笔记(二) - 存储管理</title>
+    <link href="http://www.wangdanpeng.com/2021/10/25/20211025192219/"/>
+    <id>http://www.wangdanpeng.com/2021/10/25/20211025192219/</id>
+    <published>2021-10-25T11:22:19.000Z</published>
+    <updated>2021-10-25T11:23:30.719Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;存储管理&quot;&gt;&lt;a href=&quot;#存储管理&quot; class=&quot;headerlink&quot; title=&quot;存储管理&quot;&gt;&lt;/a&gt;存储管理&lt;/h2&gt;&lt;h3 id=&quot;计算机体系结构和内存层次&quot;&gt;&lt;a href=&quot;#计算机体系结构和内存层次&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>操作系统系列笔记(一) - 启动,中断,异常,系统调用</title>
@@ -593,33 +620,6 @@
       <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="栈" scheme="http://www.wangdanpeng.com/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GitHub-整个活, 好看的GitHub自我介绍</title>
-    <link href="http://www.wangdanpeng.com/2020/11/19/20201119190543/"/>
-    <id>http://www.wangdanpeng.com/2020/11/19/20201119190543/</id>
-    <published>2020-11-19T11:05:43.000Z</published>
-    <updated>2020-11-19T11:25:50.932Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;突然发现, 在GitHub创建和用户名同名的仓库会有彩蛋, 呐&lt;br&gt;&lt;img src=&quot;http://www.wangdanpeng.com/img/20201119190543-1.png&quot; alt=&quot;彩蛋&quot;&gt;&lt;br&gt;意思说这是一个特殊的库,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="GitHub" scheme="http://www.wangdanpeng.com/categories/GitHub/"/>
-    
-    
-      <category term="GitHub" scheme="http://www.wangdanpeng.com/tags/GitHub/"/>
     
   </entry>
   
