@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-10-25T11:24:53.516Z</updated>
+  <updated>2021-10-25T11:27:26.239Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.wangdanpeng.com/2021/10/25/20211025192219/"/>
     <id>http://www.wangdanpeng.com/2021/10/25/20211025192219/</id>
     <published>2021-10-25T11:22:19.000Z</published>
-    <updated>2021-10-25T11:24:53.516Z</updated>
+    <updated>2021-10-25T11:27:26.239Z</updated>
     
     <summary type="html">
     
@@ -156,9 +156,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -185,9 +185,9 @@
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -214,9 +214,9 @@
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
     
   </entry>
   
