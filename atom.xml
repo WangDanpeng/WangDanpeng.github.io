@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2021-10-28T11:07:12.612Z</updated>
+  <updated>2021-11-03T07:44:45.358Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统系列笔记(五) - 同步互斥, 信号量和管程</title>
+    <link href="http://www.wangdanpeng.com/2021/11/03/20211103154327/"/>
+    <id>http://www.wangdanpeng.com/2021/11/03/20211103154327/</id>
+    <published>2021-11-03T07:43:27.000Z</published>
+    <updated>2021-11-03T07:44:45.358Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;同步互斥&quot;&gt;&lt;a href=&quot;#同步互斥&quot; class=&quot;headerlink&quot; title=&quot;同步互斥&quot;&gt;&lt;/a&gt;同步互斥&lt;/h2&gt;&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="http://www.wangdanpeng.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="同步" scheme="http://www.wangdanpeng.com/tags/%E5%90%8C%E6%AD%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>操作系统系列笔记(四) - 进程,线程及CPU调度</title>
@@ -585,37 +614,6 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="排序" scheme="http://www.wangdanpeng.com/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-递归</title>
-    <link href="http://www.wangdanpeng.com/2020/11/26/20201126191531/"/>
-    <id>http://www.wangdanpeng.com/2020/11/26/20201126191531/</id>
-    <published>2020-11-26T11:15:31.000Z</published>
-    <updated>2020-11-26T11:16:34.378Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;递归&quot;&gt;&lt;a href=&quot;#递归&quot; class=&quot;headerlink&quot; title=&quot;递归&quot;&gt;&lt;/a&gt;递归&lt;/h2&gt;&lt;h3 id=&quot;基本介绍&quot;&gt;&lt;a href=&quot;#基本介绍&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="递归" scheme="http://www.wangdanpeng.com/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   
