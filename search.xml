@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>操作系统系列笔记(八) -  I/O系统</title>
+    <url>/2021/11/04/20211104151612/</url>
+    <content><![CDATA[<h2 id="I-O系统"><a href="#I-O系统" class="headerlink" title="I/O系统"></a>I/O系统</h2><h3 id="I-O特点"><a href="#I-O特点" class="headerlink" title="I/O特点"></a>I/O特点</h3><p>三种常见设备接口类型<br>字符设备: 以字节为单位顺序访问, 通常使用文件访问接口和语义, 例如键盘鼠标<br>块设备: 均匀的数据块访问, 原始I/O接口或文件系统接口, 内存映射文件访问, 例如磁盘驱动器, 光驱<br>网络设备: 格式化报文交换, 专用的网络报文收发接口, 通过网络接口支持多种网络协议, 例如以太网, 无线, 蓝牙<br>同步和异步I/O<br><strong>阻塞I/O</strong>: wait, 读数据时, 进程将进入等待状态, 直到完成数据读出, 写数据时, 进程将进入等待状态, 直到设备完成数据写入处理<br><strong>非阻塞I/O</strong>: don’t wait, 立即从读或写系统调返回, 返回值为成功传输字节数, 读或写的传输字节可能为零<br><strong>异步I/O</strong>: tell me later, 读数据时, 使用指针标记好用户缓冲区, 立即返回, 稍后内核将填充缓冲区并通知用户, 写数据时, 使用指针标记好用户缓冲区, 立即返回, 稍后内核将处理数据并通知用户</p>
+<h3 id="I-O结构"><a href="#I-O结构" class="headerlink" title="I/O结构"></a>I/O结构</h3><p>CPU在主板上分成两段, 北桥和高速的内存显卡相连, 南桥和各种各样设备相连, 比如PCI总线, 磁盘, 网络<br>北桥高速设备, 南桥I/O设备<br>CPU和设备的连接: 设备上有设备控制器, 功能是提供CPU和I/O设备间的接口, 向CPU提供特殊指令和寄存器, I/O地址通过总线连到CPU上, 总线和实际设备之间有总线适配器,映射过来可能是内存地址, 也可能是I/O空间的端口<br>从设备到CPU的通道, 就是中断控制器, 设备产生中断在中断控制器进行汇总, 然后送给CPU, CPU就能对外部设备的事件做出相应<br>CPU和设备通信的三种方式: 轮询(不用中断控制器, CPU直接访问I/O端口, 或者访问设备对应的内存地址空间), 设备中断, DMA(Direct Memory Access)控制器</p>
+<p>I/O指令和内存映射I/O:<br>I/O指令: 通过I/O端口号访问设备寄存器, 通过端口号区别访问的哪个设备, 特殊的CPU指令, OUT/IN两个指令, 不仅仅是数据的访问, 还对应相应的设备控制<br>内存映射I/O: 设备的寄存器/存储被映射到内存物理地址空间中, 通过内存load/store指令完成I/O操作, 通过MMU(Memory Management Unit)设置映射, 硬件跳线或程序在启动时设置地址</p>
+<p>内核I/O子系统结构: 最底层各种各样设备, 每个设备之上有设备控制器, 再之上是驱动软件, 上是I/O子系统, 上是内核其他部分内容依赖I/O子系统完成数据读写<br><strong>I/O请求生命周期</strong><br>用户进程发起I/O请求 -&gt; 内核I/O子系统 -&gt; 向设备驱动发送I/O请求, 并等待结果 -&gt; 设备驱动处理I/O请求转换成设备控制命令发送给硬件并等待中断相应 -&gt;<br>硬件设备完成时, 产生中断 -&gt; 中断处理例程接受中断, 保存结果并通知设备驱动 -&gt; 通知驱动层, 确定I/O操作完成状态, 区分返回结果和哪个请求相对应 -&gt;<br>结果给到I/O子系统当中 -&gt; 送给用户进程</p>
+<h3 id="I-O数据传输"><a href="#I-O数据传输" class="headerlink" title="I/O数据传输"></a>I/O数据传输</h3><p>CPU与I/O设备的数据传输有两种方式<br><strong>程序控制I/O(PIO, Programmed I/O)</strong>: 通过CPU的In/Out或者load/store传输所有数据, 特点是硬件简单, 编程容易, 消耗的CPU时间和数据量成正比, 适用于简单的小型设备I/O<br><strong>直接内存访问(DMA)</strong>: 设备控制器可直接访问系统总线, 控制器直接与内存互相传输数据, 特点是设备传输数据不影响CPU, 开始和结束需要CPU参与设置, 适用于高吞吐量I/O</p>
+<p>I/O设备通知操作系统的机制如下, 了解设备状态, I/O操作完成时间或遇到错误<br>CPU主动轮询: I/O设备在特定的状态寄存器中放置状态和错误信息, 操作系统定时检测状态寄存器, 优点是简单, 但I/O操作频繁或不可预测时, 开销大和延时长<br>设备中断: 处理不可预测事件效果好, 开销相对较高<br>一些设备结合了轮询和设备中断, 如高带宽网络设备, 第一个传入数据包到达前采用中断, 轮询后面的数据包直到硬件缓存为空</p>
+<h3 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h3><p>磁盘结构分为: 磁头, 磁头组, 磁盘轴, 盘片, 读写头, 磁道, 扇区, 柱面<br>读取或写入时, 磁头必须被定位在期望的磁道, 并从所期望的柱面和扇区开始<br>寻道时间: 定位到期望的磁道所花费的时间<br>旋转延迟: 从零扇区开始到达目的地花费的时间<br>磁盘io传输时间: 等待设备可用, 等待通道可用, (寻道, 旋转延时, 数据传输)传输时间</p>
+<p><strong>磁盘调度算法</strong>, 通过优化磁盘访问请求顺序来提高磁盘访问性能, 寻道时间是磁盘访问最耗时的部分, 同时会有多个在同一磁盘上的I/O请求, 随机处理磁盘访问请求的性能表现很差<br>先进先出: 公平但性能不好, 很多进程的情况下, 接近随机调度的性能<br>最短服务时间优先(SSTF): 选择从磁臂当前位置需要移动最少的I/O请求, 总是选择最短寻道时间<br>扫描算法(SCAN): 磁臂在一个方向上移动, 访问所有未完成的请求, 直到磁臂到达该方向上最后的磁道<br>循环扫描算法(C-SCAN): 限制了仅在一个方向上扫描, 当最后一个磁道也被访问过了后, 磁臂返回到磁盘的另一端再次进行<br>N步扫描算法(N-STEP-SCAN): 将磁盘请求队列分成长度为N的子队列, 按FIFO依次处理所有子队列, 扫描算法处理每个队列<br>双队列扫描算法(FSCAN): N步扫描算法的简化, 只将磁盘请求队列分成两个子队列, 交替使用扫描算法处理一个队列, 新到达的请求放入另一个队列, 所有的新请求都将被推迟到下一次扫描时处理, 平均等待时间会减少</p>
+<h3 id="磁盘缓存"><a href="#磁盘缓存" class="headerlink" title="磁盘缓存"></a>磁盘缓存</h3><p>缓存是数据传输双方访问速度差异较大时, 引入的速度匹配中间层<br>放在内存里的磁盘数据的缓存, 为了避免对同一块磁盘扇区里的内容进行反复引用时候的多次磁盘访问<br>磁盘缓存的调度算法很类似虚拟存储调度算法, 磁盘的访问频率远低于虚拟存储中的内存访问频率, 所以通常磁盘缓存调度算法会比虚拟存储复杂<br>单缓存和双缓存, 单缓存一个缓存区, 读写互斥, 双缓存, 有两个缓存区, 写1读2, 写2读1<br><strong>访问频率置换算法(Frequency-Based Replacement)</strong>: 考虑磁盘访问的密集特征, 对密集引用不计数, 在短周期中使用LRU, 在长周期中使用LFU<br>具体实现: LRU栈被分为新区域, 中间区域, 旧区域三部分, 被访问就放入栈顶(LRU)也就是新区域, 新区域引用计数不变, 中间和旧区域会加一, 满了以后置换旧区域引用计数最大的块(LFU)</p>
+<p>操作系统系列到此结束</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>I/O</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统系列笔记(七) - 文件系统</title>
     <url>/2021/11/03/20211103194440/</url>
     <content><![CDATA[<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><h3 id="文件系统的概念"><a href="#文件系统的概念" class="headerlink" title="文件系统的概念"></a>文件系统的概念</h3><p><strong>文件系统</strong>: 是操作系统中管理持久性数据的子系统, 提供数据存储和访问功能, 组织, 检索, 读写访问数据<br><strong>文件</strong>: 是具有符号名, 由字节序列构成的数据项集合, 是文件系统的基本数据单位, 文件名是文件的标识符号<br>文件系统的功能<br>分配文件磁盘空间: 管理文件块(位置和顺序), 管理空闲空间(位置), 分配算法(策略)<br>管理文件集合: 定位(文件及其内容), 命名(通过名字找到文件), 文件系统结构(文件组织方式)<br>数据可靠和安全: 安全(多层次保护数据安全), 可靠(持久保存, 避免系统崩溃, 攻击等)<br>文件属性包括: 名称, 类型, 位置, 大小, 保护, 创建者, 创建时间, 最近修改时间…<br>文件信息分为两个部分, 一部分是文件头, 存在文件系统元数据当中的文件信息, 主要是文件属性和文件存储位置和顺序</p>
@@ -151,8 +173,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -175,8 +197,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>动态规划</tag>
       </tags>
   </entry>
@@ -341,8 +363,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>字符串</tag>
       </tags>
   </entry>
@@ -365,8 +387,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>图</tag>
       </tags>
   </entry>
@@ -406,8 +428,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>二叉树</tag>
       </tags>
   </entry>
@@ -432,8 +454,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>红黑树</tag>
       </tags>
   </entry>
@@ -467,8 +489,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>二叉树</tag>
       </tags>
   </entry>
@@ -497,8 +519,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>Hash</tag>
       </tags>
   </entry>
@@ -526,8 +548,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>散列表</tag>
       </tags>
   </entry>
@@ -543,8 +565,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>跳表</tag>
       </tags>
   </entry>
@@ -576,8 +598,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>查找</tag>
       </tags>
   </entry>
@@ -624,8 +646,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>排序</tag>
       </tags>
   </entry>
@@ -652,8 +674,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>递归</tag>
       </tags>
   </entry>
@@ -672,8 +694,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>队列</tag>
       </tags>
   </entry>
@@ -693,8 +715,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>栈</tag>
       </tags>
   </entry>
@@ -781,8 +803,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>链表</tag>
       </tags>
   </entry>
@@ -800,8 +822,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>数组</tag>
       </tags>
   </entry>
@@ -856,8 +878,8 @@
         <category>VS Code</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>VS Code</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
