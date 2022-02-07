@@ -17,7 +17,9 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -34,7 +36,8 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20170218153653" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  <article id="post-20170218153653" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -65,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">182字</span>
+            <span class="post-count">186字</span>
         </span>
     </span>
 
@@ -103,7 +106,7 @@
 <p><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/" target="_blank" rel="noopener">Hexo+NexT主题搭建个人博客</a></p>
 <p>  顺便贴上比较常用的命令, 和关键文件位置, 省的我这个记性扭头就忘了.</p>
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hexo g                        # 生成public静态资源</span><br><span class="line"></span><br><span class="line">hexo s                        # 启动服务</span><br><span class="line"></span><br><span class="line">hexo d                        # 提交到GitHub</span><br><span class="line"></span><br><span class="line">hexo clean                    # 清除静态资源</span><br><span class="line"></span><br><span class="line">hexo n page &quot;xxx&quot;             # 生成xxx页面</span><br><span class="line"></span><br><span class="line">hexo n &quot;xxx&quot;                  # 生成文章</span><br></pre></td></tr></table></figure>
-<h2 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blog/_config.yml              # 站点配置文件</span><br><span class="line"></span><br><span class="line">blog/themes/next/_config.yml  # 主题配置文件</span><br></pre></td></tr></table></figure>
+<h2 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blog&#x2F;_config.yml              # 站点配置文件</span><br><span class="line"></span><br><span class="line">blog&#x2F;themes&#x2F;next&#x2F;_config.yml  # 主题配置文件</span><br></pre></td></tr></table></figure>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果想给项目加README文件, 把后缀名改成”MDOWN”并放到source文件夹下即可.</p>
 
       
@@ -122,8 +125,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -131,7 +135,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
 
 
     </footer>
@@ -162,9 +166,15 @@
   
   
 <div class="gitalk" id="gitalk-container"></div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
 <script type="text/javascript">
   var gitalk = new Gitalk({
     clientID: '4e3dce9d862c874f1e6a',
@@ -191,7 +201,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2017-2021
+        2017-2022
         王丹鹏
       </li>
       <li>
@@ -274,7 +284,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -320,8 +330,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -340,7 +354,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -361,7 +377,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -473,7 +491,9 @@
 
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

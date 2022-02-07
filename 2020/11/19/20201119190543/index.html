@@ -17,7 +17,9 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -34,7 +36,8 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20201119190543" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  <article id="post-20201119190543" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -98,8 +101,7 @@
 
       
       <p>突然发现, 在GitHub创建和用户名同名的仓库会有彩蛋, 呐<br><img src="http://www.wangdanpeng.com/img/20201119190543-1.png" alt="彩蛋"><br>意思说这是一个特殊的库, 它的README.md文件的内容将会显示到你的主页上<br>那么咱们就可以用markdown在这里写一些带格式的自我介绍(尽情发挥脑洞)</p>
-<p>另外呢, 还有这么一个项目 <a href="https://github.com/anuraghazra/github-readme-stats/blob/master/docs/readme_cn.md" target="_blank" rel="noopener">github-readme-stats</a><br>可以动态获取你的账户的统计信息, 具体内容看它的介绍, 主题也可以选择<br>另外搭配<code>&lt;img&gt;</code>标签, 可以控制展示的位置, 比如以下让他靠右<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">align</span>=<span class="string">"right"</span> <span class="attr">src</span>=<span class="string">"https://github-readme-stats.vercel.app/api?username=WangDanPeng&amp;show_icons=true"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>那么最终效果就如下了<br><img src="http://www.wangdanpeng.com/img/20201119190543-2.png" alt="效果图"><br>赞👍</p>
+<p>另外呢, 还有这么一个项目 <a href="https://github.com/anuraghazra/github-readme-stats/blob/master/docs/readme_cn.md" target="_blank" rel="noopener">github-readme-stats</a><br>可以动态获取你的账户的统计信息, 具体内容看它的介绍, 主题也可以选择<br>另外搭配<code>&lt;img&gt;</code>标签, 可以控制展示的位置, 比如以下让他靠右<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">align</span>=<span class="string">"right"</span> <span class="attr">src</span>=<span class="string">"https://github-readme-stats.vercel.app/api?username=WangDanPeng&amp;show_icons=true"</span>&gt;</span></span><br></pre></td></tr></table></figure><br>那么最终效果就如下了<br><img src="http://www.wangdanpeng.com/img/20201119190543-2.png" alt="效果图"><br>赞👍</p>
 
       
       <!-- reward -->
@@ -117,8 +119,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -126,7 +129,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li></ul>
 
 
     </footer>
@@ -162,9 +165,15 @@
   
   
 <div class="gitalk" id="gitalk-container"></div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
 <script type="text/javascript">
   var gitalk = new Gitalk({
     clientID: '4e3dce9d862c874f1e6a',
@@ -191,7 +200,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2017-2021
+        2017-2022
         王丹鹏
       </li>
       <li>
@@ -274,7 +283,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -320,8 +329,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -340,7 +353,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -361,7 +376,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -473,7 +490,9 @@
 
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

@@ -17,7 +17,9 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -34,7 +36,8 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20170219215026" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  <article id="post-20170219215026" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -65,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">515字</span>
+            <span class="post-count">531字</span>
         </span>
     </span>
 
@@ -103,7 +106,7 @@
 <p>定时任务的动态管理, 没有配置的Spring文件中<br>采用页面传值, 实现quartz定时任务的CRUD</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">schedule</span><span class="params">(String name, CronExpression cronExpression,String group)</span> <span class="keyword">throws</span> SchedulerException </span>&#123;  </span><br><span class="line">           </span><br><span class="line">        <span class="comment">//添加Job 给scheduler,允许 replace  </span></span><br><span class="line">           </span><br><span class="line">        jobDetail.setRequestsRecovery(<span class="keyword">true</span>);   </span><br><span class="line">        <span class="comment">//孤立线程 不再保存在DB中  </span></span><br><span class="line">        jobDetail.setDurability(<span class="keyword">false</span>);   </span><br><span class="line">        jobDetail.setName(name);   </span><br><span class="line">        logger.info(<span class="string">" is  durable:"</span> + jobDetail.isDurable());   </span><br><span class="line">        <span class="comment">//设置replace为true，相同名字的job存在，则替换  </span></span><br><span class="line">        scheduler.addJob(jobDetail, <span class="keyword">true</span>);   </span><br><span class="line">           </span><br><span class="line">        CronTrigger cronTrigger = <span class="keyword">new</span> CronTrigger(name, group, jobDetail.getName(), Scheduler.DEFAULT_GROUP);  </span><br><span class="line">        cronTrigger.setCronExpression(cronExpression);   </span><br><span class="line">        scheduler.scheduleJob(cronTrigger);   </span><br><span class="line">        scheduler.rescheduleJob(cronTrigger.getName(), cronTrigger.getGroup(), cronTrigger);  </span><br><span class="line">    &#125;   </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pauseTrigger</span><span class="params">(String triggerName, String group)</span> <span class="keyword">throws</span> SchedulerException </span>&#123;  </span><br><span class="line">        logger.info(<span class="string">"pause triggerName:"</span> + triggerName);   </span><br><span class="line">        scheduler.pauseTrigger(triggerName, group);   </span><br><span class="line">    &#125;   </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resumeTrigger</span><span class="params">(String triggerName, String group)</span> <span class="keyword">throws</span> SchedulerException </span>&#123;  </span><br><span class="line">        logger.info(<span class="string">"resume trigger:"</span> + triggerName + <span class="string">" group:"</span> + group);   </span><br><span class="line">        scheduler.resumeTrigger(triggerName, group);   </span><br><span class="line">    &#125;   </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeTrigdger</span><span class="params">(String triggerName, String group)</span> <span class="keyword">throws</span> SchedulerException </span>&#123;  </span><br><span class="line">        scheduler.pauseTrigger(triggerName, group);   </span><br><span class="line">        <span class="keyword">return</span> scheduler.unscheduleJob(triggerName, group);   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>quartz.properties设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">org.quartz.scheduler.instanceName = DefaultQuartzScheduler     </span><br><span class="line">org.quartz.scheduler.rmi.export = false    </span><br><span class="line">org.quartz.scheduler.rmi.proxy = false    </span><br><span class="line">org.quartz.scheduler.wrapJobExecutionInUserTransaction = false    </span><br><span class="line">    </span><br><span class="line">org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool     </span><br><span class="line">org.quartz.threadPool.threadCount = 10    </span><br><span class="line">org.quartz.threadPool.threadPriority = 5    </span><br><span class="line">org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread = true   </span><br><span class="line">    </span><br><span class="line">org.quartz.jobStore.misfireThreshold = 60000    </span><br><span class="line">    </span><br><span class="line">#org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore     </span><br><span class="line">    </span><br><span class="line">org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX     </span><br><span class="line">org.quartz.jobStore.driverDelegateClass=org.quartz.impl.jdbcjobstore.StdJDBCDelegate    </span><br><span class="line">org.quartz.jobStore.tablePrefix = QRTZ_       </span><br><span class="line">org.quartz.jobStore.isClustered = false       </span><br><span class="line">org.quartz.jobStore.maxMisfiresToHandleAtATime=1      </span><br><span class="line">#org.quartz.jobStore.txIsolationLevelReadCommitted = true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">org.quartz.scheduler.instanceName &#x3D; DefaultQuartzScheduler     </span><br><span class="line">org.quartz.scheduler.rmi.export &#x3D; false    </span><br><span class="line">org.quartz.scheduler.rmi.proxy &#x3D; false    </span><br><span class="line">org.quartz.scheduler.wrapJobExecutionInUserTransaction &#x3D; false    </span><br><span class="line">    </span><br><span class="line">org.quartz.threadPool.class &#x3D; org.quartz.simpl.SimpleThreadPool     </span><br><span class="line">org.quartz.threadPool.threadCount &#x3D; 10    </span><br><span class="line">org.quartz.threadPool.threadPriority &#x3D; 5    </span><br><span class="line">org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread &#x3D; true   </span><br><span class="line">    </span><br><span class="line">org.quartz.jobStore.misfireThreshold &#x3D; 60000    </span><br><span class="line">    </span><br><span class="line">#org.quartz.jobStore.class &#x3D; org.quartz.simpl.RAMJobStore     </span><br><span class="line">    </span><br><span class="line">org.quartz.jobStore.class &#x3D; org.quartz.impl.jdbcjobstore.JobStoreTX     </span><br><span class="line">org.quartz.jobStore.driverDelegateClass&#x3D;org.quartz.impl.jdbcjobstore.StdJDBCDelegate    </span><br><span class="line">org.quartz.jobStore.tablePrefix &#x3D; QRTZ_       </span><br><span class="line">org.quartz.jobStore.isClustered &#x3D; false       </span><br><span class="line">org.quartz.jobStore.maxMisfiresToHandleAtATime&#x3D;1      </span><br><span class="line">#org.quartz.jobStore.txIsolationLevelReadCommitted &#x3D; true</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->
@@ -121,8 +124,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -130,7 +134,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quartz/">Quartz</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quartz/" rel="tag">Quartz</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
 
 
     </footer>
@@ -166,9 +170,15 @@
   
   
 <div class="gitalk" id="gitalk-container"></div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
 <script type="text/javascript">
   var gitalk = new Gitalk({
     clientID: '4e3dce9d862c874f1e6a',
@@ -195,7 +205,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2017-2021
+        2017-2022
         王丹鹏
       </li>
       <li>
@@ -278,7 +288,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -324,8 +334,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -344,7 +358,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -365,7 +381,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -477,7 +495,9 @@
 
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

@@ -17,7 +17,9 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -34,7 +36,8 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Scala-抓取项目代码中全部代码注释" class="article article-type-post" itemscope="" itemprop="blogPost" data-scroll-reveal="">
+  <article id="post-Scala-抓取项目代码中全部代码注释" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -50,7 +53,7 @@
 
     
     <div class="article-meta">
-      <a href="/2019/05/13/Scala-抓取项目代码中全部代码注释/" class="article-date">
+      <a href="/2019/05/13/Scala-%E6%8A%93%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A/" class="article-date">
   <time datetime="2019-05-13T06:55:26.000Z" itemprop="datePublished">2019-05-13</time>
 </a>
       
@@ -65,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">248字</span>
+            <span class="post-count">262字</span>
         </span>
     </span>
 
@@ -99,7 +102,7 @@
       
       <p>日前某站代码泄露, 大佬们贴出很多代码中有趣的注释, 于是突发奇想, 写了一个没有用的小程序…</p>
 <p>(ps: 某站代码我没看, 你们可, 别瞎说…)</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.io.<span class="type">Source</span></span><br><span class="line"><span class="keyword">import</span> java.util.regex.<span class="type">Pattern</span></span><br><span class="line"><span class="keyword">import</span> java.io.&#123;<span class="type">File</span>, <span class="type">PrintWriter</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Bi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">getFile</span></span>(file:<span class="type">File</span>): <span class="type">Array</span>[<span class="type">File</span>] =&#123;</span><br><span class="line">    <span class="keyword">val</span> files = file.listFiles()</span><br><span class="line">                    .filter(! _.isDirectory)</span><br><span class="line">                    <span class="comment">// 指定要读取什么文件</span></span><br><span class="line">                    .filter(t =&gt; t.toString.endsWith(<span class="string">".go"</span>))</span><br><span class="line">    files ++ file.listFiles()</span><br><span class="line">                  .filter(f =&gt; f.isDirectory</span><br><span class="line">                    <span class="comment">// 指定排除掉什么文件夹</span></span><br><span class="line">                    &amp;&amp; f.getName != <span class="string">"vendor"</span>)</span><br><span class="line">                  .flatMap(getFile)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">check</span></span>(s: <span class="type">String</span>): <span class="type">Boolean</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> pattern = <span class="string">"[\u4e00-\u9fa5]+"</span></span><br><span class="line">    <span class="keyword">val</span> p = <span class="type">Pattern</span>.compile(pattern)</span><br><span class="line">    <span class="keyword">val</span> result = p.matcher(s)</span><br><span class="line">    <span class="keyword">if</span> (result.find()) <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> path = <span class="keyword">new</span> <span class="type">File</span>(<span class="string">"目标文件夹路径"</span>)</span><br><span class="line">    <span class="keyword">val</span> writer = <span class="keyword">new</span> <span class="type">PrintWriter</span>(<span class="keyword">new</span> <span class="type">File</span>(<span class="string">"输出文件路径"</span>))</span><br><span class="line"></span><br><span class="line">    getFile(path).foreach&#123; file =&gt;</span><br><span class="line">      <span class="keyword">var</span> flag = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> text=<span class="type">Source</span>.fromFile(file)</span><br><span class="line">      <span class="keyword">for</span>(line &lt;- text.getLines)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (line.trim.startsWith(<span class="string">"//"</span>) &amp;&amp; check(line)) &#123;</span><br><span class="line">          flag = <span class="literal">true</span></span><br><span class="line">          writer.println(<span class="string">s"-----<span class="subst">$line</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="comment">// 打印以上注释出自哪个文件</span></span><br><span class="line">        writer.println(file.getPath)</span><br><span class="line">      &#125;</span><br><span class="line">      text.close</span><br><span class="line">    &#125;</span><br><span class="line">    writer.close()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.io.<span class="type">Source</span></span><br><span class="line"><span class="keyword">import</span> java.util.regex.<span class="type">Pattern</span></span><br><span class="line"><span class="keyword">import</span> java.io.&#123;<span class="type">File</span>, <span class="type">PrintWriter</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Bi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">getFile</span></span>(file:<span class="type">File</span>): <span class="type">Array</span>[<span class="type">File</span>] =&#123;</span><br><span class="line">    <span class="keyword">val</span> files = file.listFiles()</span><br><span class="line">                    .filter(! _.isDirectory)</span><br><span class="line">                    <span class="comment">// 指定要读取什么文件</span></span><br><span class="line">                    .filter(t =&gt; t.toString.endsWith(<span class="string">&quot;.go&quot;</span>))</span><br><span class="line">    files ++ file.listFiles()</span><br><span class="line">                  .filter(f =&gt; f.isDirectory</span><br><span class="line">                    <span class="comment">// 指定排除掉什么文件夹</span></span><br><span class="line">                    &amp;&amp; f.getName != <span class="string">&quot;vendor&quot;</span>)</span><br><span class="line">                  .flatMap(getFile)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">check</span></span>(s: <span class="type">String</span>): <span class="type">Boolean</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> pattern = <span class="string">&quot;[\u4e00-\u9fa5]+&quot;</span></span><br><span class="line">    <span class="keyword">val</span> p = <span class="type">Pattern</span>.compile(pattern)</span><br><span class="line">    <span class="keyword">val</span> result = p.matcher(s)</span><br><span class="line">    <span class="keyword">if</span> (result.find()) <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="keyword">val</span> path = <span class="keyword">new</span> <span class="type">File</span>(<span class="string">&quot;目标文件夹路径&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> writer = <span class="keyword">new</span> <span class="type">PrintWriter</span>(<span class="keyword">new</span> <span class="type">File</span>(<span class="string">&quot;输出文件路径&quot;</span>))</span><br><span class="line"></span><br><span class="line">    getFile(path).foreach&#123; file =&gt;</span><br><span class="line">      <span class="keyword">var</span> flag = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">val</span> text=<span class="type">Source</span>.fromFile(file)</span><br><span class="line">      <span class="keyword">for</span>(line &lt;- text.getLines)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (line.trim.startsWith(<span class="string">&quot;//&quot;</span>) &amp;&amp; check(line)) &#123;</span><br><span class="line">          flag = <span class="literal">true</span></span><br><span class="line">          writer.println(<span class="string">s&quot;-----<span class="subst">$line</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="comment">// 打印以上注释出自哪个文件</span></span><br><span class="line">        writer.println(file.getPath)</span><br><span class="line">      &#125;</span><br><span class="line">      text.close</span><br><span class="line">    &#125;</span><br><span class="line">    writer.close()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->
@@ -117,8 +120,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -126,7 +130,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/" rel="tag">Scala</a></li></ul>
 
 
     </footer>
@@ -137,7 +141,7 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/05/14/工具-破解pdf密码/" class="article-nav-link">
+      <a href="/2019/05/14/%E5%B7%A5%E5%85%B7-%E7%A0%B4%E8%A7%A3pdf%E5%AF%86%E7%A0%81/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -147,7 +151,7 @@
       </a>
     
     
-      <a href="/2019/05/11/VS-Code-常用插件/" class="article-nav-link">
+      <a href="/2019/05/11/VS-Code-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">VS Code-常用插件</div>
       </a>
@@ -162,9 +166,15 @@
   
   
 <div class="gitalk" id="gitalk-container"></div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
 <script type="text/javascript">
   var gitalk = new Gitalk({
     clientID: '4e3dce9d862c874f1e6a',
@@ -191,7 +201,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2017-2021
+        2017-2022
         王丹鹏
       </li>
       <li>
@@ -274,7 +284,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -320,8 +330,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -340,7 +354,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -361,7 +377,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -473,7 +491,9 @@
 
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
