@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2022-02-09T07:38:21.709Z</updated>
+  <updated>2022-02-09T10:55:58.315Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown常用样式</title>
+    <link href="http://www.wangdanpeng.com/2022/02/09/20220209185324/"/>
+    <id>http://www.wangdanpeng.com/2022/02/09/20220209185324/</id>
+    <published>2022-02-09T10:53:24.000Z</published>
+    <updated>2022-02-09T10:55:58.315Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;可表示1-6级标题&quot;&gt;&lt;a href=&quot;#可表示1-6级标题&quot; class=&quot;headerlink&quot; title=&quot;# 可表示1-6级标题&quot;&gt;&lt;/a&gt;# 可表示1-6级标题&lt;/h1&gt;&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt; :
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://www.wangdanpeng.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="http://www.wangdanpeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络系列笔记(三) - 传输层</title>
@@ -571,37 +598,6 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="二叉树" scheme="http://www.wangdanpeng.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-红黑树</title>
-    <link href="http://www.wangdanpeng.com/2021/02/24/20210224155253/"/>
-    <id>http://www.wangdanpeng.com/2021/02/24/20210224155253/</id>
-    <published>2021-02-24T07:52:53.000Z</published>
-    <updated>2021-02-24T07:55:09.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;红黑树&quot;&gt;&lt;a href=&quot;#红黑树&quot; class=&quot;headerlink&quot; title=&quot;红黑树&quot;&gt;&lt;/a&gt;红黑树&lt;/h2&gt;&lt;p&gt;一般讲到平衡二叉查找树, 都会拿红黑树作为例子, 工程中, 很多用到平衡二叉查找树的地方都会用到红黑树&lt;br&gt;但凡用到动态插入,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="红黑树" scheme="http://www.wangdanpeng.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
     
   </entry>
   
