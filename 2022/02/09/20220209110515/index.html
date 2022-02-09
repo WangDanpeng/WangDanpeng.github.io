@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="热爱编程, 乐于分享, 主要还是记性不好, 把遇到的问题整理出来, 提醒自己也方便大家." />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    计算机网络系列笔记(二) - 网络应用层 |  Mr.Wang_Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Mr.Wang_Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-20220209110515" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机网络系列笔记(二) - 网络应用层
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2022/02/09/20220209110515/" class="article-date">
+  <time datetime="2022-02-09T03:05:15.000Z" itemprop="datePublished">2022-02-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.9k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="网络应用层"><a href="#网络应用层" class="headerlink" title="网络应用层"></a>网络应用层</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>网络应用体系结构: 客户机/服务器, P2P, 混合结构<br>网络应用的服务需求: 可靠性, 带宽, 时延<br>internet传输层服务模型: TCP, UDP<br>特定网络应用及协议: HTTP, SMTP, DNS, P2P<br>Socket编程, TCP, UDP</p>
+<h3 id="网络应用的基本原理"><a href="#网络应用的基本原理" class="headerlink" title="网络应用的基本原理"></a>网络应用的基本原理</h3><p>网络应用的体系结构有三种<br><strong>客户机/服务器结构(Client-Server, C/S)</strong>: 服务器特点, 7 &times; 24小时提供服务, 永久性访问地址, 利用大量服务器实现可扩展性, 客户机特点, 与服务器通信使用服务器提供的服务, 间歇性接入网络, 可能使用动态IP地址, 不会与其他客户机直接通信<br><strong>点对点结构(Peer-to-Peer, P2P)</strong>: 没有永远在线的服务器, 任意节点之间可直接通讯, 节点间歇性接入网络, 节点可能改变IP地址, 优点是高度可伸缩, 缺点是难于管理<br><strong>混合结构(Hybrid)</strong>: 例如Napster, 文件传输使用P2P结构, 文件搜索采用C/S结构</p>
+<h4 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h4><p>不同主机上的进程间通信需要消息交换, 发起通信的进程叫客户机进程, 等待通信请求的进程叫服务器进程<br>套接字: Socket, 进程间通信利用socket发送/接收消息实现, 传输基础设施向进程提供API<br>进程的标识符: IP地址+端口号<br>应用层协议: 网络应用需遵守应用层协议, 分为公开协议, 由RFC(Request For Comments)定义和私有协议<br>应用层协议内容, 消息的类型(请求消息, 相应消息), 消息的语法格式(包含哪些字段), 字段的语义(字段中信息的含义), 规则(进程何时发送/相应消息, 进程如何发送/相应消息)<br>网络应用对传输服务的需求, 可靠性(网络电话能容忍一定数据丢失, 文件传输不行), 延迟(网络游戏要求低延迟), 带宽(网络视频对带宽有最低要求, email则没有)<br>Internet提供的传输服务对比<br>TCP服务, 面向连接, 客户机/服务器进程间需要建立连接, 可靠的传输, 流量控制, 发送方不会发送速度过快而超过接收方处理能力, 拥塞控制, 当网络负载过重时能够限制发送方的发送速度, 不提供延迟保障, 不提供最小带宽保障<br>UDP服务, 无连接, 不可靠数据传输, 不提供可靠性保障, 流量控制, 拥塞控制, 延迟保障, 带宽保障</p>
+<h3 id="WEB应用"><a href="#WEB应用" class="headerlink" title="WEB应用"></a>WEB应用</h3><p>对象的寻址: URL(Uniform Resoure Locator)统一资源定位器<br><strong>http协议概述</strong><br>万维网遵循的协议, 超文本传输协议(HyperTexi Transfer Protocol), 使用TCP传输服务, 无状态, 服务器不维护任何有关客户端过去所发请求的信息<br>http有两种连接方式, 非持久性连接, 每个TCP连接最多允许传输一个对象<br>持久性连接, 每个TCP连接允许传输多个对象<br><strong>响应时间</strong><br>RTT(Round Trip Time), 从客户端发送一个很小的数据包到服务器并返回所经历的时间<br>响应时间, 发起, 建立TCP连接, 需要1个RTT, 发送http请求消息到http响应消息的前几个字节到达, 需要1个RTT, 再加响应中所含文件的传输时间<br><strong>cookie技术</strong><br>为了辨别用户身份, 进行session跟踪而储存在用户本地终端上的数据, 通常经过加密<br>cookie的组件, 响应消息的cookie头部行, 请求消息的头部行, 客户端主机上的cookie文件, web服务器端的后台数据库<br>可用于, 身份认证, 购物车, 推荐等<br><strong>web缓存/代理服务器技术</strong><br>在不访问服务器的前提下满足客户端的http请求<br>目的, 缩短客户请求的相应时间, 减少机构/组织的流量, 在大范围内实现有效的内容分发<br>缓存既充当客户端也充当服务器</p>
+<h3 id="Email应用"><a href="#Email应用" class="headerlink" title="Email应用"></a>Email应用</h3><p>构成组件: 邮件客户端, 邮件服务器, SMTP协议<br>使用TCP进行email消息的可靠传输, 命令/响应交互模式, 使用持久性连接<br>邮件访问协议, POP(Post Office Protocol), IMAP(Internet Mail Access Protocol), HTTP<br>POP3是无状态的, IMAP支持跨会话的用户状态</p>
+<h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h3><p>多层命名服务器构成的分布式数据库, 应用层协议, 完成名字的解析, Internet核心功能<br><strong>DNS服务作用</strong>: 域名向IP地址的翻译, 主机别名, 邮件服务器别名, 负载均衡<br>本地域名解析服务器 -&gt; 根域名服务器 -&gt;权威域名服务器 -&gt; 本地域名服务器<br><strong>全球有13个根域名服务器</strong><br>顶级域名服务器(TLD, top-level domain): 负责com,org,net,edu等顶级域名和国家顶级域名,如cn<br>权威域名服务器: 组织的域名解析服务器, 提供组织内部服务器的解析服务<br>本地域名解析服务器: 不严格属于层级体系, 每个ISP有一个本地域名服务器, 默认的, 当主机进行DNS查询时, 查询被发送到本地域名服务器, 作为代理将查询层级式转发给域名解析服务器系统<br>两种查询方式, 迭代查询, 递归查询<br>DNS记录是一个四元组, 资源记录(RR, resource records), RR format: (name, value, type, ttl)<br>type=A name是主机域名, value是ip地址<br>type=NS name是域, value是该域权威域名解析服务器的主机域名<br>type=CNAME name是某一真实域名的别名, value是真实域名<br>type=MX value是name对应的邮件服务器<br>依赖DNS协议</p>
+<h3 id="P2P"><a href="#P2P" class="headerlink" title="P2P"></a>P2P</h3><p>P2P架构, 没有服务器, 任意端系统之间直接通信, 节点阶段性接入互联网, 节点可能更换ip地址<br>文件分发比C/S模式效率高<br>文件分发, BitTorrent协议, torrent是交换同一个文件的文件块的节点组, tracker跟踪参与torrent的节点<br>文件被划分为256KB的chunk, 节点加入torrent, 向tracker注册以获得节点清单, 与某些节点建立连接, 下载的同时, 节点需要向其他节点上传chunk<br>获取chunk流程, 给定任一时刻, 不同节点持有文件的不同chunk集合, 当前节点定期查询每个邻居所拥有的chunk列表, 节点发送请求, 请求获取缺失的chunk, 稀缺优先<br>发送chunk流程, tit-for-tat, 谁给我我给谁, 向正在给自己发送chunk且速率最快的四个邻居发送chunk, 每10s重新评估top4, 每30s随机选择一个其他节点<br>P2P索引方式, 集中式索引, 单点失效问题, 性能瓶颈, 版权问题<br>洪泛式查询, 完全分布式架构, 每个节点只对它共享的文件进行索引, 查询消息通过已有TCP连接发送, 节点继续转发查询, 查询像洪水泛滥<br>层次式覆盖网络, 集中式和洪泛式的结合, 节点和超级节点维持TCP连接, 超级节点之间维持TCP连接, 超级节点负责跟踪子节点内容, 查询到后节点直接直接通信, 不经过超级节点<br>很常用的设计思路</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/02/08/20220208185951/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机网络系列笔记(一)-概述</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '4e3dce9d862c874f1e6a',
+    clientSecret: 'e36d977c68e245be716b31fdde5d273c83f38775',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2017-2022
+        王丹鹏
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <!--<i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>-->
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279515725'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279515725%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</span>
+
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">冀ICP备15029707号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/method-draw-image.svg" alt="Mr.Wang_Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/z.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/w.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['', '', '努力, 奋斗'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: false,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":400,"hOffset":100,"vOffset":-40},"mobile":{"show":true,"scale":0.5},"react":{"opacity":1},"log":false});</script></body>
+
+</html>
