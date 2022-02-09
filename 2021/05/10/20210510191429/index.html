@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">638字</span>
+            <span class="post-count">650字</span>
         </span>
     </span>
 
@@ -102,16 +102,39 @@
       
 
       
-      <p>大部分问题是jar包版本冲突, 导致各种类找不到<br>根本问题是kylin4.0测试版, 依赖spark2.4.6和cdh6.3.2<br>spark2.4.6依赖hadoop2.7和hive1.x<br>cdh6.3.2自带hadoop3.0和hive2.x<br>或者可以试试EMR5.31, 自带spark2.4.6, 可能冲突小一些</p>
-<h3 id="NoSuchFieldError-INSTANCE"><a href="#NoSuchFieldError-INSTANCE" class="headerlink" title="NoSuchFieldError: INSTANCE"></a>NoSuchFieldError: INSTANCE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.NoSuchFieldError: INSTANCE</span><br><span class="line">- java.lang.NoClassDefFoundError: Could not initialize class org.apache.http.conn.ssl.SSLConnectionSocketFactory</span><br></pre></td></tr></table></figure>
-<p>http包冲突, INSTANCE字段在低版本包不存在<br>cdh6.3.2和spark2.4.6使用的都是httpcore-4.4.x以上版本, kylin4.0启动web页面的tomcat中的kylin.war包里打着一个httpcore-4.2.2.jar<br><strong>解决办法:</strong> 解压war包替换httpcore包版本, 重新打war包放回tomcat里</p>
-<h3 id="Spark相关ClassNotFound"><a href="#Spark相关ClassNotFound" class="headerlink" title="Spark相关ClassNotFound"></a>Spark相关ClassNotFound</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.ClassNotFoundException: parquet.DefaultSource</span><br><span class="line">- java.lang.ClassNotFoundException: Failed to find data source: parquet.</span><br><span class="line">- yarn找不到</span><br></pre></td></tr></table></figure>
-<p>kylin目录下的spark相关jar包没被加载进classpath<br><strong>解决办法:</strong> 修改kylin.sh启动脚本, 手动把spark依赖加进去</p>
-<h3 id="7337端口拒接访问"><a href="#7337端口拒接访问" class="headerlink" title="7337端口拒接访问"></a>7337端口拒接访问</h3><p>kylin默认启动了spark的shuffle service<br><strong>解决办法:</strong> 要么去查看yarn的7337端口是不是没起来, 要么直接修改kylin配置, 关闭shuffle service</p>
-<h3 id="java-lang-NoSuchFieldError-HIVE-STATS-JDBC-TIMEOUT"><a href="#java-lang-NoSuchFieldError-HIVE-STATS-JDBC-TIMEOUT" class="headerlink" title="java.lang.NoSuchFieldError: HIVE_STATS_JDBC_TIMEOUT"></a>java.lang.NoSuchFieldError: HIVE_STATS_JDBC_TIMEOUT</h3><p>hive版本问题, 该字段在hive1.x中存在, hive2.x被删除<br>spark2.4.6依赖的hive1.x, cdh6.3.2依赖的hive2.x<br>网上有各种办法, 试了对我都不起作用, 下面是我的解决办法<br><strong>解决办法:</strong> 下载spark2.4.6源码, 删除源码中<strong>HIVE_STATS_JDBC_TIMEOUT</strong>和<strong>HIVE_STATS_RETRIES_WAIT</strong>字段, 然后重新编译spark, 使用编译好的spark-hive包替换spark/jars中的spark-hive包<br>理论依据: <a href="https://issues.apache.org/jira/browse/SPARK-18112" target="_blank" rel="noopener">https://issues.apache.org/jira/browse/SPARK-18112</a><br>编译命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;build&#x2F;mvn -Pyarn -Phadoop-2.7 -Dhadoop.version&#x3D;2.7.5 -Phive -Phive-thriftserver -DskipTests clean package</span><br></pre></td></tr></table></figure></p>
-<h3 id="Class-org-apache-hive-hcatalog-data-JsonSerDe-not-found"><a href="#Class-org-apache-hive-hcatalog-data-JsonSerDe-not-found" class="headerlink" title="Class org.apache.hive.hcatalog.data.JsonSerDe not found"></a>Class org.apache.hive.hcatalog.data.JsonSerDe not found</h3><p>创建json格式的外部表报的相关错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- Class org.apache.hive.hcatalog.data.JsonSerDe not found</span><br><span class="line">- java.lang.ClassNotFoundException: org.apache.hadoop.hive.serde2.Deserializer</span><br><span class="line">- java.lang.ClassCastException: org.apache.hive.hcatalog.data.JsonSerDe cannot be cast to org.apache.hadoop.hive.serde2.Deserializer</span><br><span class="line">- cannot assign instance of scala.collection.immutable.List$SerializationProxy to field org.apache.spark.rdd.RDD.org$apache$spark$rdd$RDD$$dependencies_ of type scala.collection.Seq in instance of org.apache.spark.rdd.MapPartitionsRDD</span><br></pre></td></tr></table></figure><br><strong>解决办法:</strong> 一开始hive-hcatalog-core包没找到, 加到cdh的hive目录下,  后续还是有问题, 更换了json表的序列化类, 换成了org.apache.hadoop.hive.serde2.JsonSerDe</p>
-<h3 id="未解决"><a href="#未解决" class="headerlink" title="未解决"></a>未解决</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- Error occurred when check resource. Ignore it and try to submit this job.</span><br><span class="line">- java.lang.UnsupportedOperationException: empty.max</span><br></pre></td></tr></table></figure>
-<h3 id="我忘了"><a href="#我忘了" class="headerlink" title="我忘了"></a>我忘了</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.NoSuchMethodException: org.apache.hadoop.hive.ql.metadata.Hive.alterTable(java.lang.String, org.apache.hadoop.hive.ql.metadata.Table)</span><br><span class="line">- java.lang.NoSuchMethodError: org.apache.parquet.bytes.BytesInput.toInputStream()Lorg&#x2F;apache&#x2F;parquet&#x2F;bytes&#x2F;ByteBufferInputStream;</span><br><span class="line">- java.lang.ClassCastException: org.apache.hadoop.hive.ql.metadata.Partition cannot be cast to org.apache.hadoop.hive.ql.metadata.PartitiontectUtils$$anonfun$getPaths$1.apply(ResourceDetectUtils.scala:43)</span><br></pre></td></tr></table></figure>
+      <p>大部分问题是jar包版本冲突, 导致各种类找不到<br>
+根本问题是kylin4.0测试版, 依赖spark2.4.6和cdh6.3.2<br>
+spark2.4.6依赖hadoop2.7和hive1.x<br>
+cdh6.3.2自带hadoop3.0和hive2.x<br>
+或者可以试试EMR5.31, 自带spark2.4.6, 可能冲突小一些</p>
+<h3 id="NoSuchFieldError-INSTANCE">NoSuchFieldError: INSTANCE</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.NoSuchFieldError: INSTANCE</span><br><span class="line">- java.lang.NoClassDefFoundError: Could not initialize class org.apache.http.conn.ssl.SSLConnectionSocketFactory</span><br></pre></td></tr></table></figure>
+<p>http包冲突, INSTANCE字段在低版本包不存在<br>
+cdh6.3.2和spark2.4.6使用的都是httpcore-4.4.x以上版本, kylin4.0启动web页面的tomcat中的kylin.war包里打着一个httpcore-4.2.2.jar<br>
+<strong>解决办法:</strong> 解压war包替换httpcore包版本, 重新打war包放回tomcat里</p>
+<h3 id="Spark相关ClassNotFound">Spark相关ClassNotFound</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.ClassNotFoundException: parquet.DefaultSource</span><br><span class="line">- java.lang.ClassNotFoundException: Failed to find data source: parquet.</span><br><span class="line">- yarn找不到</span><br></pre></td></tr></table></figure>
+<p>kylin目录下的spark相关jar包没被加载进classpath<br>
+<strong>解决办法:</strong> 修改kylin.sh启动脚本, 手动把spark依赖加进去</p>
+<h3 id="7337端口拒接访问">7337端口拒接访问</h3>
+<p>kylin默认启动了spark的shuffle service<br>
+<strong>解决办法:</strong> 要么去查看yarn的7337端口是不是没起来, 要么直接修改kylin配置, 关闭shuffle service</p>
+<h3 id="java-lang-NoSuchFieldError-HIVE-STATS-JDBC-TIMEOUT">java.lang.NoSuchFieldError: HIVE_STATS_JDBC_TIMEOUT</h3>
+<p>hive版本问题, 该字段在hive1.x中存在, hive2.x被删除<br>
+spark2.4.6依赖的hive1.x, cdh6.3.2依赖的hive2.x<br>
+网上有各种办法, 试了对我都不起作用, 下面是我的解决办法<br>
+<strong>解决办法:</strong> 下载spark2.4.6源码, 删除源码中<strong>HIVE_STATS_JDBC_TIMEOUT</strong>和<strong>HIVE_STATS_RETRIES_WAIT</strong>字段, 然后重新编译spark, 使用编译好的spark-hive包替换spark/jars中的spark-hive包<br>
+理论依据: <a href="https://issues.apache.org/jira/browse/SPARK-18112" target="_blank" rel="noopener">https://issues.apache.org/jira/browse/SPARK-18112</a><br>
+编译命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;build&#x2F;mvn -Pyarn -Phadoop-2.7 -Dhadoop.version&#x3D;2.7.5 -Phive -Phive-thriftserver -DskipTests clean package</span><br></pre></td></tr></table></figure>
+<h3 id="Class-org-apache-hive-hcatalog-data-JsonSerDe-not-found">Class org.apache.hive.hcatalog.data.JsonSerDe not found</h3>
+<p>创建json格式的外部表报的相关错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- Class org.apache.hive.hcatalog.data.JsonSerDe not found</span><br><span class="line">- java.lang.ClassNotFoundException: org.apache.hadoop.hive.serde2.Deserializer</span><br><span class="line">- java.lang.ClassCastException: org.apache.hive.hcatalog.data.JsonSerDe cannot be cast to org.apache.hadoop.hive.serde2.Deserializer</span><br><span class="line">- cannot assign instance of scala.collection.immutable.List$SerializationProxy to field org.apache.spark.rdd.RDD.org$apache$spark$rdd$RDD$$dependencies_ of type scala.collection.Seq in instance of org.apache.spark.rdd.MapPartitionsRDD</span><br></pre></td></tr></table></figure>
+<p><strong>解决办法:</strong> 一开始hive-hcatalog-core包没找到, 加到cdh的hive目录下,  后续还是有问题, 更换了json表的序列化类, 换成了org.apache.hadoop.hive.serde2.JsonSerDe</p>
+<h3 id="未解决">未解决</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- Error occurred when check resource. Ignore it and try to submit this job.</span><br><span class="line">- java.lang.UnsupportedOperationException: empty.max</span><br></pre></td></tr></table></figure>
+<h3 id="我忘了">我忘了</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- java.lang.NoSuchMethodException: org.apache.hadoop.hive.ql.metadata.Hive.alterTable(java.lang.String, org.apache.hadoop.hive.ql.metadata.Table)</span><br><span class="line">- java.lang.NoSuchMethodError: org.apache.parquet.bytes.BytesInput.toInputStream()Lorg&#x2F;apache&#x2F;parquet&#x2F;bytes&#x2F;ByteBufferInputStream;</span><br><span class="line">- java.lang.ClassCastException: org.apache.hadoop.hive.ql.metadata.Partition cannot be cast to org.apache.hadoop.hive.ql.metadata.PartitiontectUtils$$anonfun$getPaths$1.apply(ResourceDetectUtils.scala:43)</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->

@@ -102,11 +102,13 @@
       
       <p>之前有一次面试遇到一个问题(拿我的博客举例):</p>
 <blockquote>
-<p><a href="http://www.wangdanpeng.com/about和www.wangdanpeng.com/about/哪种访问方式速度更快">www.wangdanpeng.com/about和www.wangdanpeng.com/about/哪种访问方式速度更快</a>?</p>
+<p><a href="http://www.wangdanpeng.com/about%E5%92%8Cwww.wangdanpeng.com/about/%E5%93%AA%E7%A7%8D%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F%E9%80%9F%E5%BA%A6%E6%9B%B4%E5%BF%AB">www.wangdanpeng.com/about和www.wangdanpeng.com/about/哪种访问方式速度更快</a>?</p>
 </blockquote>
 <p>之前也没考虑过这个, 遇到这个题还真是一脸懵逼,事后就在CSDN发了篇帖子, 没想到还被上了推荐,真是受宠若惊.<a href="http://bbs.csdn.net/topics/391942437" target="_blank" rel="noopener">一个高深莫测的面试题</a></p>
-<p>在上面访问的url中:<br>当请求第一个不带斜杠的url时, 服务器会优先查找根目录下有没有叫about的文件, 没有文件再把about当做目录处理, 再去加载about目录下的默认首页;<br>但是当请求第二个带有斜杠的url则直接把about当做目录处理, 理论上会比第一种快那么一点点.</p>
-<p>拿百度来说, 不管请求<a href="http://www.baidu.com还是www.baidu.com/从控制台看到的request" target="_blank" rel="noopener">www.baidu.com还是www.baidu.com/从控制台看到的request</a> url都是<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a>, 所以在自己做开发的时候尽量都在url结尾带上斜杠,这也算是一种SEO优化.</p>
+<p>在上面访问的url中:<br>
+当请求第一个不带斜杠的url时, 服务器会优先查找根目录下有没有叫about的文件, 没有文件再把about当做目录处理, 再去加载about目录下的默认首页;<br>
+但是当请求第二个带有斜杠的url则直接把about当做目录处理, 理论上会比第一种快那么一点点.</p>
+<p>拿百度来说, <a href="http://xn--www-628dz49ktjtoe0a.baidu.xn--comwww-k02mh66y.baidu.com/%E4%BB%8E%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9C%8B%E5%88%B0%E7%9A%84request" target="_blank" rel="noopener">不管请求www.baidu.com还是www.baidu.com/从控制台看到的request</a> url都是https://www.baidu.com/, 所以在自己做开发的时候尽量都在url结尾带上斜杠,这也算是一种SEO优化.</p>
 
       
       <!-- reward -->

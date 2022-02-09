@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">454字</span>
+            <span class="post-count">460字</span>
         </span>
     </span>
 
@@ -103,13 +103,31 @@
 
       
       <p>我是用idea + spark-shell断点调试spark源码的, 可以一行代码一行代码的追执行过程, 很是方便, 学习Spark源码必备.</p>
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>首先肯定是要把Spark的源码准备好, 并且导入到idea里, 从哪下Spark源码和怎么导入到idea里我就不详细解释了.<br>另外启动Spark需要Hadoop和Hive的支持, 首先要把这两个服务搭好启动起来, 关于这部分本篇文章暂且不讲, 请自行百度.</p>
-<h4 id="设置idea的debug配置"><a href="#设置idea的debug配置" class="headerlink" title="设置idea的debug配置"></a>设置idea的debug配置</h4><p><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%281%29.png" alt="此处输入图片的描述"><br>点击Edit Configuration去添加调试.<br><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%94%B5%E8%B0%83%E8%AF%95%282%29.png" alt="此处输入图片的描述"><br>然后点击左上角的加号, 在列表中选择Remote选项<br><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%283%29.png" alt="此处输入图片的描述"><br>创建出来的这些东西什么设置都不用动, 可以把Name改一个自己好记的, 比如我的local Spark, 划红线的部分就是一会要使用的.</p>
-<h4 id="启动spark-shell"><a href="#启动spark-shell" class="headerlink" title="启动spark-shell"></a>启动spark-shell</h4><p>进入Spark的bin目录下执行以下命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./spark-shell -h</span><br></pre></td></tr></table></figure><br>可以看到spark-shell启动时可以指定个各种参数, 其中我们要用到的有以下两个:</p>
+<h4 id="准备工作-2">准备工作</h4>
+<p>首先肯定是要把Spark的源码准备好, 并且导入到idea里, 从哪下Spark源码和怎么导入到idea里我就不详细解释了.<br>
+另外启动Spark需要Hadoop和Hive的支持, 首先要把这两个服务搭好启动起来, 关于这部分本篇文章暂且不讲, 请自行百度.</p>
+<h4 id="设置idea的debug配置">设置idea的debug配置</h4>
+<p><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%281%29.png" alt="此处输入图片的描述"><br>
+点击Edit Configuration去添加调试.<br>
+<img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%94%B5%E8%B0%83%E8%AF%95%282%29.png" alt="此处输入图片的描述"><br>
+然后点击左上角的加号, 在列表中选择Remote选项<br>
+<img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%283%29.png" alt="此处输入图片的描述"><br>
+创建出来的这些东西什么设置都不用动, 可以把Name改一个自己好记的, 比如我的local Spark, 划红线的部分就是一会要使用的.</p>
+<h4 id="启动spark-shell">启动spark-shell</h4>
+<p>进入Spark的bin目录下执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./spark-shell -h</span><br></pre></td></tr></table></figure>
+<p>可以看到spark-shell启动时可以指定个各种参数, 其中我们要用到的有以下两个:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--master MASTER_URL         spark://host:port, mesos://host:port, yarn, or local.</span><br><span class="line"></span><br><span class="line">--driver-java-options       Extra Java options to pass to the driver.</span><br></pre></td></tr></table></figure>
-<p>master参数, 指定启动方式, 我们起本地模式, 所以用local.<br>driver-java-options参数, driver端的一些java参数, 就是刚才划红线的部分.</p>
-<p>那么启动命令拼起来就是这样的:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./spark-shell --master local --driver-java-options -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</span><br></pre></td></tr></table></figure><br>敲回车启动以后可以看到这么一句话<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Listening for transport dt_socket at address: 5005</span><br></pre></td></tr></table></figure><br>表示已经开始监听5005端口, 接下来去启动idea.</p>
-<h4 id="启动idea"><a href="#启动idea" class="headerlink" title="启动idea"></a>启动idea</h4><p><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%284%29.png" alt="此处输入图片的描述"><br>再回到图一的位置, 选择上刚才创建的local Spark, 然后点击旁边的debug按钮, 就正式进入debug模式了, 现在就可以随心所欲的打断点调试Spark了.</p>
+<p>master参数, 指定启动方式, 我们起本地模式, 所以用local.<br>
+driver-java-options参数, driver端的一些java参数, 就是刚才划红线的部分.</p>
+<p>那么启动命令拼起来就是这样的:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./spark-shell --master local --driver-java-options -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</span><br></pre></td></tr></table></figure>
+<p>敲回车启动以后可以看到这么一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Listening for transport dt_socket at address: 5005</span><br></pre></td></tr></table></figure>
+<p>表示已经开始监听5005端口, 接下来去启动idea.</p>
+<h4 id="启动idea">启动idea</h4>
+<p><img src="http://www.wangdanpeng.com/img/Spark-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%284%29.png" alt="此处输入图片的描述"><br>
+再回到图一的位置, 选择上刚才创建的local Spark, 然后点击旁边的debug按钮, 就正式进入debug模式了, 现在就可以随心所欲的打断点调试Spark了.</p>
 
       
       <!-- reward -->

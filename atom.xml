@@ -29,7 +29,11 @@
       
         
         
-          &lt;h1 id=&quot;可表示1-6级标题&quot;&gt;&lt;a href=&quot;#可表示1-6级标题&quot; class=&quot;headerlink&quot; title=&quot;# 可表示1-6级标题&quot;&gt;&lt;/a&gt;# 可表示1-6级标题&lt;/h1&gt;&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt; :
+          &lt;h1&gt;# 可表示1-6级标题&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;斜体&lt;/em&gt; : *斜体*&lt;br&gt;
+&lt;strong&gt;粗体&lt;/strong&gt; : **粗体**&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;粗体加斜体&lt;/strong&gt;&lt;/em&gt; : ***粗体***&lt;/p&gt;
+&lt;p&gt;: camel :
         
       
     
@@ -56,7 +60,10 @@
       
         
         
-          &lt;h2 id=&quot;传输层&quot;&gt;&lt;a href=&quot;#传输层&quot; class=&quot;headerlink&quot; title=&quot;传输层&quot;&gt;&lt;/a&gt;传输层&lt;/h2&gt;&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;传输层&quot;&gt;传输层&lt;/h2&gt;
+&lt;h3 id=&quot;概述-2&quot;&gt;概述&lt;/h3&gt;
+&lt;p&gt;传输层的基本理论和基本机制: 复用/分用 , 可靠数据传输机制, 流量控制机制, 拥塞控制机制&lt;br&gt;
+掌握Internet的传输层协议: UDP, TCP,
         
       
     
@@ -87,7 +94,11 @@
       
         
         
-          &lt;h2 id=&quot;网络应用层&quot;&gt;&lt;a href=&quot;#网络应用层&quot; class=&quot;headerlink&quot; title=&quot;网络应用层&quot;&gt;&lt;/a&gt;网络应用层&lt;/h2&gt;&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;网络应用层&quot;&gt;网络应用层&lt;/h2&gt;
+&lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt;
+&lt;p&gt;网络应用体系结构: 客户机/服务器, P2P, 混合结构&lt;br&gt;
+网络应用的服务需求: 可靠性, 带宽, 时延&lt;br&gt;
+internet传输层服务模型: TCP,
         
       
     
@@ -114,7 +125,10 @@
       
         
         
-          &lt;h2 id=&quot;计算机网络概述&quot;&gt;&lt;a href=&quot;#计算机网络概述&quot; class=&quot;headerlink&quot; title=&quot;计算机网络概述&quot;&gt;&lt;/a&gt;计算机网络概述&lt;/h2&gt;&lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;计算机网络概述&quot;&gt;计算机网络概述&lt;/h2&gt;
+&lt;h3 id=&quot;基本概念&quot;&gt;基本概念&lt;/h3&gt;
+&lt;h4 id=&quot;计算机网络&quot;&gt;计算机网络&lt;/h4&gt;
+&lt;p&gt;计算机网络 = 通信技术 + 计算机技术, 计算机网络是通信技术与计算机技术紧密结合的产物,
         
       
     
@@ -124,9 +138,9 @@
       <category term="网络" scheme="http://www.wangdanpeng.com/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="计算机网络" scheme="http://www.wangdanpeng.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
       <category term="网络" scheme="http://www.wangdanpeng.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="计算机网络" scheme="http://www.wangdanpeng.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
       <category term="协议" scheme="http://www.wangdanpeng.com/tags/%E5%8D%8F%E8%AE%AE/"/>
     
@@ -145,7 +159,11 @@
       
         
         
-          &lt;h2 id=&quot;I-O系统&quot;&gt;&lt;a href=&quot;#I-O系统&quot; class=&quot;headerlink&quot; title=&quot;I/O系统&quot;&gt;&lt;/a&gt;I/O系统&lt;/h2&gt;&lt;h3 id=&quot;I-O特点&quot;&gt;&lt;a href=&quot;#I-O特点&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;I-O系统&quot;&gt;I/O系统&lt;/h2&gt;
+&lt;h3 id=&quot;I-O特点&quot;&gt;I/O特点&lt;/h3&gt;
+&lt;p&gt;三种常见设备接口类型&lt;br&gt;
+字符设备: 以字节为单位顺序访问, 通常使用文件访问接口和语义, 例如键盘鼠标&lt;br&gt;
+块设备: 均匀的数据块访问,
         
       
     
@@ -174,7 +192,9 @@
       
         
         
-          &lt;h2 id=&quot;文件系统&quot;&gt;&lt;a href=&quot;#文件系统&quot; class=&quot;headerlink&quot; title=&quot;文件系统&quot;&gt;&lt;/a&gt;文件系统&lt;/h2&gt;&lt;h3 id=&quot;文件系统的概念&quot;&gt;&lt;a href=&quot;#文件系统的概念&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;文件系统&quot;&gt;文件系统&lt;/h2&gt;
+&lt;h3 id=&quot;文件系统的概念&quot;&gt;文件系统的概念&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;文件系统&lt;/strong&gt;: 是操作系统中管理持久性数据的子系统, 提供数据存储和访问功能, 组织, 检索,
         
       
     
@@ -201,7 +221,10 @@
       
         
         
-          &lt;h2 id=&quot;死锁和进程通信&quot;&gt;&lt;a href=&quot;#死锁和进程通信&quot; class=&quot;headerlink&quot; title=&quot;死锁和进程通信&quot;&gt;&lt;/a&gt;死锁和进程通信&lt;/h2&gt;&lt;h3 id=&quot;死锁&quot;&gt;&lt;a href=&quot;#死锁&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;死锁和进程通信&quot;&gt;死锁和进程通信&lt;/h2&gt;
+&lt;h3 id=&quot;死锁&quot;&gt;死锁&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;死锁&lt;/strong&gt;: 是由于竞争资源或者通信关系, 两个或更多线程在执行中出现, 永远相互等待只能由其他进程引发的事件&lt;br&gt;
+进程访问资源的流程:
         
       
     
@@ -230,7 +253,10 @@
       
         
         
-          &lt;h2 id=&quot;同步互斥&quot;&gt;&lt;a href=&quot;#同步互斥&quot; class=&quot;headerlink&quot; title=&quot;同步互斥&quot;&gt;&lt;/a&gt;同步互斥&lt;/h2&gt;&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;同步互斥&quot;&gt;同步互斥&lt;/h2&gt;
+&lt;h3 id=&quot;背景&quot;&gt;背景&lt;/h3&gt;
+&lt;p&gt;并发进程在多个进程间有资源共享, 导致执行过程是不确定性和不可重现的, 程序错误可能是间歇性发生&lt;br&gt;
+&lt;strong&gt;原子操作&lt;/strong&gt;:
         
       
     
@@ -259,7 +285,10 @@
       
         
         
-          &lt;h2 id=&quot;进程和线程&quot;&gt;&lt;a href=&quot;#进程和线程&quot; class=&quot;headerlink&quot; title=&quot;进程和线程&quot;&gt;&lt;/a&gt;进程和线程&lt;/h2&gt;&lt;h3 id=&quot;进程&quot;&gt;&lt;a href=&quot;#进程&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;进程和线程&quot;&gt;进程和线程&lt;/h2&gt;
+&lt;h3 id=&quot;进程&quot;&gt;进程&lt;/h3&gt;
+&lt;p&gt;进程是指一个具有一定独立功能的程序在一个数据集合上的一次动态执行过程&lt;br&gt;
+进程包含了正在运行的一个程序的所有状态信息, 代码, 数据, 状态寄存器, 通用寄存器,
         
       
     
@@ -286,7 +315,10 @@
       
         
         
-          &lt;h2 id=&quot;虚拟存储&quot;&gt;&lt;a href=&quot;#虚拟存储&quot; class=&quot;headerlink&quot; title=&quot;虚拟存储&quot;&gt;&lt;/a&gt;虚拟存储&lt;/h2&gt;&lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;虚拟存储&quot;&gt;虚拟存储&lt;/h2&gt;
+&lt;h3 id=&quot;需求背景&quot;&gt;需求背景&lt;/h3&gt;
+&lt;p&gt;存储器的层次结构: 寄存器, 高速缓存, 内存, 磁盘, 磁带, 速度依次降低且差距巨大&lt;br&gt;
+虚拟存储目标是解决内存不够用问题, 在有限容量的内存中,
         
       
     
@@ -317,7 +349,10 @@
       
         
         
-          &lt;h2 id=&quot;存储管理&quot;&gt;&lt;a href=&quot;#存储管理&quot; class=&quot;headerlink&quot; title=&quot;存储管理&quot;&gt;&lt;/a&gt;存储管理&lt;/h2&gt;&lt;h3 id=&quot;计算机体系结构和内存层次&quot;&gt;&lt;a href=&quot;#计算机体系结构和内存层次&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;存储管理&quot;&gt;存储管理&lt;/h2&gt;
+&lt;h3 id=&quot;计算机体系结构和内存层次&quot;&gt;计算机体系结构和内存层次&lt;/h3&gt;
+&lt;p&gt;内存层次: CPU有高速缓存, 未命中查内存, 内存没有查外存, 访问速度差别很大&lt;br&gt;
+内存管理目标: 抽象(逻辑地址空间),
         
       
     
@@ -344,7 +379,10 @@
       
         
         
-          &lt;h2 id=&quot;操作系统概述&quot;&gt;&lt;a href=&quot;#操作系统概述&quot; class=&quot;headerlink&quot; title=&quot;操作系统概述&quot;&gt;&lt;/a&gt;操作系统概述&lt;/h2&gt;&lt;h3 id=&quot;什么是操作系统&quot;&gt;&lt;a href=&quot;#什么是操作系统&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;操作系统概述&quot;&gt;操作系统概述&lt;/h2&gt;
+&lt;h3 id=&quot;什么是操作系统&quot;&gt;什么是操作系统&lt;/h3&gt;
+&lt;p&gt;操作系统是一个控制程序, 一个系统软件, 控制程序执行过程, 给用户提供各种服务, 方便用户使用计算机系统&lt;br&gt;
+操作系统是一个资源管理器,
         
       
     
@@ -371,8 +409,10 @@
       
         
         
-          &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
-&lt;h3
+          &lt;h3 id=&quot;简介-8&quot;&gt;简介&lt;/h3&gt;
+&lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;
+贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
+&lt;h3 id=&quot;贪心算法-greedy-algorithm&quot;&gt;贪心算法(greedy
         
       
     
@@ -401,7 +441,9 @@
       
         
         
-          &lt;h2 id=&quot;动态规划-Dynamic-Programming&quot;&gt;&lt;a href=&quot;#动态规划-Dynamic-Programming&quot; class=&quot;headerlink&quot; title=&quot;动态规划(Dynamic Programming)&quot;&gt;&lt;/a&gt;动态规划(Dynamic
+          &lt;h2 id=&quot;动态规划-Dynamic-Programming&quot;&gt;动态规划(Dynamic Programming)&lt;/h2&gt;
+&lt;p&gt;动态规划比较适合求解最优问题, 比如最大值最小值, 可以非常显著的降低时间复杂度&lt;br&gt;
+有点难, 求解过程不符合常规思维方式,
         
       
     
@@ -432,9 +474,13 @@
       
         
         
-          &lt;h3 id=&quot;新特性&quot;&gt;&lt;a href=&quot;#新特性&quot; class=&quot;headerlink&quot; title=&quot;新特性&quot;&gt;&lt;/a&gt;新特性&lt;/h3&gt;&lt;ul&gt;
+          &lt;h3 id=&quot;新特性&quot;&gt;新特性&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;Spark唯一构建引擎&lt;/li&gt;
-&lt;li&gt;引入parquet,
+&lt;li&gt;引入parquet, 正在踢出HBase&lt;/li&gt;
+&lt;li&gt;可存储到HDFS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-准备机器&quot;&gt;1.
         
       
     
@@ -463,7 +509,8 @@
       
         
         
-          &lt;p&gt;大部分问题是jar包版本冲突, 导致各种类找不到&lt;br&gt;根本问题是kylin4.0测试版,
+          &lt;p&gt;大部分问题是jar包版本冲突, 导致各种类找不到&lt;br&gt;
+根本问题是kylin4.0测试版,
         
       
     
@@ -492,7 +539,9 @@
       
         
         
-          &lt;h2 id=&quot;Hive外部分区表&quot;&gt;&lt;a href=&quot;#Hive外部分区表&quot; class=&quot;headerlink&quot; title=&quot;Hive外部分区表&quot;&gt;&lt;/a&gt;Hive外部分区表&lt;/h2&gt;&lt;h3 id=&quot;建表语句&quot;&gt;&lt;a href=&quot;#建表语句&quot;
+          &lt;h2 id=&quot;Hive外部分区表&quot;&gt;Hive外部分区表&lt;/h2&gt;
+&lt;h3 id=&quot;建表语句&quot;&gt;建表语句&lt;/h3&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
         
       
     
@@ -521,7 +570,10 @@
       
         
         
-          &lt;h2 id=&quot;字符串匹配&quot;&gt;&lt;a href=&quot;#字符串匹配&quot; class=&quot;headerlink&quot; title=&quot;字符串匹配&quot;&gt;&lt;/a&gt;字符串匹配&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;字符串匹配&quot;&gt;字符串匹配&lt;/h2&gt;
+&lt;h3 id=&quot;简介-12&quot;&gt;简介&lt;/h3&gt;
+&lt;p&gt;字符串匹配都不陌生, 例如Java中的indexOf(), Python中的find(), 他们底层就是依赖以下的字符串匹配算法&lt;br&gt;
+我们从字符串A中查找字符串B,
         
       
     
@@ -552,7 +604,11 @@
       
         
         
-          &lt;h2 id=&quot;图&quot;&gt;&lt;a href=&quot;#图&quot; class=&quot;headerlink&quot; title=&quot;图&quot;&gt;&lt;/a&gt;图&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;图&quot;&gt;图&lt;/h2&gt;
+&lt;h3 id=&quot;简介-6&quot;&gt;简介&lt;/h3&gt;
+&lt;p&gt;图是一种非线性表数据结构, 比树更加复杂&lt;br&gt;
+涉及图的算法有很多, 比如图的搜索, 最短路径, 最小生成树, 二分图等&lt;/p&gt;
+&lt;h3
         
       
     
@@ -583,7 +639,10 @@
       
         
         
-          &lt;h2 id=&quot;堆和堆排序&quot;&gt;&lt;a href=&quot;#堆和堆排序&quot; class=&quot;headerlink&quot; title=&quot;堆和堆排序&quot;&gt;&lt;/a&gt;堆和堆排序&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;堆和堆排序&quot;&gt;堆和堆排序&lt;/h2&gt;
+&lt;h3 id=&quot;简介-7&quot;&gt;简介&lt;/h3&gt;
+&lt;p&gt;堆, 是一种特殊的树&lt;br&gt;
+经典的应用场景, 堆排序,
         
       
     
