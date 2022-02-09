@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2022-02-09T03:08:42.153Z</updated>
+  <updated>2022-02-09T07:38:21.709Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络系列笔记(三) - 传输层</title>
+    <link href="http://www.wangdanpeng.com/2022/02/09/20220209153707/"/>
+    <id>http://www.wangdanpeng.com/2022/02/09/20220209153707/</id>
+    <published>2022-02-09T07:37:07.000Z</published>
+    <updated>2022-02-09T07:38:21.709Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;传输层&quot;&gt;&lt;a href=&quot;#传输层&quot; class=&quot;headerlink&quot; title=&quot;传输层&quot;&gt;&lt;/a&gt;传输层&lt;/h2&gt;&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP" scheme="http://www.wangdanpeng.com/tags/TCP/"/>
+    
+      <category term="UDP" scheme="http://www.wangdanpeng.com/tags/UDP/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络系列笔记(二) - 网络应用层</title>
@@ -571,37 +602,6 @@
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="红黑树" scheme="http://www.wangdanpeng.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-二叉树</title>
-    <link href="http://www.wangdanpeng.com/2021/01/28/20210128151430/"/>
-    <id>http://www.wangdanpeng.com/2021/01/28/20210128151430/</id>
-    <published>2021-01-28T07:14:30.000Z</published>
-    <updated>2021-01-28T07:27:32.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;二叉树&quot;&gt;&lt;a href=&quot;#二叉树&quot; class=&quot;headerlink&quot; title=&quot;二叉树&quot;&gt;&lt;/a&gt;二叉树&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="二叉树" scheme="http://www.wangdanpeng.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   

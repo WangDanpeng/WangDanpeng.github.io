@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    计算机网络系列笔记(二) - 网络应用层 |  Mr.Wang_Blog
+    计算机网络系列笔记(三) - 传输层 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20220209110515" class="article article-type-post" itemscope
+  <article id="post-20220209153707" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -44,7 +44,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  计算机网络系列笔记(二) - 网络应用层
+  计算机网络系列笔记(三) - 传输层
 </h1>
  
 
@@ -53,8 +53,8 @@
 
     
     <div class="article-meta">
-      <a href="/2022/02/09/20220209110515/" class="article-date">
-  <time datetime="2022-02-09T03:05:15.000Z" itemprop="datePublished">2022-02-09</time>
+      <a href="/2022/02/09/20220209153707/" class="article-date">
+  <time datetime="2022-02-09T07:37:07.000Z" itemprop="datePublished">2022-02-09</time>
 </a>
       
   <div class="article-category">
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k字</span>
+            <span class="post-count">2.7k字</span>
         </span>
     </span>
 
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6分钟</span>
+            <span class="post-count">9分钟</span>
         </span>
     </span>
 </div>
@@ -102,13 +102,18 @@
       
 
       
-      <h2 id="网络应用层"><a href="#网络应用层" class="headerlink" title="网络应用层"></a>网络应用层</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>网络应用体系结构: 客户机/服务器, P2P, 混合结构<br>网络应用的服务需求: 可靠性, 带宽, 时延<br>internet传输层服务模型: TCP, UDP<br>特定网络应用及协议: HTTP, SMTP, DNS, P2P<br>Socket编程, TCP, UDP</p>
-<h3 id="网络应用的基本原理"><a href="#网络应用的基本原理" class="headerlink" title="网络应用的基本原理"></a>网络应用的基本原理</h3><p>网络应用的体系结构有三种<br><strong>客户机/服务器结构(Client-Server, C/S)</strong>: 服务器特点, 7 &times; 24小时提供服务, 永久性访问地址, 利用大量服务器实现可扩展性, 客户机特点, 与服务器通信使用服务器提供的服务, 间歇性接入网络, 可能使用动态IP地址, 不会与其他客户机直接通信<br><strong>点对点结构(Peer-to-Peer, P2P)</strong>: 没有永远在线的服务器, 任意节点之间可直接通讯, 节点间歇性接入网络, 节点可能改变IP地址, 优点是高度可伸缩, 缺点是难于管理<br><strong>混合结构(Hybrid)</strong>: 例如Napster, 文件传输使用P2P结构, 文件搜索采用C/S结构</p>
-<h4 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h4><p>不同主机上的进程间通信需要消息交换, 发起通信的进程叫客户机进程, 等待通信请求的进程叫服务器进程<br>套接字: Socket, 进程间通信利用socket发送/接收消息实现, 传输基础设施向进程提供API<br>进程的标识符: IP地址+端口号<br>应用层协议: 网络应用需遵守应用层协议, 分为公开协议, 由RFC(Request For Comments)定义和私有协议<br>应用层协议内容, 消息的类型(请求消息, 相应消息), 消息的语法格式(包含哪些字段), 字段的语义(字段中信息的含义), 规则(进程何时发送/相应消息, 进程如何发送/相应消息)<br>网络应用对传输服务的需求, 可靠性(网络电话能容忍一定数据丢失, 文件传输不行), 延迟(网络游戏要求低延迟), 带宽(网络视频对带宽有最低要求, email则没有)<br>Internet提供的传输服务对比<br>TCP服务, 面向连接, 客户机/服务器进程间需要建立连接, 可靠的传输, 流量控制, 发送方不会发送速度过快而超过接收方处理能力, 拥塞控制, 当网络负载过重时能够限制发送方的发送速度, 不提供延迟保障, 不提供最小带宽保障<br>UDP服务, 无连接, 不可靠数据传输, 不提供可靠性保障, 流量控制, 拥塞控制, 延迟保障, 带宽保障</p>
-<h3 id="WEB应用"><a href="#WEB应用" class="headerlink" title="WEB应用"></a>WEB应用</h3><p>对象的寻址: URL(Uniform Resoure Locator)统一资源定位器<br><strong>http协议概述</strong><br>万维网遵循的协议, 超文本传输协议(HyperTexi Transfer Protocol), 使用TCP传输服务, 无状态, 服务器不维护任何有关客户端过去所发请求的信息<br>http有两种连接方式, 非持久性连接, 每个TCP连接最多允许传输一个对象<br>持久性连接, 每个TCP连接允许传输多个对象<br><strong>响应时间</strong><br>RTT(Round Trip Time), 从客户端发送一个很小的数据包到服务器并返回所经历的时间<br>响应时间, 发起, 建立TCP连接, 需要1个RTT, 发送http请求消息到http响应消息的前几个字节到达, 需要1个RTT, 再加响应中所含文件的传输时间<br><strong>cookie技术</strong><br>为了辨别用户身份, 进行session跟踪而储存在用户本地终端上的数据, 通常经过加密<br>cookie的组件, 响应消息的cookie头部行, 请求消息的头部行, 客户端主机上的cookie文件, web服务器端的后台数据库<br>可用于, 身份认证, 购物车, 推荐等<br><strong>web缓存/代理服务器技术</strong><br>在不访问服务器的前提下满足客户端的http请求<br>目的, 缩短客户请求的相应时间, 减少机构/组织的流量, 在大范围内实现有效的内容分发<br>缓存既充当客户端也充当服务器</p>
-<h3 id="Email应用"><a href="#Email应用" class="headerlink" title="Email应用"></a>Email应用</h3><p>构成组件: 邮件客户端, 邮件服务器, SMTP协议<br>使用TCP进行email消息的可靠传输, 命令/响应交互模式, 使用持久性连接<br>邮件访问协议, POP(Post Office Protocol), IMAP(Internet Mail Access Protocol), HTTP<br>POP3是无状态的, IMAP支持跨会话的用户状态</p>
-<h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h3><p>多层命名服务器构成的分布式数据库, 应用层协议, 完成名字的解析, Internet核心功能<br><strong>DNS服务作用</strong>: 域名向IP地址的翻译, 主机别名, 邮件服务器别名, 负载均衡<br>本地域名解析服务器 -&gt; 根域名服务器 -&gt;权威域名服务器 -&gt; 本地域名服务器<br><strong>全球有13个根域名服务器</strong><br>顶级域名服务器(TLD, top-level domain): 负责com,org,net,edu等顶级域名和国家顶级域名,如cn<br>权威域名服务器: 组织的域名解析服务器, 提供组织内部服务器的解析服务<br>本地域名解析服务器: 不严格属于层级体系, 每个ISP有一个本地域名服务器, 默认的, 当主机进行DNS查询时, 查询被发送到本地域名服务器, 作为代理将查询层级式转发给域名解析服务器系统<br>两种查询方式, 迭代查询, 递归查询<br>DNS记录是一个四元组, 资源记录(RR, resource records), RR format: (name, value, type, ttl)<br>type=A name是主机域名, value是ip地址<br>type=NS name是域, value是该域权威域名解析服务器的主机域名<br>type=CNAME name是某一真实域名的别名, value是真实域名<br>type=MX value是name对应的邮件服务器<br>依赖DNS协议</p>
-<h3 id="P2P"><a href="#P2P" class="headerlink" title="P2P"></a>P2P</h3><p>P2P架构, 没有服务器, 任意端系统之间直接通信, 节点阶段性接入互联网, 节点可能更换ip地址<br>文件分发比C/S模式效率高<br>文件分发, BitTorrent协议, torrent是交换同一个文件的文件块的节点组, tracker跟踪参与torrent的节点<br>文件被划分为256KB的chunk, 节点加入torrent, 向tracker注册以获得节点清单, 与某些节点建立连接, 下载的同时, 节点需要向其他节点上传chunk<br>获取chunk流程, 给定任一时刻, 不同节点持有文件的不同chunk集合, 当前节点定期查询每个邻居所拥有的chunk列表, 节点发送请求, 请求获取缺失的chunk, 稀缺优先<br>发送chunk流程, tit-for-tat, 谁给我我给谁, 向正在给自己发送chunk且速率最快的四个邻居发送chunk, 每10s重新评估top4, 每30s随机选择一个其他节点<br>P2P索引方式, 集中式索引, 单点失效问题, 性能瓶颈, 版权问题<br>洪泛式查询, 完全分布式架构, 每个节点只对它共享的文件进行索引, 查询消息通过已有TCP连接发送, 节点继续转发查询, 查询像洪水泛滥<br>层次式覆盖网络, 集中式和洪泛式的结合, 节点和超级节点维持TCP连接, 超级节点之间维持TCP连接, 超级节点负责跟踪子节点内容, 查询到后节点直接直接通信, 不经过超级节点<br>很常用的设计思路</p>
+      <h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>传输层的基本理论和基本机制: 复用/分用 , 可靠数据传输机制, 流量控制机制, 拥塞控制机制<br>掌握Internet的传输层协议: UDP, TCP, TCP拥塞控制<br>传输层协议为运行在不同host上的进程提供了一种逻辑通信机制<br>网络层提供主机之间的逻辑通信机制, 传输层提供应用进程之间的逻辑通信机制, 位于网络层之上, 依赖于网络层服务, 对网络层服务进行增强<br><strong>TCP</strong>: 可靠, 按序的交付服务, 拥塞控制, 流量控制, 连接建立<br><strong>UDP</strong>: 不可靠的交付服务, 基于尽力而为的网络层, 没有做可靠性方面的扩展<br>两种服务均不保证 延迟和带宽</p>
+<h3 id="多路复用和多路分用"><a href="#多路复用和多路分用" class="headerlink" title="多路复用和多路分用"></a>多路复用和多路分用</h3><p>如果某层的一个协议对应直接上层的多个协议/实体, 则需要复用/分用<br>接收端进行多路分用, 传输层依据头部信息将收到的Segment交给正确的socket, 即不同的进程<br>发送端进行多路复用, 从多个socket接受数据, 为每块数据封装上头部信息, 生成segment交给网络层<br><strong>分用</strong>: 主机接收到ip数据报(datagram), 每个数据报携带源ip地址, 目的ip地址, 携带一个传输层的段(Segment), 每个段携带源端口号和目的端口号, 主机收到segment之后, 传输层协议提取ip地址和端口号信息, 将segment导向相应的socket<br>UDP的无连接分用, 利用端口号创建Socket, UDP的socket用二元组标识(目的IP地址, 目的端口号), 主机收到UDP段后, 检查段中的目的端口号, 将UDP段导向绑定在该端口号的socket<br>来自不同源ip地址和源端口号的ip数据报被导向同一个socket<br>TCP的面向连接的分用, TCP的socket用四元组标识, (源ip地址, 源端口号, 目的ip地址, 目的端口号), 接收端利用所有的四个值, 将segment导向合适的socket, 服务器可能同时支持多个tcp socket 每个socket用自己的四元组标识<br>web服务器为每个客户端开不同的socket</p>
+<h3 id="UDP-User-Datagram-Protocol"><a href="#UDP-User-Datagram-Protocol" class="headerlink" title="UDP(User Datagram Protocol)"></a>UDP(User Datagram Protocol)</h3><p>基于internet IP协议, 复用/分用, 简单的错误校验<br>best effort服务, UDP段可能丢失或非按序到达<br>无连接, UDP发送方和接收方之间不需要握手, 每个UDP段的处理独立于其他段<br>优点, 无需建立连接, 减少延迟, 实现简单, 无需维护连接状态, 头部开销少, 没有拥塞控制, 应用可更好的控制发送时间和速率<br>常用于流媒体应用, 容忍丢失, 速率敏感, 还用于DNS, SNMP<br>想在UDP上实现可靠数据传输, 需要在应用层增加可靠性机制, 或应用特定的错误恢复机制<br>UDP的校验和(checksum), 检测UDP段在传输中是否发生错误</p>
+<h3 id="可靠数据传输的基本原理"><a href="#可靠数据传输的基本原理" class="headerlink" title="可靠数据传输的基本原理"></a>可靠数据传输的基本原理</h3><p>可靠: 不错, 不丢, 不乱<br>可靠数据传输协议(rdt), 对应用层, 传输层, 链路层都很重要, <strong>网络top10问题</strong>, 信道的不可靠特性决定了rdt的复杂性<br>渐进的设计可靠数据传输协议的发送方和接收方, 只考虑单向数据传输, 但控制信息双向流动, 利用状态机(Finite State Machine, FSM)刻画传输协议</p>
+<h4 id="Rdt1-0-可靠信道上的可靠数据传输"><a href="#Rdt1-0-可靠信道上的可靠数据传输" class="headerlink" title="Rdt1.0, 可靠信道上的可靠数据传输"></a>Rdt1.0, 可靠信道上的可靠数据传输</h4><p>底层信道完全可靠, 不会发生错误, 不会丢弃分组, 发送方和接收方的FSM独立, 一个发送, 一个接收, 没有其他交集</p>
+<h4 id="Rdt2-0-产生位错误的信道"><a href="#Rdt2-0-产生位错误的信道" class="headerlink" title="Rdt2.0, 产生位错误的信道"></a>Rdt2.0, 产生位错误的信道</h4><p>底层信道可能翻转分组中的位, 利用校验和检测位错误<br>恢复机制, 确认机制(Acknowledgements, ACK), 接收方显示的告知发送方分组已正确接收, NAK, 显示的告知分组有错误, 发送方收到NAK后重传分组<br>基于这种重传机制的rdt协议称为ARQ协议(Automatic Repeat reQuest)<br>该版本中引入的新机制, 差错检测, 接收方反馈控制消息, ACK/NAK, 重传<br>FSM使用停-等协议</p>
+<h4 id="Rdt2-1"><a href="#Rdt2-1" class="headerlink" title="Rdt2.1"></a>Rdt2.1</h4><p>上一个版本有缺陷, 如果ACK/NAK消息发生错误, 会死循环<br>所以, 为ACK/NAK增加校验和, 检错并纠错, 如果被破坏, 发送方重传, 发送方给每个分组添加序列号, 解决重复分组, 接收方丢弃重复分组</p>
+<h4 id="Rdt2-2-无NAK消息协议"><a href="#Rdt2-2-无NAK消息协议" class="headerlink" title="Rdt2.2 无NAK消息协议"></a>Rdt2.2 无NAK消息协议</h4><p>其他与2.1相同, 只使用ACK, 在ACK消息中加入被确认分组的序列号, 发送方收到不符合预期的序列号, 则重传当前分组</p>
+<h4 id="Rdt3-0-信道既可能发生错误-也可能分组丢失"><a href="#Rdt3-0-信道既可能发生错误-也可能分组丢失" class="headerlink" title="Rdt3.0 信道既可能发生错误, 也可能分组丢失"></a>Rdt3.0 信道既可能发生错误, 也可能分组丢失</h4><p>发送方等待合理时间, 未收到ACK则重传, 如果ACK消息没丢但延迟到达, 序列号机制能解决重复, 需要定时器<br>Rdt3.0能正确工作, 保证可靠, 但性能很差, 因为网络协议而限制了物力资源的利用, 因为有停等操作</p>
+<h3 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h3><p>流水线机制, 提高资源利用率<br>流水线协议, 允许发送方在收到ACK之前连续发送多个分组, 需要更大的序列号范围, 发送方和接收方需要更大的存储空间以缓存分组<br>滑动窗口协议(Sliding-window protocol), 窗口(允许使用的序列号范围, 窗口尺寸为N表示最多有N个等待确认的消息)<br>滑动窗口, 随着协议的运行, 窗口在序列号空间内向前滑动, 滑动窗口协议有GBN和SR<br>GBN协议(Go-Back-N), 分组头部包含k-bit序列号, 窗口尺寸为N, 最多允许N个分组未确认, ACK(n), 确认到序列号n的分组均已被正确接收, 为空中的分组设置计时器, 超时后重传序列号大于等于n, 还未收到ACK的所有分组<br>SE协议(Selective Repeat), 接收方对每个分组单独进行确认, 设置缓存机制, 缓存乱序到达分组, 发送方只重传那些没收到ACK的分组, 为每个分组设置定时器<br>发送方窗口, N个连续的序列号, 限制已发送且未确认的分组</p>
+<h3 id="TCP概述"><a href="#TCP概述" class="headerlink" title="TCP概述"></a>TCP概述</h3><p><strong>点对点, 一个发送方, 一个接收方, 可靠的, 按序的字节流, 采用流水线机制, TCP拥塞控制和流量控制设置窗口尺寸, 发送方和接收方都有缓存</strong><br>全双工, 同一连接中能够传输双向数据流, 面向连接, 通信双方在发送数据之前必须建立连接, 连接状态只在连接的两端中维护, 沿途节点上并不维护状态,<br>TCP连接包括两台主机上的缓存, 连接状态变量, socket等, 流量控制机制<br>TCP段结构包括<br><img src="https://www.wangdanpeng.com/img/20220209_1.png" alt="TCP段结构"><br>U: URG,urgent data紧急数据, 一般不使用<br>A: ACK, 标志位, 标识ACK是不是有效<br>P: PSH,push data now,一般没用<br>R: RST, S: SYN, F: FIN这三个连接建立拆除时使用<br>序列号, 是segment中第一个字节的编号, 而不是segment的编号, 建立TCP连接是, 双方随机选择序列号<br>ACKs, 希望收到的下一个字节的序列号, 累计确认机制, 表示该序列号之前的所有字节均已被正确接收到<br>乱序到达, TCP规范中没有规定, 由实现者自己决策<br>TCP的可靠数据传输, 流水线机制, 累计确认, 使用单一重传定时器<br>定时器的设置, 测量多个抽样RTT求平均, 并且对后续的值做加权平均, 超时时间同理<br>触发重传的事件有超时和收到重复ACK, 快速重传, 如果收到同一数据的3个ACK, 则假定该数据之后的段已经丢失, 立即重传<br>TCP流量控制, 接收方为TCP连接分配buffer<br>接收方通过在Segment的头部字段将可用buffer告诉发送方, 发送方限制自己已发送的但还未收到ACK的数据不超过接收方的空闲buffer尺寸<br>TCP连接管理, <strong>三次握手</strong><br>第一次, 客户端向服务器发送TCP SYNsegment, 第二次服务器接收SYN, 回复SYNACK, 第三次, 客户端接收SYNACK, 再回复ACK<br>关闭连接, 1.客户端向服务器发送TCP FIN控制segment, 2.服务器收到FIN, 回复ACK, 关闭连接, 发送FIN, 3. 客户端收到FIN回复ACK, 4. 服务器收到ACK, 连接关闭</p>
+<h3 id="拥塞控制原理"><a href="#拥塞控制原理" class="headerlink" title="拥塞控制原理"></a>拥塞控制原理</h3><p><strong>同样是top10问题</strong>, 核心是太多主机发送太多数据以至于网络无法处理, 表现是分组丢失(路由器缓存溢出), 分组延迟过大(在路由器缓存中排队)<br>两种控制方法<br><strong>端到端拥塞控制</strong>: 网络层不需要显式的提供支持, 端系统通过观察loss和delay等网络行为判断是否发生拥塞, TCP采用这种<br><strong>网络辅助的拥塞控制</strong>: 路由器向发送方显式的反馈网络拥塞信息, 指示发送方应该采取何种速率, ATM采用这种<br>发送方发送RM(resource management) cells, 交换机设置RM的标志位, 接收方再把RM cell返回给发送方,<br>在RM cell中有显式的速率字段ER, 两个字节, 拥塞的交换机可以将ER置为更低的值, 发送方就能得知路径所能支持的最小速率<br>TCP拥塞控制的基本原理, <strong>Sender限制发送速率</strong> rate=CongWin/RTT<br>通过加性增乘性减和慢启动合理的调整发送速率<br>逐渐增加发送速率, 谨慎探测可用带宽, 直到发生loss, 发生loss后CongWin直接减半<br>慢启动, TCP连接建立时, 可用带宽可能远高于初始速率, 所以当连接开始时, 指数性增长, 每个RTT将CongWin翻倍<br>设置变量Threshold, 当发送loss, 设置为loss事件前congWin值的一半, 当congWin到达threshold, 指数性增长切换为线性增长<br>当3个重复ACKs, Congwin切到一半然后线性, timeout事件后, CongWin直接设为1然后指数, 3个重复ACKs表示网络还能传输一些segments, timeout表示拥堵更为严重<br>TCP的平均吞吐率是(W/RTT+W/2RTT)/2=0.75W/RTT<br>TCP是公平的, 多个tcp session共享带宽<br>多媒体通常不使用TCP, 以免被拥塞控制机制限制速率, 使用UDP以恒定速率发送, 能够容忍丢失, 但产生了不公平</p>
 
       
       <!-- reward -->
@@ -136,7 +141,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP/" rel="tag">TCP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UDP/" rel="tag">UDP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
 
 
     </footer>
@@ -147,19 +152,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2022/02/09/20220209153707/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            计算机网络系列笔记(三) - 传输层
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/02/08/20220208185951/" class="article-nav-link">
+      <a href="/2022/02/09/20220209110515/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">计算机网络系列笔记(一)-概述</div>
+        <div class="article-nav-title">计算机网络系列笔记(二) - 网络应用层</div>
       </a>
     
   </nav>
