@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2022-02-10T07:11:02.101Z</updated>
+  <updated>2022-02-10T09:22:04.274Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络系列笔记(四) - 网络层</title>
+    <link href="http://www.wangdanpeng.com/2022/02/10/20220210171858/"/>
+    <id>http://www.wangdanpeng.com/2022/02/10/20220210171858/</id>
+    <published>2022-02-10T09:18:58.000Z</published>
+    <updated>2022-02-10T09:22:04.274Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;概述&quot;&gt;概述&lt;/h1&gt;
+&lt;p&gt;网络层从发送主机向接收主机传送数据段(segment)&lt;br&gt;
+发送主机:将数据段封装到数据报(datagram)中&lt;br&gt;
+接收主机:向传输层交付数据段&lt;br&gt;
+每个主机和路由器都运行网络层协议,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="IP" scheme="http://www.wangdanpeng.com/tags/IP/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown常用样式</title>
@@ -622,40 +655,6 @@ internet传输层服务模型: TCP,
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="图" scheme="http://www.wangdanpeng.com/tags/%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-堆和堆排序</title>
-    <link href="http://www.wangdanpeng.com/2021/03/02/20210302192117/"/>
-    <id>http://www.wangdanpeng.com/2021/03/02/20210302192117/</id>
-    <published>2021-03-02T11:21:17.000Z</published>
-    <updated>2021-03-03T08:22:07.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;堆和堆排序&quot;&gt;堆和堆排序&lt;/h2&gt;
-&lt;h3 id=&quot;简介-v5&quot;&gt;简介&lt;/h3&gt;
-&lt;p&gt;堆, 是一种特殊的树&lt;br&gt;
-经典的应用场景, 堆排序,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="二叉树" scheme="http://www.wangdanpeng.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
