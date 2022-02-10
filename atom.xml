@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2022-02-09T11:03:53.958Z</updated>
+  <updated>2022-02-10T07:11:02.101Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.wangdanpeng.com/2022/02/09/20220209185324/"/>
     <id>http://www.wangdanpeng.com/2022/02/09/20220209185324/</id>
     <published>2022-02-09T10:53:24.000Z</published>
-    <updated>2022-02-09T11:03:53.958Z</updated>
+    <updated>2022-02-10T07:11:02.101Z</updated>
     
     <summary type="html">
     
@@ -29,11 +29,10 @@
       
         
         
-          &lt;h1&gt;# 可表示1-6级标题&lt;/h1&gt;
+          &lt;h1 id=&quot;可表示1-6级标题&quot;&gt;# 可表示1-6级标题&lt;/h1&gt;
 &lt;p&gt;&lt;em&gt;斜体&lt;/em&gt; : *斜体*&lt;br&gt;
 &lt;strong&gt;粗体&lt;/strong&gt; : **粗体**&lt;br&gt;
-&lt;em&gt;&lt;strong&gt;粗体加斜体&lt;/strong&gt;&lt;/em&gt; : ***粗体***&lt;/p&gt;
-&lt;p&gt;: camel :
+&lt;em&gt;&lt;strong&gt;粗体加斜体&lt;/strong&gt;&lt;/em&gt; :
         
       
     
@@ -61,7 +60,7 @@
         
         
           &lt;h2 id=&quot;传输层&quot;&gt;传输层&lt;/h2&gt;
-&lt;h3 id=&quot;概述-2&quot;&gt;概述&lt;/h3&gt;
+&lt;h3 id=&quot;概述-v2&quot;&gt;概述&lt;/h3&gt;
 &lt;p&gt;传输层的基本理论和基本机制: 复用/分用 , 可靠数据传输机制, 流量控制机制, 拥塞控制机制&lt;br&gt;
 掌握Internet的传输层协议: UDP, TCP,
         
@@ -409,7 +408,7 @@ internet传输层服务模型: TCP,
       
         
         
-          &lt;h3 id=&quot;简介-8&quot;&gt;简介&lt;/h3&gt;
+          &lt;h3 id=&quot;简介-v10&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;
 贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
 &lt;h3 id=&quot;贪心算法-greedy-algorithm&quot;&gt;贪心算法(greedy
@@ -490,9 +489,9 @@ internet传输层服务模型: TCP,
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -520,9 +519,9 @@ internet传输层服务模型: TCP,
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -551,9 +550,9 @@ internet传输层服务模型: TCP,
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
     
   </entry>
   
@@ -571,7 +570,7 @@ internet传输层服务模型: TCP,
         
         
           &lt;h2 id=&quot;字符串匹配&quot;&gt;字符串匹配&lt;/h2&gt;
-&lt;h3 id=&quot;简介-12&quot;&gt;简介&lt;/h3&gt;
+&lt;h3 id=&quot;简介-v7&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;字符串匹配都不陌生, 例如Java中的indexOf(), Python中的find(), 他们底层就是依赖以下的字符串匹配算法&lt;br&gt;
 我们从字符串A中查找字符串B,
         
@@ -605,7 +604,7 @@ internet传输层服务模型: TCP,
         
         
           &lt;h2 id=&quot;图&quot;&gt;图&lt;/h2&gt;
-&lt;h3 id=&quot;简介-6&quot;&gt;简介&lt;/h3&gt;
+&lt;h3 id=&quot;简介-v9&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;图是一种非线性表数据结构, 比树更加复杂&lt;br&gt;
 涉及图的算法有很多, 比如图的搜索, 最短路径, 最小生成树, 二分图等&lt;/p&gt;
 &lt;h3
@@ -640,7 +639,7 @@ internet传输层服务模型: TCP,
         
         
           &lt;h2 id=&quot;堆和堆排序&quot;&gt;堆和堆排序&lt;/h2&gt;
-&lt;h3 id=&quot;简介-7&quot;&gt;简介&lt;/h3&gt;
+&lt;h3 id=&quot;简介-v5&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;堆, 是一种特殊的树&lt;br&gt;
 经典的应用场景, 堆排序,
         
