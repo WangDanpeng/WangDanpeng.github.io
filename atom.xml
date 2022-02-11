@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2022-02-10T09:22:04.274Z</updated>
+  <updated>2022-02-11T02:27:28.333Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络系列笔记(五) - 数据链路层</title>
+    <link href="http://www.wangdanpeng.com/2022/02/11/20220211102604/"/>
+    <id>http://www.wangdanpeng.com/2022/02/11/20220211102604/</id>
+    <published>2022-02-11T02:26:04.000Z</published>
+    <updated>2022-02-11T02:27:28.333Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;数据链路层服务&quot;&gt;数据链路层服务&lt;/h1&gt;
+&lt;p&gt;主机和路由器称为结点, 连接相邻结点的通信信道称为链路, 有有线链路,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络" scheme="http://www.wangdanpeng.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络系列笔记(四) - 网络层</title>
@@ -620,41 +648,6 @@ internet传输层服务模型: TCP,
       <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="字符串" scheme="http://www.wangdanpeng.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-图</title>
-    <link href="http://www.wangdanpeng.com/2021/03/04/20210304165625/"/>
-    <id>http://www.wangdanpeng.com/2021/03/04/20210304165625/</id>
-    <published>2021-03-04T08:56:25.000Z</published>
-    <updated>2021-03-04T08:57:32.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;图&quot;&gt;图&lt;/h2&gt;
-&lt;h3 id=&quot;简介-v9&quot;&gt;简介&lt;/h3&gt;
-&lt;p&gt;图是一种非线性表数据结构, 比树更加复杂&lt;br&gt;
-涉及图的算法有很多, 比如图的搜索, 最短路径, 最小生成树, 二分图等&lt;/p&gt;
-&lt;h3
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="图" scheme="http://www.wangdanpeng.com/tags/%E5%9B%BE/"/>
     
   </entry>
   
