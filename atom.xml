@@ -57,7 +57,7 @@
       
         
         
-          &lt;h1 id=&quot;概述&quot;&gt;概述&lt;/h1&gt;
+          &lt;h1 id=&quot;概述-v2&quot;&gt;概述&lt;/h1&gt;
 &lt;p&gt;网络层从发送主机向接收主机传送数据段(segment)&lt;br&gt;
 发送主机:将数据段封装到数据报(datagram)中&lt;br&gt;
 接收主机:向传输层交付数据段&lt;br&gt;
@@ -121,7 +121,7 @@
         
         
           &lt;h2 id=&quot;传输层&quot;&gt;传输层&lt;/h2&gt;
-&lt;h3 id=&quot;概述-v2&quot;&gt;概述&lt;/h3&gt;
+&lt;h3 id=&quot;概述-v3&quot;&gt;概述&lt;/h3&gt;
 &lt;p&gt;传输层的基本理论和基本机制: 复用/分用 , 可靠数据传输机制, 流量控制机制, 拥塞控制机制&lt;br&gt;
 掌握Internet的传输层协议: UDP, TCP,
         
@@ -469,7 +469,7 @@ internet传输层服务模型: TCP,
       
         
         
-          &lt;h3 id=&quot;简介-v10&quot;&gt;简介&lt;/h3&gt;
+          &lt;h3 id=&quot;简介-v9&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;
 贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
 &lt;h3 id=&quot;贪心算法-greedy-algorithm&quot;&gt;贪心算法(greedy
@@ -550,9 +550,9 @@ internet传输层服务模型: TCP,
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
     
   </entry>
   
@@ -580,9 +580,9 @@ internet传输层服务模型: TCP,
       <category term="Kylin" scheme="http://www.wangdanpeng.com/categories/Kylin/"/>
     
     
-      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
-    
       <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Kylin" scheme="http://www.wangdanpeng.com/tags/Kylin/"/>
     
   </entry>
   
@@ -611,9 +611,9 @@ internet传输层服务模型: TCP,
       <category term="Hive" scheme="http://www.wangdanpeng.com/categories/Hive/"/>
     
     
-      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Hive" scheme="http://www.wangdanpeng.com/tags/Hive/"/>
+    
+      <category term="大数据" scheme="http://www.wangdanpeng.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -631,7 +631,7 @@ internet传输层服务模型: TCP,
         
         
           &lt;h2 id=&quot;字符串匹配&quot;&gt;字符串匹配&lt;/h2&gt;
-&lt;h3 id=&quot;简介-v7&quot;&gt;简介&lt;/h3&gt;
+&lt;h3 id=&quot;简介-v8&quot;&gt;简介&lt;/h3&gt;
 &lt;p&gt;字符串匹配都不陌生, 例如Java中的indexOf(), Python中的find(), 他们底层就是依赖以下的字符串匹配算法&lt;br&gt;
 我们从字符串A中查找字符串B,
         
