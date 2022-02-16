@@ -177,7 +177,7 @@ internet传输层服务模型: TCP,
     <link href="http://www.wangdanpeng.com/2022/02/08/20220208185951/"/>
     <id>http://www.wangdanpeng.com/2022/02/08/20220208185951/</id>
     <published>2022-02-08T10:59:51.000Z</published>
-    <updated>2022-02-08T11:01:29.368Z</updated>
+    <updated>2022-02-16T11:01:01.323Z</updated>
     
     <summary type="html">
     
@@ -185,10 +185,9 @@ internet传输层服务模型: TCP,
       
         
         
-          &lt;h2 id=&quot;计算机网络概述&quot;&gt;计算机网络概述&lt;/h2&gt;
-&lt;h3 id=&quot;基本概念&quot;&gt;基本概念&lt;/h3&gt;
-&lt;h4 id=&quot;计算机网络&quot;&gt;计算机网络&lt;/h4&gt;
-&lt;p&gt;计算机网络 = 通信技术 + 计算机技术, 计算机网络是通信技术与计算机技术紧密结合的产物,
+          &lt;h1 id=&quot;基本概念&quot;&gt;基本概念&lt;/h1&gt;
+&lt;h2 id=&quot;计算机网络&quot;&gt;计算机网络&lt;/h2&gt;
+&lt;p&gt;计算机网络 = 通信技术 + 计算机技术, 计算机网络是通信技术与计算机技术紧密结合的产物, 是互连(互联互通)的,
         
       
     
