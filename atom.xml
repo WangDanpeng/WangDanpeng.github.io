@@ -146,7 +146,7 @@
     <link href="http://www.wangdanpeng.com/2022/02/09/20220209110515/"/>
     <id>http://www.wangdanpeng.com/2022/02/09/20220209110515/</id>
     <published>2022-02-09T03:05:15.000Z</published>
-    <updated>2022-02-09T03:08:42.153Z</updated>
+    <updated>2022-02-17T08:59:58.399Z</updated>
     
     <summary type="html">
     
@@ -154,11 +154,9 @@
       
         
         
-          &lt;h2 id=&quot;网络应用层&quot;&gt;网络应用层&lt;/h2&gt;
-&lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt;
-&lt;p&gt;网络应用体系结构: 客户机/服务器, P2P, 混合结构&lt;br&gt;
-网络应用的服务需求: 可靠性, 带宽, 时延&lt;br&gt;
-internet传输层服务模型: TCP,
+          &lt;h1 id=&quot;概述&quot;&gt;概述&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;网络应用体系结构&lt;/strong&gt;: 客户机/服务器, P2P, 混合结构&lt;br&gt;
+&lt;strong&gt;网络应用的服务需求&lt;/strong&gt;: 可靠性, 带宽,
         
       
     
