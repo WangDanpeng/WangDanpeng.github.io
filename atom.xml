@@ -112,7 +112,7 @@
     <link href="http://www.wangdanpeng.com/2022/02/09/20220209153707/"/>
     <id>http://www.wangdanpeng.com/2022/02/09/20220209153707/</id>
     <published>2022-02-09T07:37:07.000Z</published>
-    <updated>2022-02-09T07:38:21.709Z</updated>
+    <updated>2022-02-17T11:20:41.253Z</updated>
     
     <summary type="html">
     
@@ -120,10 +120,7 @@
       
         
         
-          &lt;h2 id=&quot;传输层&quot;&gt;传输层&lt;/h2&gt;
-&lt;h3 id=&quot;概述-v3&quot;&gt;概述&lt;/h3&gt;
-&lt;p&gt;传输层的基本理论和基本机制: 复用/分用 , 可靠数据传输机制, 流量控制机制, 拥塞控制机制&lt;br&gt;
-掌握Internet的传输层协议: UDP, TCP,
+          &lt;h1
         
       
     
