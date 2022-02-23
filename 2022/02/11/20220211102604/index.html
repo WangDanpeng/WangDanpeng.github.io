@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">988字</span>
+            <span class="post-count">1.1k字</span>
         </span>
     </span>
 
@@ -106,30 +106,43 @@
       
       <h1 id="数据链路层服务">数据链路层服务</h1>
 <p>主机和路由器称为结点, 连接相邻结点的通信信道称为链路, 有有线链路, 无线链路和局域网<br>
-数据链路层负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报<br>
+<strong>数据链路层负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报</strong><br>
 链路层服务包括</p>
 <ul>
-<li>组帧, 封装数据报构成数据帧, 加首部和尾部, 帧同步</li>
-<li>链路接入, 共享介质需要解决信道接入, 帧首部中的MAC地址, 用于标识帧的源和目的</li>
-<li>相邻接点间可靠交付, 在低误码率的有线链路上很少采用, 无线链路误码率高,需要可靠交付</li>
-<li>流量控制, 协调相邻的发送结点和接收</li>
-<li>差错检测, 信号衰减和噪声会引起差错, 接收端检测到差错通知发送端重传或直接丢弃帧</li>
-<li>差错纠正, 接收端直接纠正比特差错</li>
-<li>全双工和半双工通信控制, 全双工, 链路两端结点同时双向传输, 半双工, 两端结点交替双向传输</li>
+<li><strong>组帧</strong>, 封装数据报构成数据帧, 加首部和尾部; 帧同步</li>
+<li><strong>链路接入</strong>, 共享介质需要解决信道接入; 帧首部中的MAC地址, 用于标识帧的源和目的</li>
+<li><strong>相邻接点间可靠交付</strong>, 在低误码率的有线链路上很少采用; 无线链路误码率高,需要可靠交付</li>
+<li><strong>流量控制</strong>, 协调相邻的发送结点和接收</li>
+<li><strong>差错检测</strong>, 信号衰减和噪声会引起差错; 接收端检测到差错通知发送端重传或直接丢弃帧</li>
+<li><strong>差错纠正</strong>, 接收端直接纠正比特差错</li>
+<li><strong>全双工和半双工通信控制</strong>, 全双工, 链路两端结点<strong>同时</strong>双向传输; 半双工, 两端结点<strong>交替</strong>双向传输</li>
 </ul>
 <p>具体实现<br>
 每个主机或路由器接口<br>
 链路层在适配器(网络接口卡)中实现或者在一个芯片上实现(以太网网卡, 802.11网卡, 以太网芯片组)<br>
 链接主机的系统总线<br>
 由硬件, 软件与固件组成<br>
-网卡间通信, 发送端将数据报封装成帧, 增加差错检测比特, 实现可靠数据传输和流量控制, 接收端检测差错, 实现可靠数据传输和流量控制, 提取数据报, 交付上层协议实体</p>
+<strong>网卡间通信</strong><br>
+发送端将数据报封装成帧, 增加差错检测比特, 实现可靠数据传输和流量控制<br>
+接收端检测差错, 实现可靠数据传输和流量控制, 提取数据报, 交付上层协议实体</p>
 <h1 id="差错编码">差错编码</h1>
 <p>差错编码不能保证100%可靠<br>
 基本原理: 在数据D上添加差错检测与纠正比特(冗余比特)R, 从D-&gt;DR<br>
 差错编码可分为检错码和纠错码, 纠错码需要比检错码位数更多<br>
-奇偶校验码, 1比特校验位, 检测奇数位差错, 二维奇偶校验, 检测奇数位差错, 部分偶数位差错, 纠正同一行/列的奇数位差错<br>
-internet校验和,发送端将数据划分为16位的二进制整数序列, 补码求和, 求和的反码加入分组的校验和字段, 接收端与发送端相同算法计算<br>
-循环冗余校验码(CRC), 检错能力更强大的差错编码, 广泛应用于实际网络</p>
+检测r位差错需要检错码的编码集的汉明距离为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>s</mi></msub><mo>=</mo><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d_s=r+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">s</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span><br>
+纠正r位差错需要纠错码的编码集的汉明距离为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>s</mi></msub><mo>=</mo><mn>2</mn><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d_s=2r+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">s</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span></p>
+<blockquote>
+<p>汉明距离: 两个等长字符串之间的汉明距离是两个字符串对应位置的不同字符的个数</p>
+</blockquote>
+<p><strong>奇偶校验码</strong></p>
+<ul>
+<li>1比特校验位, 检测奇数位差错</li>
+<li>二维奇偶校验, 检测奇数位差错, 部分偶数位差错, 纠正同一行/列的奇数位差错</li>
+</ul>
+<p><strong>internet校验和</strong><br>
+发送端将数据划分为16位的二进制整数序列, 补码求和, 求和的反码加入分组的校验和字段, 接收端与发送端相同算法计算<br>
+<strong>循环冗余校验码(CRC)</strong><br>
+检错能力更强大的差错编码, 广泛应用于实际网络</p>
 <h1 id="多路访问控制协议-MAC">多路访问控制协议(MAC)</h1>
 <p>链路有两类</p>
 <ul>
@@ -140,9 +153,9 @@ internet校验和,发送端将数据划分为16位的二进制整数序列, 补�
 多路访问控制协议(multiple access control protocol) 采用分布式算法决定结点如何共享信道, 决策结点何时可以传输数据, 基于信道本身, 通信信道共享协调信息<br>
 MAC协议三大类</p>
 <ul>
-<li>信道化分MAC协议, 多路复用技术,时间, 频带, 码片划分, TDMA, FDMA, CDMA, WDMA等, 网络负载重时效率高,且公平, 网络负载轻时效率低</li>
-<li>随机访问MAC协议, 信道不划分, 允许冲突, 采用冲突恢复机制, 时隙ALOHA(信道成功利用时间占37%), ALOHA(信道成功利用时间占18%), CSMA, CSMA/CD(应用于以太网), CSMA/CA(应用于802.11无线局域网)等, 网络负载轻时效率高, 负载重时, 产生冲突开销</li>
-<li>轮转MAC协议, 结点轮流使用信道, 综合前两者优点, 主结点轮询, 令牌传递, 用于蓝牙, FDDI, 令牌环网</li>
+<li><strong>信道化分MAC协议</strong>, 多路复用技术,时间, 频带, 码片划分, TDMA, FDMA, CDMA, WDMA等, 网络负载重时效率高,且公平, 网络负载轻时效率低</li>
+<li><strong>随机访问MAC协议</strong>, 信道不划分, 允许冲突, 采用冲突恢复机制, 时隙ALOHA(信道成功利用时间占37%), ALOHA(信道成功利用时间占18%), CSMA, CSMA/CD(应用于以太网), CSMA/CA(应用于802.11无线局域网)等, 网络负载轻时效率高, 负载重时, 产生冲突开销</li>
+<li><strong>轮转MAC协议</strong>, 结点轮流使用信道, 综合前两者优点, 主结点轮询, 令牌传递, 用于蓝牙, FDDI, 令牌环网</li>
 </ul>
 
       
