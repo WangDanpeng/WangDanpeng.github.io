@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    计算机网络系列笔记(五) - 数据链路层 |  Mr.Wang_Blog
+    计算机网络系列笔记(六) - 物理层 |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20220211102604" class="article article-type-post" itemscope
+  <article id="post-20220225155352" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  计算机网络系列笔记(五) - 数据链路层
+  计算机网络系列笔记(六) - 物理层
 </h1>
  
 
@@ -55,8 +55,8 @@
 
     
     <div class="article-meta">
-      <a href="/2022/02/11/20220211102604/" class="article-date">
-  <time datetime="2022-02-11T02:26:04.000Z" itemprop="datePublished">2022-02-11</time>
+      <a href="/2022/02/25/20220225155352/" class="article-date">
+  <time datetime="2022-02-25T07:53:52.000Z" itemprop="datePublished">2022-02-25</time>
 </a>
       
   <div class="article-category">
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">1.5k字</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">5分钟</span>
         </span>
     </span>
 </div>
@@ -104,59 +104,108 @@
       
 
       
-      <h1 id="数据链路层服务">数据链路层服务</h1>
-<p>主机和路由器称为结点, 连接相邻结点的通信信道称为链路, 有有线链路, 无线链路和局域网<br>
-<strong>数据链路层负责通过一条链路从一个节点向另一个物理链路直接相连的相邻结点传送数据报</strong><br>
-链路层服务包括</p>
-<ul>
-<li><strong>组帧</strong>, 封装数据报构成数据帧, 加首部和尾部; 帧同步</li>
-<li><strong>链路接入</strong>, 共享介质需要解决信道接入; 帧首部中的MAC地址, 用于标识帧的源和目的</li>
-<li><strong>相邻接点间可靠交付</strong>, 在低误码率的有线链路上很少采用; 无线链路误码率高,需要可靠交付</li>
-<li><strong>流量控制</strong>, 协调相邻的发送结点和接收</li>
-<li><strong>差错检测</strong>, 信号衰减和噪声会引起差错; 接收端检测到差错通知发送端重传或直接丢弃帧</li>
-<li><strong>差错纠正</strong>, 接收端直接纠正比特差错</li>
-<li><strong>全双工和半双工通信控制</strong>, 全双工, 链路两端结点<strong>同时</strong>双向传输; 半双工, 两端结点<strong>交替</strong>双向传输</li>
-</ul>
-<p>具体实现<br>
-每个主机或路由器接口<br>
-链路层在适配器(网络接口卡)中实现或者在一个芯片上实现(以太网网卡, 802.11网卡, 以太网芯片组)<br>
-链接主机的系统总线<br>
-由硬件, 软件与固件组成<br>
-<strong>网卡间通信</strong><br>
-发送端将数据报封装成帧, 增加差错检测比特, 实现可靠数据传输和流量控制<br>
-接收端检测差错, 实现可靠数据传输和流量控制, 提取数据报, 交付上层协议实体</p>
-<h1 id="差错编码">差错编码</h1>
-<p>差错编码不能保证100%可靠<br>
-基本原理: 在数据D上添加差错检测与纠正比特(冗余比特)R, 从D-&gt;DR<br>
-差错编码可分为检错码和纠错码, 纠错码需要比检错码位数更多<br>
-检测r位差错需要检错码的编码集的汉明距离为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>s</mi></msub><mo>=</mo><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d_s=r+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">s</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span><br>
-纠正r位差错需要纠错码的编码集的汉明距离为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>s</mi></msub><mo>=</mo><mn>2</mn><mi>r</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">d_s=2r+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">d</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">s</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span></p>
+      <h1 id="数据通信基础">数据通信基础</h1>
+<p>常见数据通信术语</p>
 <blockquote>
-<p>汉明距离: 两个等长字符串之间的汉明距离是两个字符串对应位置的不同字符的个数</p>
+<p><strong>信源</strong>: 将消息转换为信号的设备<br>
+<strong>发送设备</strong>: 将信源产生的信号进行适当的变换装置, 使之适合于在信道中传输, 主要包括编码和调制<br>
+<strong>信道</strong>: 信号传输通道, 如物理介质<br>
+<strong>噪声</strong>: 自然界和通信设备中所产生的干扰<br>
+<strong>接收设备</strong>: 完成发送设备反变换, 还原原始发送信号<br>
+<strong>信宿</strong>: 信号终点, 将信号转换为供人们能识别的消息<br>
+<strong>数据</strong>: 传送消息的实体<br>
+<strong>信号</strong>: 数据的电气的或电磁的表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><mi>A</mi><mi>s</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>ω</mi><mi>t</mi><mo>+</mo><mi>θ</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">y(t)=Asin(\omega t+\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">ω</span><span class="mord mathit">t</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span><br>
+<strong>模拟的</strong>: 参数的取值是连续的<br>
+<strong>数字的</strong>: 参数的取值是离散的<br>
+<strong>码元</strong>: 信号基本波形, 信号的基本单元<br>
+<strong>频带</strong>: 信号频率范围<br>
+<strong>带宽</strong>: 有效带宽<br>
+<strong>数据通信方式</strong>: 单工, 半双工, 全双工</p>
 </blockquote>
-<p><strong>奇偶校验码</strong></p>
+<p><strong>信源编码</strong><br>
+使信源产生的模拟数据在数字通信系统中传输<br>
+典型新原编码: <strong>PCM</strong><br>
+PCM三个步骤:</p>
 <ul>
-<li>1比特校验位, 检测奇数位差错</li>
-<li>二维奇偶校验, 检测奇数位差错, 部分偶数位差错, 纠正同一行/列的奇数位差错</li>
+<li>采样: 目的就是要用一系列在时间上离散的采样值, 代替时间上连续的模拟数据, 即实现时间上的离散化</li>
+<li>量化: 就是使采样值在取值上离散化</li>
+<li>编码: 就是将量化后的采样值用一定位数的二进制数码来表示</li>
 </ul>
-<p><strong>internet校验和</strong><br>
-发送端将数据划分为16位的二进制整数序列, 补码求和, 求和的反码加入分组的校验和字段, 接收端与发送端相同算法计算<br>
-<strong>循环冗余校验码(CRC)</strong><br>
-检错能力更强大的差错编码, 广泛应用于实际网络</p>
-<h1 id="多路访问控制协议-MAC">多路访问控制协议(MAC)</h1>
-<p>链路有两类</p>
+<h1 id="物理介质">物理介质</h1>
+<p><strong>导引型传输介质</strong></p>
 <ul>
-<li>点对点链路, 拨号接入的PPP, 以太网交换机与主机间的点对点链路</li>
-<li>广播链路(共享介质), 早期的总线以太网, HFC的上行链路, 802.11无线局域网</li>
+<li>架空明线, 易受天气和外界电磁干扰, 对外界噪声敏感, 带宽有限</li>
+<li>双绞线, 主要用于基带传输</li>
+<li>同轴电缆, 主要用于频带传输</li>
+<li>光纤, 基本原理光的全反射, 分为多模光纤和单模光纤两类</li>
 </ul>
-<p>单一共享广播信道内, 两个或以上结点同时传输, 会产生冲突, 结点同时接收到多个信号则接收失败<br>
-多路访问控制协议(multiple access control protocol) 采用分布式算法决定结点如何共享信道, 决策结点何时可以传输数据, 基于信道本身, 通信信道共享协调信息<br>
-MAC协议三大类</p>
+<p><strong>非导引型传输介质</strong></p>
 <ul>
-<li><strong>信道化分MAC协议</strong>, 多路复用技术,时间, 频带, 码片划分, TDMA, FDMA, CDMA, WDMA等, 网络负载重时效率高,且公平, 网络负载轻时效率低</li>
-<li><strong>随机访问MAC协议</strong>, 信道不划分, 允许冲突, 采用冲突恢复机制, 时隙ALOHA(信道成功利用时间占37%), ALOHA(信道成功利用时间占18%), CSMA, CSMA/CD(应用于以太网), CSMA/CA(应用于802.11无线局域网)等, 网络负载轻时效率高, 负载重时, 产生冲突开销</li>
-<li><strong>轮转MAC协议</strong>, 结点轮流使用信道, 综合前两者优点, 主结点轮询, 令牌传递, 用于蓝牙, FDDI, 令牌环网</li>
+<li>自由空间, 无线电传输途径, 不同频段具有不同传播特性</li>
+<li>地波传播, 频率较低的电磁波趋于沿地球表面传播, 有一定的绕射能力, 在低频和甚低频段, 地波传播距离可超过数百米或数千公里</li>
+<li>天波传播, 电离层, 频率较高的电磁波会被电离层反射, 电离层的密度和厚度随时间随机变化, 电磁波可以传播一万千米以上, 随参信道</li>
+<li>视线传播, 频率高于30MHz的电磁波将穿透电离层, 不会被反射回来, 沿地面绕射能力也很弱, 通常采用视线无障碍的点对点直线传播, 可以设立地面中继站或卫星中继站进行接力传输</li>
 </ul>
+<h1 id="信道与信道容量">信道与信道容量</h1>
+<p>狭义上的信道: 信号传输介质<br>
+广义上的信道: 包括信号传播介质和通信系统的一些变换装置, 比如发送设备, 接收设备, 天线, 调制器等<br>
+<strong>恒参信道传输特性</strong></p>
+<ul>
+<li>各种有线信道和部分无线信道, 如微波视线传播链路和卫星链路等</li>
+<li>理想的恒参信道是一个理想的无失真传输信道</li>
+<li>对信号幅值产生固定的衰减</li>
+<li>对信号输出产生固定的时延</li>
+</ul>
+<p><strong>随参信道传输特性</strong></p>
+<ul>
+<li>许多无线信道都是随参信道</li>
+<li>信号的传输衰减随时间随机变化</li>
+<li>信号的传输时延随时间随机变化</li>
+<li>存在多径传播现象</li>
+</ul>
+<p>信道容量: 信道无差错传输信息的最大平均信息速率<br>
+<strong>奈奎斯特(Nyquist)信道容量公式</strong>: 理想无噪声信道的信道极限容量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mn>2</mn><mi>B</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>M</mi></mrow><annotation encoding="application/x-tex">C=2Blog_2M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.10903em;">M</span></span></span></span></p>
+<blockquote>
+<p>C为信道容量, 单位b/s; B为信道带宽, 单位为Hz; M为进制数, 即信号状态数</p>
+</blockquote>
+<p><strong>香农(Shannon)信道容量公式</strong>: 有噪声信道的信道容量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><mi>B</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mn>1</mn><mo>+</mo><mi>S</mi><mi mathvariant="normal">/</mi><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">C=Blog_2(1+S/N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">/</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></p>
+<blockquote>
+<p>S/N为信噪比, 即信号能量与噪声能量之比, 单位分贝(dB)</p>
+</blockquote>
+<h1 id="基带传输基础">基带传输基础</h1>
+<p>基带信号: 信源发出的原始电信号, 往往包含有较多的低频成分, 甚至有直流成分<br>
+<strong>基带传输</strong>: 直接在信道中传送基带信号<br>
+基带信号比较适合在具有低通特性的有线信道中传输, 通常不适合在无线信道中直接传输<br>
+典型数字基带信号码型</p>
+<ul>
+<li>单极不归零码, 易于产生, 不适合长距离传输</li>
+<li>双极不归零码</li>
+<li>单极归零码</li>
+<li>双极归零码</li>
+<li>差分码, 又称相对码</li>
+<li>AMI码, 信号交替反转码</li>
+<li>双相码, 又称曼彻斯特码</li>
+<li>nBmB码</li>
+</ul>
+<h1 id="频带传输基础">频带传输基础</h1>
+<p>许多带通信道(如无线信道)不具有低通特性, 因此不能在这些信道中直接传输基带信号, 只能利用基带信号去调制与对应信道传播特性相匹配的载波信号<br>
+利用模拟基带信号调制载波, 称为模拟调制, 利用数字基带信号调制载波, 称为数字调制<br>
+频带传输系统通常选择正弦波信号作为载波<br>
+<strong>二进制数字调制</strong></p>
+<ul>
+<li>二进制幅移键控(2ASK)</li>
+<li>二进制频移键控(2FSK)</li>
+<li>二进制相移键控(2PSK)</li>
+<li>二进制差分相移键控(2DPSK)</li>
+</ul>
+<p><strong>频带利用率</strong>: 2ASK, 2PSK及2DPSK的频带利用率相同, 2FSK的频带利用率最低<br>
+<strong>误码率</strong>: 相同信噪比下, 2PSK最低, 2ASK最高<br>
+<strong>对信道特性的敏感性</strong>: 2ASK对信道特性变化比较敏感, 性能最差, 2FSK与2PSK不敏感</p>
+<h1 id="物理层接口规程">物理层接口规程</h1>
+<p>机械特性: 指明接口所用接线器的形状和尺寸, 引线数目和排列, 固定和锁定装置等等<br>
+电气特性: 指明在接口电缆的各条线上出现的电压的范围<br>
+功能特性: 指明某条线上出现的某一电平的电压表示何种意义<br>
+过程特性: 指明对于不同功能的各种可能事件的出现顺序</p>
 
       
       <!-- reward -->
@@ -195,19 +244,10 @@ MAC协议三大类</p>
   
   <nav class="article-nav">
     
-      <a href="/2022/02/25/20220225155352/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            计算机网络系列笔记(六) - 物理层
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/02/10/20220210171858/" class="article-nav-link">
+      <a href="/2022/02/11/20220211102604/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">计算机网络系列笔记(四) - 网络层</div>
+        <div class="article-nav-title">计算机网络系列笔记(五) - 数据链路层</div>
       </a>
     
   </nav>
