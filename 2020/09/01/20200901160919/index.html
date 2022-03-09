@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">477字</span>
+            <span class="post-count">795字</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -124,6 +124,114 @@
 业务开发中可使用容器, 省时省力; 底层开发时, 如需要性能优化到极致, 可使用数组.</p>
 <h3 id="为什么数组下标从0开始">为什么数组下标从0开始</h3>
 <p>下标也是在内存上的偏移量, 寻址的时候可以直接首地址+偏移量*type_size, 如果下标从1开始, 则需要多做一次减法运算, 对于数组这种最基础的数据结构, 为了性能, 选择从0开始编号. (也可能不是, 无从求证)</p>
+<h2 id="特别应用">特别应用</h2>
+<h3 id="差分数组">差分数组</h3>
+<p>给定一个数组a</p>
+<table>
+<thead>
+<tr>
+<th>下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a(i)</td>
+<td>1</td>
+<td>2</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>要求从下标1到下标6, 每个数加1, 最傻瓜的办法就是遍历, 但如果数组有上千万个数, 且经常需要类似的区间修改, 遍历就有点费时费力了</p>
+<p>所以就需要用到<strong>差分数组</strong>, 通过预处理原数组a, 得到一个新数组d, 大小和原数组相等, 每一个元素<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>=</mo><mi>a</mi><mo>(</mo><mi>i</mi><mo>)</mo><mo>−</mo><mi>a</mi><mo>(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo separator="true">,</mo><mo>(</mo><mi>i</mi><mo>!</mo><mo>=</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">d(i)=a(i)-a(i-1),(i!=0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathit">a</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">!</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">)</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>(</mo><mn>0</mn><mo>)</mo><mo>=</mo><mi>a</mi><mo>(</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">d(0)=a(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mopen">(</span><span class="mord mathrm">0</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mopen">(</span><span class="mord mathrm">0</span><span class="mclose">)</span></span></span></span><br>
+即每个位置上记录的是当前位置和前一位数据的差值</p>
+<table>
+<thead>
+<tr>
+<th>下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a(i)</td>
+<td>1</td>
+<td>2</td>
+<td>5</td>
+<td>4</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>d(i)</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>-1</td>
+<td>5</td>
+<td>-2</td>
+<td>3</td>
+<td>-9</td>
+</tr>
+<tr>
+<td>构造好以后, 再看从下标1到下标6加一, 不需要遍历, 只需要给d(1)+1, 再给d(7)-1, 中间的所有元素都自动加了1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>优点是</strong>: 适用于区间范围较大, 区间频繁修改</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>缺点是</strong>: 查询数组a某个位置数据时, 需要根据差分数组从前向后求和</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
       
       <!-- reward -->
