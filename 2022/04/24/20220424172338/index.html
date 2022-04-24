@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    位运算 |  Mr.Wang_Blog
+    分布式 - 数据一致性的部分指导理论(CAP, BASE, 2PC, 3PC) |  Mr.Wang_Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -38,7 +38,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-20220309150604" class="article article-type-post" itemscope
+  <article id="post-20220424172338" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -46,7 +46,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  位运算
+  分布式 - 数据一致性的部分指导理论(CAP, BASE, 2PC, 3PC)
 </h1>
  
 
@@ -55,12 +55,12 @@
 
     
     <div class="article-meta">
-      <a href="/2022/03/09/20220309150604/" class="article-date">
-  <time datetime="2022-03-09T07:06:04.000Z" itemprop="datePublished">2022-03-09</time>
+      <a href="/2022/04/24/20220424172338/" class="article-date">
+  <time datetime="2022-04-24T09:23:38.000Z" itemprop="datePublished">2022-04-24</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
   </div>
 
       
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">871字</span>
+            <span class="post-count">2.5k字</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">8分钟</span>
         </span>
     </span>
 </div>
@@ -104,60 +104,111 @@
       
 
       
-      <h1 id="与运算">与运算</h1>
-<p><code>&amp;</code>, 与, 两位都为1, 结果才为1, (都真才真)</p>
-<h2 id="与的用途">与的用途</h2>
-<p><strong>清零</strong><br>
-如果想将一个单元清零, 只要与一个各位都为零的数相与, 结果就为零<br>
-<strong>取一个数的指定位</strong><br>
-比如取x的低四位, 只需要找另一个数y, 令y的低4位为1, 其余位为0, 然后x和y按位与运算, 即可得到x的指定位<br>
-<strong>判断奇偶</strong><br>
-二进制末位是0就是偶数, 1就是奇数, 可以用a&amp;1==0判断a是不是偶数</p>
-<h1 id="或运算">或运算</h1>
-<p><code>|</code>, 或, 两位都为0, 结果才为0, (都假才假)</p>
-<h2 id="或的用途">或的用途</h2>
-<p><strong>对一个数据的某些位设置为1</strong><br>
-比如将x的低四位设置为1, 只需要找另一个数y, 令y的低4位为1, 其余位为0, 然后x和y按位与运算, 即可得到</p>
-<h1 id="异或运算">异或运算</h1>
-<p><code>^</code>, 异或, 两位相同为0, 两位不同为1, (不同才真)</p>
-<h2 id="异或特性">异或特性</h2>
+      <p>分布式 - 数据一致性的部分指导理论(CAP, BASE, 2PC, 3PC)</p>
+<h1 id="CAP理论">CAP理论</h1>
+<h2 id="概述">概述</h2>
+<p>分布式系统最大的难点, 就是各个节点的状态如何保持一致, CAP理论是在设计分布式系统的过程中, 处理数据一致性问题时必须考虑的理论.<br>
+CAP理论的本质很简单, 它就是一种分布式系统设计的不同理念概括.</p>
+<p><img src="http://www.wangdanpeng.com/img/20220424172338.png" alt="CAP"></p>
+<p>CAP理论说, 一个分布式系统, 不能同时满足以下三个特性:</p>
 <ul>
-<li>交换律</li>
-<li>结合律</li>
-<li>对任何数x, 异或自身等于0, 异或0等于自身</li>
-<li><strong>自反性</strong>, a^b^b=a^0=a, 即任何数a用任何数b连续做两次异或, 仍得到a本身, 异或最重要的性质</li>
+<li><strong>一致性(Consistency)</strong>: 对于客户端的每次读操作, 要么读到最新数据, 要么读取失败, 强调数据正确</li>
+<li><strong>可用性(Availability)</strong>: 任何客户端的请求都能得到返回数据, 不会出现失败(返回时间必须合理, 过长也不行), 不保证数据最新, 但强调不出错</li>
+<li><strong>分区容忍性(Partition tolerance)</strong>: 当发生网络分区时, 系统能正常运行</li>
 </ul>
-<h2 id="异或的应用">异或的应用</h2>
-<p><strong>两数交换</strong><br>
-例如交换两个变量的值且不引入中间变量, 可用如下表达式:<br>
-假设A的值为a, B的值为b<br>
-A = A^B (a^b)<br>
-B = A^B (a^b ^ b)<br>
-A = A^B (a^b ^ a)<br>
-即运用了异或的自反性, 类似的该运算还可以应用在加密, 数据传输, 校验等许多领域<br>
-<strong>找到出现奇数次的数</strong><br>
-一个数组有若干整数, 一个数出现奇数次, 其余均出现偶数次, 找到这个出现奇数次的数, 就可以把所有数异或, 最后结果就是要找的数, 同样是应用异或的自反性<br>
-<strong>反转指定位</strong><br>
-比如将x的低四位进行反转, 只需要找另一个数y, 令y的低4位为1, 其余位为0, 然后x和y进行异或, 即可得到</p>
-<h1 id="取反运算">取反运算</h1>
-<p><code>~</code>, 取反, 0变1, 1变0</p>
-<h2 id="用途">用途</h2>
-<p>使一个数的最低位置零, 可以使用a &amp; ~1, 1取反的值为最低位是0其余位都是1, 再和a与运算, 得到最低位为0, 其余位不变</p>
-<p><em>~运算符优先级比算术运算符(加减乘除), 关系运算符(大小等于), 逻辑运算符(与或非)和其他运算符(三目运算符)都高</em></p>
-<h1 id="左移">左移</h1>
-<p><code>&lt;&lt;</code>, 左移, 各个二进制位全部向左移动若干位, 高位丢弃, 低位补0</p>
-<p>若左移时舍弃的高位不包含1, 则每左移一位相当于该数乘以2</p>
-<h1 id="右移">右移</h1>
-<p><code>&gt;&gt;</code>, 右移, 各个二进制位全部向右移动若干位, 对无符号的数, 高位补0, 对有符号数, 各编译器处理方法不一, 有的补符号位, 有的补0</p>
-<p>操作数每右移一位, 相当于该数除以2</p>
-<h1 id="运算规则">运算规则</h1>
-<p>不同长度的数据进行位运算, 如果两个不同长度的数据进行位运算时, 系统会将二者按<strong>右端对齐</strong>, 然后进行位运算<br>
-右端对齐后, 左边不足的位</p>
+<blockquote>
+<p>网络分区: 一个分布式系统里, 节点组成的网络本来是连通的, 然而可能因为一些网络或设备故障, 使得有些节点之间不连通了, 整个网络就分成了几块区域,<br>
+数据就散步在这些不连通的区域中, 这就叫分区</p>
+</blockquote>
+<p>对分布式系统而言, P是前提必须保证, 因为只要有网络交互, 分区错误是必然发生的, 所以只能考虑当发生分区错误时, 如何选择一致性和可用性.<br>
+而根据选择不同, 开源的分布式系统往往被分为CP系统和AP系统</p>
 <ul>
-<li>如果整型数据为正数, 左边补0</li>
-<li>如果整型数据为负数, 左边补1</li>
-<li>如果整型数据为无符号数, 左边也补0</li>
+<li>当一套系统发生分区故障后, 客户端的请求会被卡死或者超时, 但系统每个节点总是返回一致的数据, 那么这套系统就是CP系统, 例如Zookeeper</li>
+<li>当一套系统发生分区故障后, 客户端依然能访问系统, 但获取的数据有新有旧, 那么这套系统就是AP系统, 例如Eureka</li>
 </ul>
+<h2 id="注意">注意</h2>
+<p>有两点容易存在误区</p>
+<ul>
+<li>CAP理论并非是在所有时候都只能选择两个特性, 分区错误发生概率很低, 在不存在网络失败情况下, c和a是能同时保证的, 只有当网络发生分区或失败时, 才会在c和a之间做出选择</li>
+<li>对C和A的选择不必是针对整个系统的, 可以对不同子系统有不同的抉择</li>
+</ul>
+<h2 id="CAP的不足">CAP的不足</h2>
+<ol>
+<li>CAP理论本身是没有考虑网络延迟问题的, 它认为一致性是立即生效的, 但是要保持一致性, 是需要时间成本的</li>
+<li>实践中一致性和可用性并不仅仅是二选一的关系, 只是一些重要性的区别, 往往选择一方的同时, 也会采用一些技术手段去保证另一项</li>
+<li>CAP理论只是一种对状态的描述, 但对状态间如何转换, 如何修补, 如何恢复并没有提供方向</li>
+</ol>
+<p>针对CAP的不足, 延伸出了BASE理论, 弥补了CAP理论过于抽象的问题</p>
+<h1 id="BASE理论">BASE理论</h1>
+<h2 id="理论">理论</h2>
+<p>BASE理论是一种处理分布式事务的思想, 没有具体的操作步骤, 要理解BASE理论需要结合具体的例子.</p>
+<p>BASE理论是对CAP中一致性和可用性权衡的结果, 来源于对大规模互联网分布式系统实践的总结, 基于CAP理论演化而来<br>
+<strong>核心思想</strong>是即使无法做到强一致性, 但每个应用都可以根据自身业务特点, 采用适当的方式来使系统达到最终一致性.</p>
+<p>实际上, 网络分区出现情况很少, CAP在大多时间能够同时满足C和A, 对于分区错误出现的情况下, 需要提供一种预备策略做处理:</p>
+<ul>
+<li>探知网络分区的发生</li>
+<li>进入显式的分区模式, 限制某些操作</li>
+<li>启动恢复过程, 恢复数据一致性, 补偿分区发生期间的错误</li>
+</ul>
+<h2 id="定义">定义</h2>
+<p>BASE理论核心</p>
+<ul>
+<li><strong>Basically Available(基本可用)</strong><br>
+出现了不可预知的故障, 但还能用, 相比较正常的系统, 可能有响应上的损失或者功能上的损失<br>
+在架构设计中, 把以前可能影响全平台的严重问题, 变成只会影响平台的一部分数据或者功能的非严重问题</li>
+<li><strong>Soft State(软状态)</strong><br>
+允许系统中的数据存在中间状态, 并认为该状态不影响系统的整体可用性, 即允许系统在多个不同节点的数据副本存在数据延时<br>
+对实时性不高的数据可以延后处理</li>
+<li><strong>Eventually Consistent(最终一致性)</strong><br>
+软状态不能一直持续, 在一定时间期限过后, 应当保证所有副本保持数据一致性, 从而达到最终一致性, 这个时间期限取决于网络延时, 系统负载, 数据复制方案等等因素<br>
+对于不符合业务需求的软状态, 通过一些后续内部的自动化操作把数据状态补充完整从而最终满足业务需求.</li>
+</ul>
+<p>总体来说BASE理论面向的是大型高可用, 可扩展的分布式系统, 与传统ACID特性相反, 不同于ACID的强一致性模型, BASE提出通过牺牲强一致性来获得可用性<br>
+并允许数据段时间内的不一致, 但是最终达到一致状态.</p>
+<blockquote>
+<p>ACID<br>
+<strong>Atomicity(原子性)</strong>: 不管事务里执行多少命令, 对外它们是一体的, 要么都执行, 要么都不执行<br>
+<strong>Consistency(一致性)</strong>: 事务执行前后, 数据从一个状态到另一个状态必须是一致的<br>
+<strong>Isolation(隔离性)</strong>: 多个并发事务之间相互隔离，不能互相干扰<br>
+<strong>Durability(持久性)</strong>: 事务完成后，对数据库的更改是永久保存的，不能回滚</p>
+</blockquote>
+<h1 id="2PC">2PC</h1>
+<p>两阶段提交协议, 又称2PC(two-phase commit protocol), X/Open XA协议的经典实现, 是一个非常经典的强一致, 中心化的原子提交协议<br>
+协议中有两类节点, 一个<strong>中心化协调者</strong>节点(cordinator)和N个<strong>参与者</strong>节点(partcipant)</p>
+<p><strong>两阶段提交是指, 整个过程中存在两个阶段的处理流程</strong></p>
+<ul>
+<li>第一阶段, 请求阶段<br>
+当分布式事务的发起方向协调者发送请求时, 协调者分别向参与者发送事务预处理请求, 称之为Prepare<br>
+参与者开始执行本地事务, 但执行完成后并不提交事务, 而是先向协调者报告自己能否执行成功<br>
+当所有参与者都向协调者做出反馈, 此时流程进入第二阶段</li>
+<li>第二阶段, 提交阶段<br>
+如果所有参与者都报告能执行成功, 那么协调者会向所有参与者发送Commit请求, 参与者就会完成自身事务的提交, 并将最终提交结果回复给协调者, 协调者再向调用方返回分布式事务处理完成的结果<br>
+–<br>
+相反如果有参与者报告执行会失败, 此时协调者就会向所有参与者发送Rollback请求, 参与者回滚本地事务释放资源, 并向协调者发送ack消息, 协调者再向调用方返回分布式事务处理失败的结果</li>
+</ul>
+<p>但2PC也存在一些问题:</p>
+<ul>
+<li>性能问题, 在1,2阶段的执行过程中, 所有参与者的事务操作都是处于阻塞状态</li>
+<li>单点故障, 协调者是单点, 如果协调者出现问题, 整个流程就会锁住无法执行, 参与者也没有超时机制</li>
+<li>数据不一致, 二阶段协调者向参与者发送提交通知, 如果网络抖动, 部分参与者收到了部分参与者没收到, 则会出现数据不一致现象</li>
+</ul>
+<h1 id="3PC">3PC</h1>
+<p>三阶段提交协议, 是2PC的改进版, 将请求阶段一分为二, 变成canCommit, preCommit和doCommit三个阶段组成的事务处理协议, 并且引入了超时机制</p>
+<ul>
+<li>第一阶段 canCommit<br>
+协调者向所有参与者发送canCommit请求, 询问是否可以执行事务提交操作, 然后开始等待参与者响应<br>
+参与者收到请求后, 检查自身状态及资源, 确认可以顺利执行事务则返回yes, 否则返回no</li>
+<li>第二阶段 preCommit<br>
+如果所有参与者反馈yes, 则协调者向参与者发送preCommit请求, 参与者收到请求, 执行事务操作, 但不提交事务, 如果参与者成功执行了事务, 则返回ack确认响应, 同时等待最终命令<br>
+–<br>
+如果有参与者反馈no或者等待超时, 协调者向所有参与者发送abort请求或参与者超时未收到协调者请求, 参与者执行事务中断</li>
+<li>第三阶段 doCommit<br>
+协调者收到参与者发送的ack响应后<br>
+如果参与者都能执行成功, 向所有参与者发送doCommit请求, 参与者收到请求后, 执行正式的事务提交, 并在完成之后释放事务资源, 向协调者发送ack响应, 协调者收到所有ack后完成事务<br>
+–<br>
+当有参与者在二阶段未完成反馈或者反馈超时, 则协调者向所有参与者发送abort请求, 参与者收到请求后, 回滚事务, 并释放所有事务的资源, 然后向协调者发送ack响应, 协调者收到所有ack后, 执行事务的中断</li>
+</ul>
+<p><strong>但3PC依旧存在单点故障和数据不一致问题</strong></p>
 
       
       <!-- reward -->
@@ -185,7 +236,7 @@ A = A^B (a^b ^ a)<br>
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7/" rel="tag">一致性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li></ul>
 
 
     </footer>
@@ -196,19 +247,10 @@ A = A^B (a^b ^ a)<br>
   
   <nav class="article-nav">
     
-      <a href="/2022/04/24/20220424172338/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            分布式 - 数据一致性的部分指导理论(CAP, BASE, 2PC, 3PC)
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/02/25/20220225155352/" class="article-nav-link">
+      <a href="/2022/03/09/20220309150604/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">计算机网络系列笔记(六) - 物理层</div>
+        <div class="article-nav-title">位运算</div>
       </a>
     
   </nav>
