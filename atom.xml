@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangdanpeng.com/"/>
-  <updated>2023-02-10T07:45:59.263Z</updated>
+  <updated>2023-02-15T09:20:37.275Z</updated>
   <id>http://www.wangdanpeng.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数学相关 - HyperLogLog算法原理</title>
+    <link href="http://www.wangdanpeng.com/2023/02/15/20230215171913/"/>
+    <id>http://www.wangdanpeng.com/2023/02/15/20230215171913/</id>
+    <published>2023-02-15T09:19:13.000Z</published>
+    <updated>2023-02-15T09:20:37.275Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;应用场景&quot;&gt;应用场景&lt;/h2&gt;
+&lt;p&gt;当需要对大量数据做去重计数, 例如统计一个页面的UV(Unique Visitor, 独立访客), 或者用户搜索的关键词数量, 比较容易想到的方案有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储到数据库表, 使用distinct
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数学相关" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数学" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="Redis" scheme="http://www.wangdanpeng.com/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>Spark - Spark SQL中RBO, CBO与AQE简单介绍</title>
@@ -604,38 +638,6 @@
     
     
       <category term="操作系统" scheme="http://www.wangdanpeng.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构学习笔记-常见算法思想 </title>
-    <link href="http://www.wangdanpeng.com/2021/07/30/20210730193440/"/>
-    <id>http://www.wangdanpeng.com/2021/07/30/20210730193440/</id>
-    <published>2021-07-30T11:34:40.000Z</published>
-    <updated>2021-07-30T11:35:34.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;简介-v9&quot;&gt;简介&lt;/h3&gt;
-&lt;p&gt;几种常见的算法思想, 用来指导我们设计具体的算法和编码, 有&lt;br&gt;
-贪心算法, 分治算法, 回溯算法, 动态规划&lt;/p&gt;
-&lt;h3 id=&quot;贪心算法-greedy-algorithm&quot;&gt;贪心算法(greedy
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="http://www.wangdanpeng.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://www.wangdanpeng.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+    
+  <meta name="description" content="热爱编程, 乐于分享, 主要还是记性不好, 把遇到的问题整理出来, 提醒自己也方便大家." />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    数学相关 - HyperLogLog算法原理 |  Mr.Wang_Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Mr.Wang_Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-20230215171913" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数学相关 - HyperLogLog算法原理
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/02/15/20230215171913/" class="article-date">
+  <time datetime="2023-02-15T09:19:13.000Z" itemprop="datePublished">2023-02-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3/">数学相关</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.8k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="应用场景">应用场景</h2>
+<p>当需要对大量数据做去重计数, 例如统计一个页面的UV(Unique Visitor, 独立访客), 或者用户搜索的关键词数量, 比较容易想到的方案有</p>
+<ul>
+<li>存储到数据库表, 使用distinct count计算</li>
+<li>使用Redis的set, bitmap等数据结构</li>
+</ul>
+<p>但都存在一些问题, 随着数据量增加, 存储空间占用越来越大; 统计速度慢, 性能并不理想</p>
+<p>数据分析, 网络监控及数据库优化等领域都会涉及到基数计数的需求.</p>
+<blockquote>
+<p>基数, 一个集合中不重复元素的个数.</p>
+</blockquote>
+<p>目前还没有在大数据场景中准确计算基数的高效算法, 因此在允许一定误差的情况下, 使用<strong>概率算法</strong>是一个不错的选择</p>
+<h2 id="概率算法">概率算法</h2>
+<p>概率算法不直接存储数据本身, 而通过一定的概率统计方法预估基数值, 这种方法可以大大节省内存, 同时保证误差控制在一定范围内<br>
+目前用于基数计数的概率算法有</p>
+<ul>
+<li><strong>LC(Linear Counting)</strong>: 早期的基数估计算法, 在空间复杂度方面不算优秀, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msub><mi>N</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N_{max})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></li>
+<li><strong>LLC(LogLog Counting)</strong>: 相比于LC更加节省内存, 空间复杂度只有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><msub><mi>N</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>)</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(log_2(log_2(N_{max})))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></li>
+<li><strong>HLL(HyperLogLog Counting)</strong>: HLL基于LLC的优化和改进, 在同样空间复杂度情况下, 能够比LLC的基数估计误差更小, 例如Redia中HLL只占12KB, 可以计算接近 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mn>6</mn><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{64}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">6</span><span class="mord mathrm">4</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>个不同基数, 标准误差为0.81%</li>
+</ul>
+<h2 id="极大似然估计">极大似然估计</h2>
+<p>极大似然估计是建立在极大似然原理的基础上的一个统计方法, 是概率论在统计学中的应用<br>
+极大似然估计提供了一种给定观察数据来评估模型参数的方法, 即: <strong>模型已定, 参数未知</strong><br>
+通过若干次试验, 观察其结果, 利用试验结果得到某个参数值能够使样本出现的概率为最大, 则称为极大似然估计</p>
+<p>目的就是: 利用已知的样本结果, 反推最有可能/最大概率导致这样结果的参数值</p>
+<p>例如有两个箱子, 甲箱有99白球1个黑球, 乙箱有99黑球1白球, 现在取出了一个黑球<br>
+问黑球是从哪个箱子取出的<br>
+你的第一印象就是黑球最像是从乙箱取出的, 这个推断符合人们的经验事实, 最像就是最大似然之意, 这种想法常称为极大似然原理</p>
+<h2 id="伯努利试验">伯努利试验</h2>
+<p>伯努利试验(Bernoulli experiment), 是<strong>在同样的条件下重复地, 相互独立地进行的一种随机试验</strong><br>
+其特点是该随机试验只有两种可能结果: 发生或者不发生<br>
+我们假设该项试验独立重复地进行了n次, 那么就称这一系列重复独立的随机试验为n重伯努利试验<br>
+单个伯努利试验是没有多大意义的, 然而当我们反复进行伯努利试验, 去观察这些试验有多少是成功的多少是失败的, 事情就变得有意义了, 这些累计记录包含了很多潜在的非常有用的信息</p>
+<p>以抛硬币为例, 每次抛硬币出现正面的概率都是50%, 假设一直抛硬币, 直到出现正面, 则一个伯努利试验结束<br>
+假设第1次伯努利试验抛硬币的次数为k<sub>1</sub>, 第n次伯努利试验抛硬币的次数为k<sub>n</sub><br>
+我们记录这n次伯努利试验的最大抛硬币次数为k<sub>max</sub><br>
+那么重点来了<br>
+<strong>在某次伯努利试验中, k<sub>max</sub>出现的概率, 就是投掷了k<sub>max-1</sub>次反面, 和1次正面, 概率就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><msup><mn>2</mn><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msup></mrow><annotation encoding="application/x-tex">1/2^{k_{max}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">/</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.03148em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord scriptscriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><br>
+也就是说需要进行<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msup></mrow><annotation encoding="application/x-tex">2^{k_{max}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.03148em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord scriptscriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>次试验可能会出现一次k<sub>max</sub>, 那么根据极大似然估算法, 我们就粗略估计本次进行的n次伯努利试验的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><msup><mn>2</mn><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msup></mrow><annotation encoding="application/x-tex">n=2^{k_{max}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mrel">=</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.03148em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord scriptscriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></strong></p>
+<p>同理, 应用到基数统计中就是, 把集合中每个元素都经过hash后表示为二进制数串, 一个数串类比成一次抛硬币试验, 1是抛到正面, 0是反面<br>
+二进制串中从低位开始第一个1出现的位置, 理解为抛硬币中第一次出现正面的抛掷次数k, 依旧通过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow></msup></mrow><annotation encoding="application/x-tex">2^{k_{max}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="vlist"><span style="top:0.15em;margin-right:0.07142857142857144em;margin-left:-0.03148em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord scriptscriptstyle cramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>来估算集合中一共有多少不同的数字<br>
+因为重复的值hash后二进制数串一致, 得到的k值不会变化, 所以是天然去重的, 重复数据不会对估算值产生任何影响</p>
+<h2 id="后续优化">后续优化</h2>
+<p>很显然这个估算关系是不准确的<br>
+关于估值偏差较大的问题, 可以采用如下方式结合来缩小误差</p>
+<h3 id="均匀随机化">均匀随机化</h3>
+<p>选取的哈希函数必须满足以下条件, 优秀的哈希函数是后续概率分析的基础</p>
+<ol>
+<li>哈希结果有很好的均匀性, 无论原始集合元素的值分布如何, 哈希结果都几乎服从均匀分布</li>
+<li>哈希的碰撞几乎可以忽略不计</li>
+<li>哈希结果的长度是固定的</li>
+</ol>
+<h3 id="分桶平均">分桶平均</h3>
+<p>以上直接采用单一估计量会由于偶然性存在较大误差, 因此采用分桶平均的思想来消除误差<br>
+以Redis为例, 哈希结果64位, 前14位来分桶, 共16384个桶, 后50位作为真正用于基数估计的比特串<br>
+桶编号相同的元素分配到一个桶, 先分别统计每个桶各自的k<sub>max</sub>, 然后进行平均<br>
+相当于物理试验中多次试验取平均的做法, 可以有效消减因偶然性带来的误差</p>
+<h3 id="调和平均">调和平均</h3>
+<p>分桶取平均是LLC的算法实现, HLL区别在于采用了调和平均数,<br>
+调和平均数指的是倒数的平均数, 相比平均数能有效抵抗离群值对平均值的扰动<br>
+比如我和马云的平均资产, 我有两万, 他有两千亿, 平均一下我有一千亿<br>
+但是调和平均数, 平均一下我有2/(1/20000 + 1/200000000000)=40000<br>
+就和我的资产偏差不是很大</p>
+<h3 id="偏差修正">偏差修正</h3>
+<p>经过上述系列优化后的估计量看似已经不错了, 但通过数学分析可以知道这并不是基数n的无偏估计<br>
+因此需要修正成无偏估计, 此处涉及一系列数学公式<br>
+简单来说就是, 增加修正因子, 是一个不固定的值, 会根据实际情况来进行值的调整<br>
+详细可参考<a href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/40671.pdf" target="_blank" rel="noopener">论文</a></p>
+<h2 id="Redis中HyperLogLog结构">Redis中HyperLogLog结构</h2>
+<p>具体数据结构, 密集存储结构, 稀疏存储结构及其转换, 可参考一下文章<br>
+<a href="https://blog.csdn.net/u010887744/article/details/108041280" target="_blank" rel="noopener">玩转Redis-HyperLogLog原理探索</a></p>
+<p>ps: 另附一个<a href="http://content.research.neustar.biz/blog/hll.html" target="_blank" rel="noopener">演示工具</a>, 在明白以上原理以后, 可以直观的看到HLL的工作过程及误差变化情况</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/02/10/20230210154146/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Spark - Spark SQL中RBO, CBO与AQE简单介绍</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '4e3dce9d862c874f1e6a',
+    clientSecret: 'e36d977c68e245be716b31fdde5d273c83f38775',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2017-2023
+        王丹鹏
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <!--<i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>-->
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279515725'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279515725%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</span>
+
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">冀ICP备15029707号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/method-draw-image.svg" alt="Mr.Wang_Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/z.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/w.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['', '', '努力, 奋斗'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: false,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":400,"hOffset":100,"vOffset":-40},"mobile":{"show":true,"scale":0.5},"react":{"opacity":1},"log":false});</script></body>
+
+</html>
