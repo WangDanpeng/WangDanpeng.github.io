@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+    
+  <meta name="description" content="热爱编程, 乐于分享, 主要还是记性不好, 把遇到的问题整理出来, 提醒自己也方便大家." />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    数据分析两件套ClickHouse+Metabase(一) |  Mr.Wang_Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Mr.Wang_Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-20230811154946" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据分析两件套ClickHouse+Metabase(一)
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/08/11/20230811154946/" class="article-date">
+  <time datetime="2023-08-11T07:49:46.000Z" itemprop="datePublished">2023-08-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">944字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="ClickHouse篇">ClickHouse篇</h1>
+<h2 id="安装ClickHouse">安装ClickHouse</h2>
+<p>ClickHouse有中文文档, 安装简单 -&gt; <a href="https://clickhouse.com/docs/zh" target="_blank" rel="noopener">文档</a><br>
+官方提供了四种包的安装方式, <code>deb/rpm/tgz/docker</code>, 自行选择适合自己操作系统的安装方式<br>
+这里我们选deb的方式, 其他方式看文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y apt-transport-https ca-certificates dirmngr</span><br><span class="line">sudo apt-key adv --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv 8919F6BD2B48D754</span><br><span class="line"></span><br><span class="line">echo &quot;deb https:&#x2F;&#x2F;packages.clickhouse.com&#x2F;deb stable main&quot; | sudo tee \</span><br><span class="line">    &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;clickhouse.list</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install -y clickhouse-server clickhouse-client</span><br></pre></td></tr></table></figure>
+<p>到这里先不慌着启动, 改一波配置<br>
+服务端配置默认地址在<code>/etc/clickhouse-server</code><br>
+尽量不要直接修改config.xml, 而是在config.d子目录中新建配置文件, 易于维护和升级, 文件名随意但会按字母顺序生效<br>
+<strong>一些简单配置:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;clickhouse&gt;</span><br><span class="line">  &lt;listen_host&gt;::&lt;&#x2F;listen_host&gt; # 打开远程访问</span><br><span class="line">  &lt;path&gt;xxx&lt;&#x2F;path&gt; # 表数据存储路径</span><br><span class="line">  &lt;tmp_path&gt;xxxx&lt;&#x2F;tmp_path&gt; # 一些临时数据</span><br><span class="line">  &lt;max_server_memory_usage&gt;21474836480&lt;&#x2F;max_server_memory_usage&gt; # 服务器进程的最大内存使用量, 根据自己情况设置</span><br><span class="line">  &lt;logger&gt;</span><br><span class="line">      &lt;level&gt;warning&lt;&#x2F;level&gt; # 日志级别</span><br><span class="line">      &lt;log&gt;xxx&lt;&#x2F;log&gt; # 日志路径</span><br><span class="line">      &lt;errorlog&gt;xxx&lt;&#x2F;errorlog&gt; # 错误日志路径</span><br><span class="line">  &lt;&#x2F;logger&gt;</span><br><span class="line">&lt;&#x2F;clickhouse&gt;</span><br></pre></td></tr></table></figure>
+<p>配置完, 启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service clickhouse-server start</span><br><span class="line">clickhouse-client # or &quot;clickhouse-client --password&quot; if you&#39;ve set up a password.</span><br></pre></td></tr></table></figure>
+<h2 id="建表">建表</h2>
+<p>大部分操作和mysql差不多<br>
+不过ClickHouse有一套自己的字段类型, 简单建一个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE test</span><br><span class="line">(</span><br><span class="line">    &#96;column1&#96; Date, # 日期类型</span><br><span class="line">    &#96;column2&#96; FixedString(7), # 固定长度字符串</span><br><span class="line">    &#96;column3&#96; UInt32, # 无符号int类型</span><br><span class="line">    &#96;column4&#96; Nullable(String), # 可为空字符串</span><br><span class="line">    &#96;column5&#96; Float64 # 浮点数</span><br><span class="line">)</span><br><span class="line">ENGINE &#x3D; MergeTree()</span><br><span class="line">order by column1</span><br></pre></td></tr></table></figure>
+<p>更多字段类型以及不同engine的作用详见文档</p>
+<h2 id="PySpark写入ClickHouse">PySpark写入ClickHouse</h2>
+<p>spark写入ClickHouse还是很方便的<br>
+需要下载一个新的驱动包, 放到每个worker节点的jars目录下 -&gt; <a href="https://github.com/ClickHouse/clickhouse-java" target="_blank" rel="noopener">官方jdbc驱动</a><br>
+目前是 <code>clickhouse-jdbc-0.4.6.jar</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">properties &#x3D; &#123;&#39;driver&#39;: &#39;com.clickhouse.jdbc.ClickHouseDriver&#39;,</span><br><span class="line">                  &quot;socket_timeout&quot;: &quot;300000&quot;,</span><br><span class="line">                  &quot;rewriteBatchedStatements&quot;: &quot;true&quot;,</span><br><span class="line">                  &quot;batchsize&quot;: &quot;1000000&quot;,</span><br><span class="line">                  &quot;numPartitions&quot;: &quot;8&quot;,</span><br><span class="line">                  &#39;user&#39;: &#39;default&#39;,</span><br><span class="line">                  &#39;password&#39;: &#39;123456&#39;, # 配置自己的用户名密码</span><br><span class="line">                  &#39;isolationLevel&#39;: &#39;NONE&#39;</span><br><span class="line">                  &#125;</span><br><span class="line"></span><br><span class="line">df &#x3D; spark.read.parquet(&#39;xx&#39;) # 读一个df, 注意schema和表结构一致</span><br><span class="line">df.write.jdbc(url&#x3D;&#39;jdbc:clickhouse:&#x2F;&#x2F;服务器ip:8123&#x2F;数据库名&#39;, table&#x3D;&#39;表名&#39;, mode&#x3D;&#39;append&#39;, properties&#x3D;properties)</span><br></pre></td></tr></table></figure>
+<p>不想要监控可以省略以下步骤, 本篇到此结束</p>
+<h2 id="监控">监控</h2>
+<p>ClickHouse自带各种统计表都存在system库里, 我们需要一个可视化平台接入一下比如Grafana</p>
+<p>选择适合自己的版本下载 -&gt; <a href="https://grafana.com/grafana/download?pg=get&amp;platform=linux&amp;plcmt=selfmanaged-box1-cta1" target="_blank" rel="noopener">官网下载地址</a><br>
+以及有其他问题可以翻阅文档 -&gt; <a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">官方文档</a><br>
+下载后解压, Grafana中默认数据源是没有ClickHouse的, 需要装一个扩展 -&gt; <a href="https://grafana.com/grafana/plugins/vertamedia-clickhouse-datasource/?tab=installation" target="_blank" rel="noopener">地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grafana-cli --pluginsDir&#x3D;可指定安装路径 plugins install vertamedia-clickhouse-datasource</span><br></pre></td></tr></table></figure>
+<p>不需要什么配置直接<code>./bin/grafana server</code>即可启动, 不过建议改一下web页面的端口, 默认是3000, 会和后面的metabase冲突<br>
+配置文件在<code>conf/defaults.ini</code>, 比如修改<code>http_port=2999</code><br>
+然后在浏览器访问页面, 默认账户密码<strong>admin, admin</strong></p>
+<p>进来以后选Data source<br>
+<img src="http://www.wangdanpeng.com/img/20230811154946_1.png" alt="1"></p>
+<p>添加数据源, 搜ClickHouse, 然后按图改名字, 填ip, 填账号密码, 然后保存即可<br>
+<img src="http://www.wangdanpeng.com/img/20230811154946_2.png" alt="2"></p>
+<p>下一步直接导入一个现成的ClickHouse仪表盘 -&gt; <a href="https://grafana.com/grafana/dashboards/13606-clickhouse-performance-monitor-xm-uat/" target="_blank" rel="noopener">地址</a><br>
+<strong>省流, DashboardID: 13606</strong></p>
+<p>页面右上角点击 import dashboard<br>
+<img src="http://www.wangdanpeng.com/img/20230811154946_3.png" alt="3"></p>
+<p>填入dashboardID, 点击右侧load<br>
+<img src="http://www.wangdanpeng.com/img/20230811154946_4.png" alt="4"></p>
+<p>然后选择刚添加的数据源, 导入即可</p>
+<p>图表很多, 不一一展示了, 至此监控安装完毕<br>
+<img src="http://www.wangdanpeng.com/img/20230811154946_5.png" alt="5"></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metabase/" rel="tag">Metabase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/02/15/20230215171913/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">数学相关 - HyperLogLog算法原理</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '4e3dce9d862c874f1e6a',
+    clientSecret: 'e36d977c68e245be716b31fdde5d273c83f38775',
+    repo: 'blogtalk',
+    owner: 'WangDanpeng',
+    admin: ['WangDanpeng'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2017-2023
+        王丹鹏
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <!--<i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>-->
+<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279515725'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279515725%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</span>
+
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">冀ICP备15029707号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/method-draw-image.svg" alt="Mr.Wang_Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/z.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/w.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['', '', '努力, 奋斗'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: false,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":400,"hOffset":100,"vOffset":-40},"mobile":{"show":true,"scale":0.5},"react":{"opacity":1},"log":false});</script></body>
+
+</html>
